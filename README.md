@@ -7,7 +7,7 @@ __김연준(팀장), 박현욱, 양소영, 이찬우, 이상현, 박태영, 류�
 ------------------------------
 1. 고민중
 
-<img src="/images/Zeroth.png" width="50%"><img src="/images/AppDesign.png" width="50%">
+<img src="/images/슬라이드7.PNG" width="50%"><img src="/images/슬라이드8.PNG" width="50%">
 
 
 ### 1. 제작 목적
