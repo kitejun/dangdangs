@@ -7,7 +7,7 @@ __김연준(팀장), 박현욱, 양소영, 이찬우, 이상현, 박태영, 류�
 ------------------------------
 1. 강아지를 위한 웹사이트의 필요성
 
-<img src="/images/슬라이드7.PNG" width="48%">  <img src="/images/슬라이드8.PNG" width="48%">
+<img src="/images/슬라이드7.PNG" width="48%" heigh=100>  <img src="/images/슬라이드8.PNG" width="48%">
 
 
 ### 1. 제작 목적
