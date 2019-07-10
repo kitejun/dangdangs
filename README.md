@@ -35,5 +35,6 @@ __김연준(팀장), 박현욱, 양소영, 이찬우, 이상현, 박태영, 류�
  * Framework: Django
  * Tool: Visual Code
  * 언어: Python, JavaScript
+ * 기타: HTML, CSS
  * 서버/DB: Postgres 
  
