@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>본문</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 35px;
+            margin: 0;
+            background-color: burlywood;
+            font-family: '맑은 고딕';
+        }
+
+        .like-button {
+            display: inline-block;
+            position: relative;
+            font-size: 15px;
+            cursor: pointer;
+            float: left;
+        }
+
+        .like-button::before {
+            font-size: 3em;
+            color: #000;
+            content: '♥';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .like-button::after {
+            font-size: 3em;
+            color: #ff3252;
+            content: '♥';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%) scale(0);
+            transform: translate(-50%, -50%) scale(0);
+            transition: -webkit-transform 0.2s;
+            transition: transform 0.2s;
+            transition: transform 0.2s, -webkit-transform 0.2s;
+        }
+
+        .like-button.liked::after {
+            -webkit-transform: translate(-50%, -50%) scale(1.1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        #A {
+            background-color: burlywood;
+            font-family: '맑은 고딕';
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body id="A">
+    <center>
+        <pre>
+            </pre>
+
+        <div class="card" style="width: 33rem;">
+            <img height="380rem;" src="{{ board.image.url }}" class="card-img-top" alt="댕댕이">
+            <div class="card-body">
+                <h5 class="card-title">{{ board.title}}</h5>
+                <p class="card-text">{{ board.context }}</p>
+                <hr>
+
+                <button class="like-button"></button>
+
+            </div>
+
+        </div>
+        <br>
+        <script>
+            document.querySelector('.like-button').addEventListener('click', (e) => { e.currentTarget.classList.toggle('liked'); });
+        </script>
+
+
+        <ul class="list-group">
+            <li class="list-group-item">댓글</li>
+            <li class="list-group-item">댓글</li>
+        </ul>
+    </center>
+</body>
+
+</html>
