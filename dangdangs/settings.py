@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'board.apps.BoardConfig',
+    'cal.apps.CalConfig',
 
     'imagekit'
 ]

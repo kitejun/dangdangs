@@ -1,0 +1,166 @@
+/* Common styles */
+/*
+body {
+  font-family: "ptsans", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+*/
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.btn {
+  outline: none;
+  color: black;
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+  margin-right: 3px;
+}
+
+.clearfix {
+  margin: 15px;
+}
+
+.form {
+  margin: auto;
+}
+
+.form input, .form select, .form textarea {
+  border-radius: 5px;
+  border: 1px solid #17a2b8;
+  outline: none;
+  background: none;
+  padding: 5px;
+  width: 100%;
+}
+
+/* App styles */
+
+.title {
+  text-align: center;
+  margin: 10px;
+}
+
+.calendar {
+  width: 98%;
+  margin: auto;
+  font-size: 13px;
+}
+
+.calendar tr, .calendar td {
+  border: 1px solid black;
+}
+
+.calendar th {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.calendar td {
+  width: 200px;
+  height: 150px;
+  padding: 20px 0px 0px 5px;
+}
+
+.month {
+  font-size: 25px;
+}
+
+.date {
+  font-size: 16px;
+}
+
+ul {
+  height: 100%;
+  padding: 0px 5px 0px 20px;
+}
+
+a {
+  color: #17a2b8;
+}
+
+/* 태영 코드 */
+*{box-sizing: border-box;font-family: 'Jua', sans-serif;}
+html,body{height: 100%;}
+body{margin:0;
+    display:flex;
+    flex-direction:column;}
+a{text-decoration: none;}
+a:link,a:visited,a:active{color:inherit;}
+
+h1{padding: 8px;
+    font-size: 50px;
+    color:#4E2004;}
+#header{display:flex;
+    flex-wrap:wrap;}
+.main-navbar a{padding:8px;margin-right:20px;}
+.main-navbar a:hover{color: chocolate;}
+#link2{
+    width: 480px;
+    height: 80px;
+    position: relative;
+    top:20px;
+    left: 20px;}
+.share{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    bottom: 80px;
+    right: 30px;
+}
+
+#tap{ width: 10px;height: 10px;}
+
+#main{display:flex;
+    flex-wrap:wrap;}
+.content{flex:60%;;}
+.aside{flex:40%;}
+.main-navbar{font-size: 30px;color: #D7B8A5;
+    margin: 20px;
+    display:flex;
+    justify-content: flex-start;}
+.sub-navbar{display: flex;
+    flex-direction: column;
+    text-indent: 10px;}
+.link1{display: flex;
+justify-content: flex-end;
+font-size: 20px;}
+.news{display: flex;
+justify-content: flex-end;}
+.header{padding:30px;}
+.content,.aside{padding:50px;}  
+.inner1{padding: 50px;
+border: solid #916E59;
+border-radius: 5%;
+position: relative;
+height: 100%;}
+.inner2{
+padding: 50px;
+border: solid #916E59;
+border-radius: 5%;
+block-size: 100%;
+position: relative;
+bottom: 61px;
+}  
+footer{padding:30px;text-align: center;}
+#main{flex:1;}
+.footer{flex-shrink:0;}
+#cancel{background-color: rgb(183, 183, 183);
+font-size: 20px; 
+}
+#cancel:hover{background-color: dimgray;}
+#save{background-color: #E8D9D1 ;
+font-size: 20px;
+}
+#save:hover{background-color: rgb(173, 148, 134);}
+#menu{width: 180px; height: 30px; 
+
+/*color: #835D47 ;*/}
+#menu:hover{background-color:#E8D9D1;}
+#file:hover{background-color:#E8D9D1;}
+#memo:hover{background-color:#E8D9D1;}
+#file{width: 20px; height: 50px;}
