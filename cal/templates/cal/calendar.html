@@ -16,6 +16,7 @@ Calendar
 									<a class="btn btn-info left"href="{% url 'cal:calendar' %}?{{ prev_month }}"> 이전 달 </a>
 									<a class="btn btn-info right" href="{% url 'cal:calendar' %}?{{ next_month }}"> 다음 달 </a>
 									<a class="btn btn-info right" href="{% url 'cal:event_new' %}"> 일정 추가 </a>
+									<a class="btn btn-info right" href="{% url 'cal:event_total' %}"> 전체 일정</a>
 								</div>
 						<div class="content">
 								{{ calendar }}
