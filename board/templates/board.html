@@ -38,6 +38,7 @@
                 {% endfor %}
             </div>
         </div>
+
         {%if posts.has_previous%}
         <a href="?page=1">First</a>
         <a href="?page={{posts.previous_page_number}}">Previous</a>
@@ -51,6 +52,10 @@
         <a href="?page={{posts.next_page_number}}">Next</a>
         <a href="?page={{posts.paginator.num_pages}}">Last</a>
         {%endif%}
+
+        <div align="right" height: 100px;">
+            <a class="btn btn-success" href="{%url 'new'%}" role="button">글쓰기</a>
+        </div>
     </center>
 </body>
 

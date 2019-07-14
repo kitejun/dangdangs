@@ -65,14 +65,15 @@
 
 <body id="A">
     <center>
-        <pre>
-            </pre>
-
+        
         <div class="card" style="width: 33rem;">
-            <img height="380rem;" src="{{ board.image.url }}" class="card-img-top" alt="댕댕이">
+            <img height="100%" src="{{ details.image.url }}" class="card-img-top" alt="댕댕이">
             <div class="card-body">
-                <h5 class="card-title">{{ board.title}}</h5>
-                <p class="card-text">{{ board.context }}</p>
+            <br>
+                <h5 class="card-title">제목: {{ details.title}}</h5>
+                <br>
+                내용:
+                <p class="card-text">{{ details.context }}</p>
                 <hr>
 
                 <button class="like-button"></button>

@@ -10,7 +10,7 @@ class Board(models.Model):
     context=models.TextField()
     like=models.IntegerField(default=0)
 
-    image = models.ImageField(upload_to='images/', default='https://image.flaticon.com/icons/svg/149/149852.svg')
+    image = models.ImageField(upload_to="images/%Y/%m/%d", default='https://image.flaticon.com/icons/svg/149/149852.svg')
     
     def __str__(self):
         return self.title

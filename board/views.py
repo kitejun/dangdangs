@@ -8,7 +8,6 @@ from .forms import BoardPost
 # Create your views here.
 def board(request):
     boards=Board.objects
-
     board_list=Board.objects.all()
     paginator = Paginator(board_list,3)
     page = request.GET.get('page')
@@ -18,15 +17,11 @@ def board(request):
 
 
 def detail(request, board_id):
-    board_detail = get_object_or_404(Board, pk=board_id)
-    return render(request, 'detail.html', {'board': board_detail})
+    details = get_object_or_404(Board, pk=board_id)
+    return render(request, 'detail.html', {'details': details})
 
 
 def new(request):
-    return render(request, 'input.html')
-
-
-def create(request):
     if  request.method == 'POST' :
         form = BoardPost(request.POST)
         if form.is_valid:
@@ -38,7 +33,7 @@ def create(request):
 
     else :
         form = BoardPost() 
-        return render(request,'input.html',{'form':form})
+        return render(request,'new.html',{'form':form})
 
 
 
