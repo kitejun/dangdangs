@@ -29,6 +29,8 @@
 
                     <img src="{{board.image.url}}" width="300px">
                     <br><br>
+                    path :{{ board.image.path }}
+                    <br><br>
                     <p class="mb-1"> {{ board.summary }}</p>
                 </a>
                 <a class="btn btn-dark" href="{% url 'update' board.id %}">수정</a>
