@@ -20,21 +20,21 @@
         <br><br><br><br>
         <div class="container">
             <div class="list-group">
-                {% for board in posts %}
-                <a href="{% url 'detail' board.id %}" class="list-group-item list-group-item-action">
+                {% for post in posts %}
+                <a href="{% url 'detail' post.id %}" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
-                        <h5>제목: {{ board.title }}</h5>
-                        <small>날짜: {{ board.pub_date }}</small>
+                        <h5>제목: {{ post.title }}</h5>
+                        <small>날짜: {{ post.created_at }}</small>
                     </div>
 
-                    <img src="{{board.image.url}}" width="300px">
+                    <img src="{{post.image.url}}" width="300px">
                     <br><br>
-                    path :{{ board.image.path }}
+                    path :{{ post.image.path }}
                     <br><br>
-                    <p class="mb-1"> {{ board.summary }}</p>
+                    <p class="mb-1"> {{ post.summary | linebreaks }}</p>
                 </a>
-                <a class="btn btn-dark" href="{% url 'update' board.id %}">수정</a>
-                <a class="btn btn-dark" href="{% url 'delete' board.id %}">삭제</a>
+                <a class="btn btn-dark" href="{% url 'update' post.id %}">수정</a>
+                <a class="btn btn-dark" href="{% url 'delete' post.id %}">삭제</a>
 
                 <br>
                 {% endfor %}

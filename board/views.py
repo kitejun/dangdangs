@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
 
-from .models import Board
-from .forms import BoardPost
+from .models import Board, Comment
+from .forms import BoardPost, CommentForm
 
 # Create your views here.
 def board(request):
@@ -18,7 +18,7 @@ def board(request):
 
 def detail(request, board_id):
     details = get_object_or_404(Board, pk=board_id)
-    return render(request, 'detail.html', {'details': details})
+    return render(request, 'detail.html', {'post': post})
 
 
 def new(request):
@@ -52,3 +52,16 @@ def delete(request,board_id):
     board=get_object_or_404(Board,pk=board_id)
     board.delete()
     return redirect('board')
+
+# comment 부분 시작
+def comment_new(request, board_id):
+    if request.method == 'POST' :
+        form = BoardPost(request.POST)
+        if form.is_valid:
+            comment=form.save(commit=False)
+            comment.post = Board.objects.get(pk=board_id)
+            comment.save()
+            return redirect('detail', board_id)
+    else :
+        form = CommentForm() 
+    return render(request,'comment_new.html',{'form':form})

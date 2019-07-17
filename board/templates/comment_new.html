@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>글 입력창</title>
+    <style>
+        #A {
+            background-color: burlywood;
+            font-family: '맑은 고딕';
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body id="A">
+    <div class='container'>
+    <form method='post' action='' enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <table>
+            {{form.as_table}}
+            <!--
+                {{form.as_table}} : 테이블 형식
+                {{form.as_p}} : 문단 형식
+                {{form.as_ul}} : 리스트 형식
+            -->
+        </table>
+        <br>
+        <input class="btn btn-dark" type="submit" value="제출하기">
+    </form>
+    </div>
+
+</body>
+
+</html>
