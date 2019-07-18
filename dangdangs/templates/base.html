@@ -49,35 +49,32 @@
         <h1>댕댕쓰</h1>
       </a>
       <div id="link2">
-        <a href="{% url 'cal:calendar' %}" style="color: #916E59;">마이페이지</a>
+        <a href="{% url 'cal:calendar' %}" style="color: #916E59;">달력</a>
         <a href="#">근처 동물병원</a>
-        <a href="#">소통방</a>
+        <a href="{% url 'board' %}" style="color: #916E59;">소통방</a>
       </div>
     </nav>
   </header>
 
-	<article class="content">
-		<div class="inner1">
-			<div class="clearfix">
-				<a class="btn btn-info left"href="{% url 'cal:calendar' %}?{{ prev_month }}"> 이전 달 </a>
-				<a class="btn btn-info left" href="{% url 'cal:calendar' %}?{{ next_month }}"> 다음 달 </a>
-				<a class="btn btn-info right" href="{% url 'cal:event_new' %}"> 일정 추가 </a>
-				<a class="btn btn-info right" href="{% url 'cal:event_total' %}"> 전체 일정</a>
-				<div class="content">
-					{{ calendar }}
-				</div>
-			</div>		  
-		</div>
-	</article>
+  {% block content %}
 
-<!-- 새로고침을 해도 그 스크롤 위치(300) 지정 -->
-<script>
-	window.onload = function() {
-		window.scrollTo(0, 300)
-	}
-</script>
+  {% endblock %}
 
-<!-- Optional JavaScript -->
+
+  <div class="empty">
+  </div>
+
+  <footer class="footer">
+    <div>
+      <img id="img" src="https://ideathon-2019.s3.amazonaws.com/user/839/350B2CF6-4987-477D-B0B3-757DDABFA810.png"
+        width="50" height="50"><br>
+      <br>
+      <p id="copyright">Copyright &copy; 2019.dangdangs<br>
+        all rights reserved.</p>
+  </footer>
+
+
+  <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
