@@ -16,7 +16,7 @@ class Board(models.Model):
         return self.title
 
     def summary(self):
-        return self.context[:100]
+        return self.context[:50]
 
 class Comment(models.Model):
     board = models.ForeignKey(Board, on_delete=models.CASCADE)

@@ -29,9 +29,7 @@
 
                     <img src="{{post.image.url}}" width="300px">
                     <br><br>
-                    path :{{ post.image.path }}
-                    <br><br>
-                    <p class="mb-1"> {{ post.summary | linebreaks }}</p>
+                    <p class="mb-1"> {{ post.summary }}</p>
                 </a>
                 <a class="btn btn-dark" href="{% url 'update' post.id %}">수정</a>
                 <a class="btn btn-dark" href="{% url 'delete' post.id %}">삭제</a>
