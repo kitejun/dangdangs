@@ -27,11 +27,11 @@
                         <small>날짜: {{ post.created_at }}</small>
                     </div>
 
-                    <img src="{{post.image.url}}" width="300px">
+                    <img src="{{post.image.url}}" width="300px"/>
+                    {{post.image.url}}
                     <br><br>
                     <p class="mb-1"> {{ post.summary }}</p>
                 </a>
-                <a class="btn btn-dark" href="{% url 'update' post.id %}">수정</a>
                 <a class="btn btn-dark" href="{% url 'delete' post.id %}">삭제</a>
 
                 <br>

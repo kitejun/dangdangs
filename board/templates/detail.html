@@ -65,36 +65,40 @@
 
 <body id="A">
     <center>
-        
+
         <div class="card" style="width: 33rem;">
-            <img height="100%" src="{{ post.image.url }}" class="card-img-top" alt="댕댕이">
-            <div class="card-body">
-            <br>
-                <h5 class="card-title">제목: {{ post.title}}</h5>
+            {% if details.image %}
+                <img height="100%" src="{{ details.image.url }}" class="card-img-top" alt="댕댕이"/>
+            {% endif %}
+                <div class="card-body">
+                <br>
+                <h5 class="card-title">제목: {{ details.title}}</h5>
                 <br>
                 내용:
-                <p class="card-text">{{ post.context }}</p>
+                <p class="card-text">{{ details.context }}</p>
                 <hr>
 
                 <button class="like-button"></button>
 
             </div>
 
-        </div>
-        <br>
+        
         <script>
             document.querySelector('.like-button').addEventListener('click', (e) => { e.currentTarget.classList.toggle('liked'); });
         </script>
-        <a href="{% url 'comment_new' post.id %}">댓글 쓰기</a>
-        <!-- comment 공간 -->
+
+        <a href="{% url 'comment_new' details.id %}">댓글 쓰기</a>
+        
         <ul class="list-group">
-            {% for comment in post.all %}
+            {% for comment in comments %}
             <li class="list-group-item">
                 {{comment.message}}
                 <small>by {{ comment.author }}, {{ comment.created_at }}</small>
             </li>
             {% endfor %}
         </ul>
+    </div>
+    <br>
     </center>
 </body>
 

@@ -19,11 +19,11 @@ class Board(models.Model):
         return self.context[:50]
 
 class Comment(models.Model):
-    board = models.ForeignKey(Board, on_delete=models.CASCADE)
+    title = models.ForeignKey(Board, on_delete=models.CASCADE)
     author = models.CharField(max_length=10)
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.title
+        return self.author
