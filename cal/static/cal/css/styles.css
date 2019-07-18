@@ -15,7 +15,7 @@ body {
 .btn {
   outline: none;
   color: black;
-  background-color: transparent;
+  background-color: #EAE5DE;
   box-shadow: 0 0 0 0;
   margin-right: 3px;
 }
@@ -45,7 +45,7 @@ body {
 }
 
 .calendar {
-  width: 98%;
+  width: 70%;
   margin: auto;
   font-size: 13px;
 }
@@ -62,20 +62,21 @@ body {
 
 .calendar td {
   width: 200px;
-  height: 150px;
+  height: 100px;
   padding: 20px 0px 0px 5px;
 }
 
 .month {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .date {
+  padding: 3px;
   font-size: 16px;
 }
 
 ul {
-  height: 100%;
+  height: 90%;
   padding: 0px 5px 0px 20px;
 }
 
@@ -84,83 +85,215 @@ a {
 }
 
 /* 태영 코드 */
-*{box-sizing: border-box;font-family: 'Jua', sans-serif;}
-html,body{height: 100%;}
-body{margin:0;
-    display:flex;
-    flex-direction:column;}
-a{text-decoration: none;}
-a:link,a:visited,a:active{color:inherit;}
+*{
+  box-sizing: border-box;
+  font-family: 'Jua', sans-serif;
+}
 
-h1{padding: 8px;
-    font-size: 50px;
-    color:#4E2004;}
-#header{display:flex;
-    flex-wrap:wrap;}
-.main-navbar a{padding:8px;margin-right:20px;}
-.main-navbar a:hover{color: chocolate;}
+html,body{
+  height: 100%;
+}
+
+body{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:link,a:visited,a:active{
+  color:inherit;
+}
+
+h1{
+  padding: 8px;
+  font-size: 80px;
+  color:#4E2004;
+}
+
+#header{
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.main-navbar a{
+  padding:8px;
+  margin-right:20px;
+}
+
+.main-navbar a:hover{
+  color: chocolate;
+}
+
 #link2{
     width: 480px;
     height: 80px;
     position: relative;
     top:20px;
-    left: 20px;}
+    left: 20px;
+}
+/*
 .share{
     display: flex;
     justify-content: flex-end;
     position: relative;
     bottom: 80px;
     right: 30px;
+}*/
+
+#tap{ 
+  width: 10px;
+  height: 10px;
 }
 
-#tap{ width: 10px;height: 10px;}
+#main{
+  display:flex;
+  flex-wrap:wrap;
+}
 
-#main{display:flex;
-    flex-wrap:wrap;}
-.content{flex:60%;;}
-.aside{flex:40%;}
-.main-navbar{font-size: 30px;color: #D7B8A5;
-    margin: 20px;
-    display:flex;
-    justify-content: flex-start;}
-.sub-navbar{display: flex;
-    flex-direction: column;
-    text-indent: 10px;}
-.link1{display: flex;
-justify-content: flex-end;
-font-size: 20px;}
-.news{display: flex;
-justify-content: flex-end;}
-.header{padding:30px;}
-.content,.aside{padding:50px;}  
+.main-navbar{
+  font-size: 30px;color: #D7B8A5;
+  margin: 20px;
+  display:flex;
+  justify-content: flex-start;
+}
+
+.sub-navbar{
+  display: flex;
+  flex-direction: column;
+  text-indent: 10px;
+}
+
+.link1{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20px;
+}
+
+.news{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header{
+  padding:30px;
+}
+
+.content{padding:50px;}  
 .inner1{padding: 50px;
 border: solid #916E59;
 border-radius: 5%;
 position: relative;
 height: 100%;}
-.inner2{
-padding: 50px;
-border: solid #916E59;
-border-radius: 5%;
-block-size: 100%;
-position: relative;
-bottom: 61px;
-}  
-footer{padding:30px;text-align: center;}
-#main{flex:1;}
-.footer{flex-shrink:0;}
-#cancel{background-color: rgb(183, 183, 183);
-font-size: 20px; 
-}
-#cancel:hover{background-color: dimgray;}
-#save{background-color: #E8D9D1 ;
-font-size: 20px;
-}
-#save:hover{background-color: rgb(173, 148, 134);}
-#menu{width: 180px; height: 30px; 
 
-/*color: #835D47 ;*/}
-#menu:hover{background-color:#E8D9D1;}
-#file:hover{background-color:#E8D9D1;}
-#memo:hover{background-color:#E8D9D1;}
-#file{width: 20px; height: 50px;}
+
+
+#main{
+  flex:1;
+}
+
+.footer{
+  flex-shrink:0;
+
+}
+.carousel slide{
+  background-color: #D0C3B4;
+  padding: 80px;
+}
+.empty{
+  padding: 5%;
+}
+footer{
+  padding:30px;
+  text-align: center;
+  background-color: #EAE5DE;
+}
+
+#copyright{
+  font-size: 15px;
+  color: #767171;
+}
+
+#calender-header{
+  padding: 5%;
+  background-color: #E6DFD5;
+  text-align: center;
+  width: 98%;
+  color: #767171;
+
+}
+
+#calender-header-title{
+  background-color: white; 
+  border-radius: 20px;
+  display: inline;
+}
+
+.event-box{
+  padding: 5%;
+  
+  width: 100%;
+  height: 50rem;
+}
+
+.event-main{
+  padding: 10rem;
+  background-image: url(/static/img/memo2.png);
+  width: 100%;
+  height: 50rem;
+}
+
+.inner3{
+  padding: 10px;
+  height: 33rem;
+  position: absolute;
+  width: 40%;
+  left: 6%;
+  top: 43%;
+}
+
+.inner4{
+  position: absolute;
+  width: 40%;
+  left: 55rem;
+  top: 43%;
+}
+
+#message{
+  font-size: 25px;
+  position: relative;
+  left: 15rem;
+  top: 4rem;
+  color: rgb(125, 105, 92);
+}
+
+.login-box{
+  padding-bottom: 10%;
+  padding-left: 30%;
+  padding-right: 30%;
+}
+
+#foot-left{
+  position: relative;
+  top: 1.5rem;
+  left: 1rem;
+}
+
+#foot-right{
+  position: relative;
+  top: 1.5rem;
+  right: 1rem;
+}
+/*
+.btn{
+  background-color:#EAE5DE;
+  color: #767171;
+}
+*/
+.btn:hover{
+  background-color: #D0C3B4;
+  
+}

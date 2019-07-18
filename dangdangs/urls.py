@@ -6,10 +6,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',board.views.board, name="board"),
+    path('board/',board.views.board, name="board"),
     path('board/<int:board_id>/',board.views.detail,name='detail'),
     # path('board/new/', board.views.new, name='new'),
     path('board/create/', board.views.create, name='create'),
+    
+    path('', board.views.home, name='home'),
 
     path('board/update/<int:board_id>/', board.views.update, name='update'),
     path('board/delete/<int:board_id>/', board.views.delete, name='delete'),

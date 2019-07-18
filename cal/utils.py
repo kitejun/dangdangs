@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from calendar import HTMLCalendar
+from calendar import HTMLCalendar, month_name
 from .models import Event
 
 class Calendar(HTMLCalendar):
@@ -27,8 +27,7 @@ class Calendar(HTMLCalendar):
          week += self.formatday(d, events)
       return f'<tr> {week} </tr>'
 
-   # formats a month as a table
-   # filter events by year and month
+
    def formatmonth(self, withyear=True):
       events = Event.objects.filter(start_time__year=self.year, start_time__month=self.month)
 
@@ -38,3 +37,13 @@ class Calendar(HTMLCalendar):
       for week in self.monthdays2calendar(self.year, self.month):
          cal += f'{self.formatweek(week, events)}\n'
       return cal
+   
+   
+    # 캘린더 이전, 다음 달로 넘어가는 < > 표시 
+   def formatmonthname(self, theyear, month, withyear=True):
+
+      if withyear:
+         s = '%s %s' % (month_name[month], theyear)
+      else:
+         s = '%s' % month_name[month]
+      return '<tr><th colspan="7" class="month" color="#D7B8A5">%s</th></tr>' %s

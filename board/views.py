@@ -57,3 +57,6 @@ def delete(request,board_id):
     board=get_object_or_404(Board,pk=board_id)
     board.delete()
     return redirect('board')
+
+def home(request):
+    return render(request, 'home.html')

@@ -32,6 +32,7 @@ class CalendarView(generic.ListView):
 
         # Call the formatmonth method, which returns our calendar as a table
         html_cal = cal.formatmonth(withyear=True)
+        # html_cal = html_cal.replace('<td','<td width="50"')
         context['calendar'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
@@ -99,8 +100,8 @@ def detail(request, event_id=None):
     plan = get_object_or_404(Event, pk=event_id)
 
     return render(request, 'cal/detail.html', {'plan':plan })
-
+    
 # 전체 일정을 불러오는 함수
 def total(request):
     plans = Event.objects.order_by('start_time') # 시간 오름차순 정렬
-    return render(request, 'cal/total.html',{'plans': plans})
+    return render(request, 'cal/total.html', {'plans': plans})
