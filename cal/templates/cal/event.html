@@ -1,0 +1,45 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}
+Event
+{% endblock %}
+
+{% block content %}
+<div class="event-box">
+    <div class="event-main">
+       
+      <div class="inner3"> 
+        <img src="/static/img/dog3.png" width="650" height="500">
+      </div>  
+      <div class="inner4">
+          
+        <p id="message">캘린더에 일정을 추가하세요!</p>
+        <div class="clearfix">  <a class="btn btn-info left" href="{% url 'cal:calendar' %}"> Calendar </a> </div>
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                {{ field.label }} <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            {{ field.label }} <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+  <table class="form form-table">
+    {{ form }}
+   <br><tr><td colspan="2"><br>
+    </div>
+    <button type="submit" class="btn btn-light right"> Submit </button></td></tr>
+  </table>
+</form>
+</div>
+</div>
+</div>
+{% endblock %}
