@@ -26,8 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'board',
-    'cal.apps.CalConfig',
+    'board.apps.BoardConfig',
 
     'imagekit'
 ]
@@ -47,7 +46,7 @@ ROOT_URLCONF = 'dangdangs.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['dangdangs/templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

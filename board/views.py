@@ -18,11 +18,15 @@ def board(request):
 
 
 def detail(request, board_id):
-    board = get_object_or_404(Board, pk=board_id)
-    return render(request, 'detail.html', {'board': board})
+    board_detail = get_object_or_404(Board, pk=board_id)
+    return render(request, 'detail.html', {'board': board_detail})
 
 
 def new(request):
+    return render(request, 'input.html')
+
+
+def create(request):
     if  request.method == 'POST' :
         form = BoardPost(request.POST)
         if form.is_valid:
@@ -34,7 +38,9 @@ def new(request):
 
     else :
         form = BoardPost() 
-        return render(request,'new.html',{'form':form})
+        return render(request,'input.html',{'form':form})
+
+
 
 def update(request,board_id):
     board=get_object_or_404(Board,pk=board_id)
@@ -51,6 +57,3 @@ def delete(request,board_id):
     board=get_object_or_404(Board,pk=board_id)
     board.delete()
     return redirect('board')
-
-def home(request):
-    return render(request, 'home.html')

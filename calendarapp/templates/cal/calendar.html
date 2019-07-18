@@ -1,0 +1,73 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}
+Calendar
+{% endblock %}
+
+{% block content %}
+
+
+
+<div id="main">
+	<container>
+			<article class="content">
+					<div class="inner1">
+							<div class="clearfix">
+									<a class="btn btn-info left"href="{% url 'cal:calendar' %}?{{ prev_month }}"> 이전 달 </a>
+									<a class="btn btn-info right" href="{% url 'cal:calendar' %}?{{ next_month }}"> 다음 달 </a>
+									<a class="btn btn-info right" href="{% url 'cal:event_new' %}"> 일정 추가 </a>
+								</div>
+						<div class="content">
+								{{ calendar }}
+						</div>		  
+					</div>
+				</article>
+	</container>
+</div> 
+<script>
+	window.onload = function() {
+		window.scrollTo(0, 300)
+	}
+</script>
+
+<!-- 미안하다 태영아 ㅠ
+
+	<container>
+			<aside class="aside">
+					<div class="share">
+						<div id="kakao-img">
+							<a href=""><img src="https://lh3.googleusercontent.com/1M7Bl04A0gvExzGhNENvWPRx40aZeS8nKr0QIq-mlxZXFBepFMCPKLQb7jTVM7jwK_w" width="50" height="50">
+						</div>
+						<div id="tap"></div>
+						<div id="kakao-text">
+							<p>가족과<br> 공유하기</p></a>
+						</div>
+					</div>
+					<div class="inner2">
+						
+						<h3>오늘</h3><h4>(5월 15일)</h4><br>
+						<form action="">
+							<p>종류</p> <select name="menu" id="menu" class="custom-select">
+									<option value="병원">병원</option>
+									<option value="사료">사료</option>
+									<option value="산책">산책</option>
+									<option value="목욕">목욕</option>
+									<option value="기타">기타</option>
+								 </select>      
+								  <br><br>
+							<p>사진</p> <div class="custom-file">
+									<input type="file" class="custom-file-input" id="file" >
+									<label class="custom-file-label" for="file">파일 선택</label>
+								  </div>
+							<br><br>
+							<p>메모</p><br>
+							<textarea cols="50" rows="9" placeholder="     메모를 적어주세요" id="memo"></textarea><br><br>
+							<input type="reset" id="cancel" class="btn btn-secondary" value="취소">
+							<input type="submit" id="save" class="btn btn-secondary" value="저장">
+						</form> 
+						</div>   
+					</aside>    
+	</container>
+	
+	-->
+{% endblock %}
