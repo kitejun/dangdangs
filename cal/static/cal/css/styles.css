@@ -233,8 +233,7 @@ footer{
 }
 
 .event-box{
-  padding: 5%;
-  
+  padding: 5%; 
   width: 100%;
   height: 50rem;
 }
@@ -247,7 +246,7 @@ footer{
 }
 
 .inner3{
-  padding: 10px;
+  padding: 1%;
   height: 33rem;
   position: absolute;
   width: 40%;
