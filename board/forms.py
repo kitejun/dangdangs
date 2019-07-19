@@ -1,7 +1,8 @@
 from django import forms
-from .models import Board
+from .models import Posting, Comment
 
-class BoardPost(forms.ModelForm):
+class PostingPost(forms.ModelForm):
         class Meta:
-            model = Board
+            model = Posting
             fields = ['title','context','image']
+
