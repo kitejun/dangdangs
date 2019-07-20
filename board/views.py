@@ -28,7 +28,6 @@ def new(request):
         if form.is_valid:
             post=form.save(commit=False)
             post.pub_date=timezone.now()
-            like=0
             post.save()
             return redirect('board')
 
