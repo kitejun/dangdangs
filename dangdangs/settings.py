@@ -25,8 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 
-    'board',
+    'board.apps.BoardConfig',
     'cal.apps.CalConfig',
 
     'imagekit'

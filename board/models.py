@@ -9,7 +9,7 @@ class Post(models.Model):
     context=models.TextField()
     created_at = models.DateTimeField(auto_now_add=True) # 최초의 저장된 시간이 저장
     updated_at = models.DateTimeField(auto_now=True) # 매번 저장이 될 때마다 시간이 저장
-    image = models.ImageField(upload_to="images/%Y/%m/%d", default='https://image.flaticon.com/icons/svg/149/149852.svg')
+    image = models.FileField(upload_to="images/%Y/%m/%d", default='https://image.flaticon.com/icons/svg/149/149852.svg')
     
     def __str__(self):
         return self.title
