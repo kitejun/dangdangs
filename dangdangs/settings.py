@@ -27,10 +27,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
 
-    'board.apps.BoardConfig',
+    'board',
     'cal.apps.CalConfig',
 
-    'imagekit'
+    
 ]
 
 MIDDLEWARE = [
