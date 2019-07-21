@@ -26,7 +26,7 @@
                 <a href="{% url 'detail' board.id %}" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h5>제목: {{ board.title }}</h5>
-                        <small>날짜: {{ board.pub_date }}</small>
+                        <small>날짜: {{ board.created_at }}</small>
                     </div>
 
                     <img src="{{board.image.url}}" width="300px">
@@ -59,7 +59,6 @@
         </div>
     </center>
 
-    하이 희정
 </body>
 
 </html>

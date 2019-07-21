@@ -58,14 +58,34 @@ def new(request):
 def update(request,board_id):
     board=get_object_or_404(Post,pk=board_id)
 
-    form = PostForm(request.POST,instance=Post)
-    
-    if form.is_valid():
-        post.updated_at=timezone.now()
-        form.save()
-        return redirect('board')
 
-    return render(request,'new.html',{'form':form})
+    # 글을 수정사항을 입력하고 제출을 눌렀을 때
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES, instance=Post)
+        if form.is_valid(): #error
+
+            board=form.save(commit=False)
+
+            print(form.cleaned_data)
+            board.title = form.cleaned_data['title']
+            board.context = form.cleaned_data['context']
+            board.image = form.cleaned_data['image']
+            board.updated_at = timezone.now()
+
+            post.save()
+            return redirect('/detail/'+str(board.pk))
+        
+    # 수정사항을 입력하기 위해 페이지에 처음 접속했을 때
+    else:
+        form = PostForm(instance = board)
+        # 기존 내용 불러오기
+        context={
+            'form':form,
+            'writing':True,
+            'now':'update',
+        }
+        return render(request, 'update.html',{'form':form})
+        
 
 def delete(request,board_id):
     board=get_object_or_404(Post,pk=board_id)
