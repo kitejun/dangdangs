@@ -18,8 +18,8 @@ class Comment(models.Model):
     title = models.ForeignKey(Post, on_delete=models.CASCADE)
     author = models.CharField(max_length=10)
     message = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField('date published')
+    updated_at = models.DateTimeField('date published')
     
     def __str__(self):
         return self.author
