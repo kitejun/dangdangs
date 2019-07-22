@@ -11,5 +11,6 @@ urlpatterns = [
 
     path('board/', include('board.urls')), # 게시판 urls
     path('calendar/', include('cal.urls')), # 캘린더 urls
+    path('accounts/',include('accounts.urls')), #계정기능 urls
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

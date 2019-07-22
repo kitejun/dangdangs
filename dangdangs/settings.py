@@ -28,8 +28,10 @@ INSTALLED_APPS = [
 
     'board',
     'cal.apps.CalConfig',
+    
 
-    'imagekit'
+    'imagekit',
+    'accounts.apps.AccountsConfig', #로그인 기능 추가 
 ]
 
 MIDDLEWARE = [

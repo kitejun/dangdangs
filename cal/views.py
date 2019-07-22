@@ -21,7 +21,7 @@ class CalendarView(generic.ListView):
     template_name = 'cal/calendar.html'
 
     def get_context_data(self, **kwargs):
-
+        
         context = super().get_context_data(**kwargs)
 
         # use today's date for the calendar
@@ -57,7 +57,7 @@ class CalendarView(generic.ListView):
 def prev_month(d):
     first = d.replace(day=1)
     prev_month = first - timedelta(days=1)
-    month = 'month' + str(prev_month.year) + '-' + str(prev_month.month)
+    month = 'month=' + str(prev_month.year) + '-' + str(prev_month.month)
     return month
 
 def next_month(d):
@@ -91,7 +91,6 @@ def event(request, event_id=None): # 일정 추가 & 수정
 def delete(request, event_id=None): 
     plan = get_object_or_404(Event, pk=event_id)
     plan.delete()
-
     return HttpResponseRedirect(reverse('cal:calendar'))
 
 # 해당 날짜의 일정을 불러오는 함수
