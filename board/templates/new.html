@@ -22,7 +22,7 @@
 
         <div class="container">
 
-            <form action="{% url 'new' %}" method="POST">
+            <form action="{% url 'new' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <table>
                     {{form.as_table}}
