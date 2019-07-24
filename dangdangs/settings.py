@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'cal.apps.CalConfig',
 
     
+    'accounts.apps.AccountsConfig', #로그인 기능 추가 
 ]
 
 MIDDLEWARE = [
