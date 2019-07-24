@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'cal.apps.CalConfig',
 
     
-    'accounts.apps.AccountsConfig', #로그인 기능 추가 
 ]
 
 MIDDLEWARE = [
@@ -98,9 +97,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'ko-kr'
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Seoul'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
