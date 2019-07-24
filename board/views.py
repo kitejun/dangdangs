@@ -1,3 +1,6 @@
+from django.shortcuts import render
+
+# Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -53,15 +56,13 @@ def new(request):
 
 
 def update(request,board_id):
-    board=get_object_or_404(Post,pk=board_id)
-
+    board=Post.objects.get(id=board_id)
 
     # 글을 수정사항을 입력하고 제출을 눌렀을 때
     if request.method == "POST":
-        form = PostForm(request.POST, request.FILES, instance=Post)
-        if form.is_valid(): #error
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
 
-            board=form.save(commit=False)
 
             print(form.cleaned_data)
             board.title = form.cleaned_data['title']
@@ -69,8 +70,8 @@ def update(request,board_id):
             board.image = form.cleaned_data['image']
             board.updated_at = timezone.now()
 
-            post.save()
-            return redirect('/detail/'+str(board.pk))
+            board.save()
+            return redirect('board')
         
     # 수정사항을 입력하기 위해 페이지에 처음 접속했을 때
     else:
