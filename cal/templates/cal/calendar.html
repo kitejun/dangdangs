@@ -45,7 +45,7 @@
       <img
         src="http://www.urbanbrush.net/web/wp-content/uploads/edd/2017/09/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7-2017-09-19-%EC%98%A4%ED%9B%84-2.17.32.png"
         width="50" height="50"><br>
-      <a href="#">
+      <a href="{% url 'home' %}">
         <h1>댕댕쓰</h1>
       </a>
       <div id="link2">
@@ -70,12 +70,19 @@
 		</div>
 	</article>
 
+<div class="empty">
+</div>
+
+
 <!-- 새로고침을 해도 그 스크롤 위치(300) 지정 -->
 <script>
 	window.onload = function() {
 		window.scrollTo(0, 300)
 	}
 </script>
+
+
+
 
 <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -97,6 +104,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-
+    
 </body>
 </html>
