@@ -19,6 +19,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    
+    'accounts.apps.AccountsConfig', #로그인 기능 추가 
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -29,9 +32,7 @@ INSTALLED_APPS = [
     'board',
     'cal.apps.CalConfig',
     
-
     'imagekit',
-    'accounts.apps.AccountsConfig', #로그인 기능 추가 
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,5 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+AUTH_USER_MODEL = 'accounts.User'
