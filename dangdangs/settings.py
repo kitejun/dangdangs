@@ -28,7 +28,6 @@ INSTALLED_APPS = [
 
     'board',
     'cal.apps.CalConfig',
-    'accounts.apps.AccountsConfig',
 
     'imagekit',
 ]
@@ -122,5 +121,3 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-AUTH_USER_MODEL = 'accounts.User'

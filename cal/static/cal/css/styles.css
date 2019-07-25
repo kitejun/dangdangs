@@ -66,16 +66,13 @@ body {
   padding: 20px 0px 0px 5px;
 }
 
-/* month 헤더 폰트 + 색깔 */
-.month { 
+.month {
   font-size: 20px;
-  background-color: #EAE5DE;
 }
 
 .date {
   padding: 3px;
   font-size: 16px;
-  color: #4E2004;
 }
 
 ul {
@@ -86,14 +83,6 @@ ul {
 a {
   color: #17a2b8;
 }
-/* 오늘 날짜에 해당하는 date */
-.today{
-  background-image: url(/static/img/circle2.png);
-  color: #4E2004;
-  font-size: 16px;
-  padding: 3px;
-}
-
 
 /* 태영 코드 */
 *{
@@ -244,7 +233,8 @@ footer{
 }
 
 .event-box{
-  padding: 5%; 
+  padding: 5%;
+  
   width: 100%;
   height: 50rem;
 }
@@ -257,7 +247,7 @@ footer{
 }
 
 .inner3{
-  padding: 1%;
+  padding: 10px;
   height: 33rem;
   position: absolute;
   width: 40%;

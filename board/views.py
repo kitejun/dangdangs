@@ -32,13 +32,8 @@ def board(request):
 
 
 def detail(request, board_id):
-<<<<<<< HEAD
     board_detail = get_object_or_404(Post, pk=board_id)
     return render(request, 'detail.html', {'board': board_detail})
-=======
-    board = get_object_or_404(Board, pk=board_id)
-    return render(request, 'detail.html', {'board': board})
->>>>>>> leesanghyun
 
 
 def new(request):
@@ -52,15 +47,10 @@ def new(request):
             return redirect('board')
 
     else :
-<<<<<<< HEAD
         form = PostForm() 
         return render(request,'new.html',{'form':form})
 
 
-=======
-        form = BoardPost() 
-        return render(request,'new.html',{'form':form})
->>>>>>> leesanghyun
 
 def update(request,board_id):
     board=get_object_or_404(Post,pk=board_id)
