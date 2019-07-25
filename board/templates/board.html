@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -51,6 +53,10 @@
         <a href="?page={{posts.next_page_number}}">Next</a>
         <a href="?page={{posts.paginator.num_pages}}">Last</a>
         {%endif%}
+
+        <div align="right" height: 100px;">
+            <a class="btn btn-success" href="{%url 'new'%}" role="button">글쓰기</a>
+        </div>
     </center>
 </body>
 
