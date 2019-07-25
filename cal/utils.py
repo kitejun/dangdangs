@@ -14,19 +14,23 @@ class Calendar(HTMLCalendar):
    def formatday(self, day, events):
       events_per_day = events.filter(start_date__day=day)
       d = ''
+      img = ''
+
       for event in events_per_day:
-         if event.todo == "사료":
-            d += f'<li> {event.get_html_url} </li><img src="/static/img/food.png" alt="사료">'
-         else:
-            d += f'<li> {event.get_html_url} </li>'
+         if event.todo == "병원":
+            img += f'<img src="/static/img/hospital.png" alt="병원">'
+         elif event.todo == "산책":
+            img += f'<img src="/static/img/walk.png" alt="산책">'       
+         elif event.todo == "목욕":
+            img += f'<img src="/static/img/bath.png" alt="목욕">'    
+         d += f'<li> {event.get_html_url} </li>'
 
       if day != 0:
-         
          if datetime.today().day == day and datetime.today().month == self.month and datetime.today().year == self.year:
-            return f"<td><span class='today'>{day}</span><ul> {d} </ul></td>"
+            return f"<td><span class='today'>{day}{img}</span><ul> {d} </ul></td>"
          else:
-            return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
-
+            return f"<td><span class='date'>{day}{img}</span><ul> {d} </ul></td>"
+   
       return '<td></td>'
 
    # formats a week as a tr

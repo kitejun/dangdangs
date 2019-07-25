@@ -2,8 +2,8 @@ from django.db import models
 from django.urls import reverse
 from datetime import datetime
 from django.utils import timezone
-
-
+# from django.contrib.auth.models import User
+from django.conf import settings
 
 TODO_CHOICES = (
     ('사료', '사료'),
@@ -21,8 +21,8 @@ class Event(models.Model):
     context = models.TextField() # 용어 통일 : description -> context
     start_date = models.DateField(default=timezone.localtime()) # start_time -> start_date, Datetime -> DateField
     end_time = models.DateTimeField(auto_now=True) # end_time -> update time, 갱신시 자동 update
-    # User table의 id 참조(ForeignKey), CASCADE => user id 업데이트 시 얘도 변경됨
-    # idname = models.ForeignKey(User, on_delete=models.CASCADE, ) 
+    # idname = models.ForeignKey(User, on_delete=models.CASCADE, )  # User table의 id 참조(ForeignKey), CASCADE => user id 업데이트 시 얘도 변경됨
+    groupid = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,) 
 
     @property
     def get_html_url(self):
