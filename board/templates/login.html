@@ -1,0 +1,95 @@
+{%extends 'base.html'%}
+
+{% block content %}
+
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>login</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/floating-labels/">
+
+    <!-- Bootstrap core CSS -->
+<link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .form-control:focus{
+        border-color: #E6DFD5;
+        color: #495057;
+        background-color: #fff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem #E6DFD5;
+    }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="floating-labels.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="login-box">
+    <form class="form-signin">
+  <div class="text-center mb-4">
+      <div class="login-img">
+        <img id="foot-left" src="/static/img/dog4.png" width="25" height="25">
+        <img id="img" src="https://ideathon-2019.s3.amazonaws.com/user/839/350B2CF6-4987-477D-B0B3-757DDABFA810.png" width="90" height="90">
+        <img id="foot-right" src="/static/img/dog4.png" width="25" height="25">
+    </div>
+    
+    <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+    <p>댕댕쓰의 다양한 기능을 누려보세요!</p>
+  </div>
+
+  <div class="form-label-group">
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <label for="inputEmail">Email address</label>
+  </div>
+
+  <div class="form-label-group">
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <label for="inputPassword">Password</label>
+  </div>
+
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div>
+  <button class="btn btn-lg btn-light btn-block" type="submit">Sign in</button>
+
+</form>
+
+<br><br><br><br><br><br><br><br>
+<div class="text-center mb-4">
+<img src="/static/img/dog2.png" width="95" height="80"><br><br>
+<h5>댕댕쓰의 회원이 아니라구요?</h5><br>
+회원가입 하러가기
+</div>
+<button class="btn btn-lg btn-light btn-block" type="submit">Sign up</button>
+<p class="mt-5 mb-3 text-muted text-center">&copy;2019</p>
+</div>
+</body>
+</html>
+
+
+
+
+{% endblock %}
