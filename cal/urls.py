@@ -12,5 +12,4 @@ urlpatterns = [
    
     path('event/detail/<int:event_id>', views.detail, name='event_detail'), # datail        
     path('event/delete/<int:event_id>', views.delete, name='event_delete'), # delete 
-
 ]

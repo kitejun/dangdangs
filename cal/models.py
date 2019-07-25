@@ -19,7 +19,7 @@ class Event(models.Model):
     # 종류 선택 list
     todo = models.CharField(max_length=5,choices=TODO_CHOICES, default='사료')
     context = models.TextField() # 용어 통일 : description -> context
-    start_date = models.DateField(default=timezone.localtime()) # start_time -> start_date, Datetime -> DateField
+    start_date = models.DateField(default=timezone.now) # start_time -> start_date, Datetime -> DateField
     end_time = models.DateTimeField(auto_now=True) # end_time -> update time, 갱신시 자동 update
     # idname = models.ForeignKey(User, on_delete=models.CASCADE, )  # User table의 id 참조(ForeignKey), CASCADE => user id 업데이트 시 얘도 변경됨
     groupid = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,) 
@@ -32,5 +32,12 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+class Daily(models.Model):
+    date = models.DateField(default=timezone.now)
+    category = models.CharField(max_length=200)
+    count = models.IntegerField(default=0)
+    groupid = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,) 
+
 
 

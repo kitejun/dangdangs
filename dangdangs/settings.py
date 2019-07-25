@@ -99,13 +99,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul' # 한국시간을 표시하기 위해 UTC -> Asia/Seoul로 변경
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False # 한국시간을 표시하기 위해 True -> False로 변경
 
 
 # Static files (CSS, JavaScript, Images)

@@ -4,24 +4,33 @@
 <style>
     #event-container {
     width: 1500px;
-    margin: 10px auto;
+    margin: 20px auto;
     padding: 20px;
-    margin-left:20px;
+    /*margin-left:10%;*/
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
     background : url(/static/img/memo2.png) no-repeat center top/cover;
 }
  
   #event-content {
     width: 440px;
     padding: 20px;
+    position: relative;
+    right: 100px;
     margin-top: 100px;
     margin-left: 70px;
     float: left;
   }
   #event-sidebar {
     width: 400px;
+    position: relative;
+    left: 60px;
     margin-bottom: 80px;
     margin-right: 250px;
     float: right;
+
+    
   }
   #event-footer {
         clear: both;
@@ -31,14 +40,17 @@
   @media ( max-width: 480px ) {
     #event-container {
       width: auto;
+     
     }
     #event-content {
       float: none;
       width: auto;
+ 
     }
     #event-sidebar {
       float: none;
       width: auto;
+
     }
   }
 </style>

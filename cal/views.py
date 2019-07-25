@@ -22,13 +22,17 @@ class CalendarView(generic.ListView):
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
-
+        
+        group = self.request.user
+        
         # use today's date for the calendar
         # d = get_date(self.request.GET.get('day', None))
         d = get_date(self.request.GET.get('month',None))
         # Instantiate our calendar class with today's year and date
         cal = Calendar(d.year, d.month)
-        html_cal = cal.formatmonth(withyear=True)
+        # html_cal = cal.formatmonth(withyear=True)
+        html_cal = cal.formatmonth(withyear=True, group=group)
+
         # html_cal = html_cal.replace('<td','<td width="50"')
         context['calendar'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)
@@ -65,7 +69,6 @@ def event(request, event_id=None): # 일정 추가 & 수정
     form = EventForm(request.POST or None, instance=instance)
     if request.POST and form.is_valid():
         plan = form.save(commit=False)
-        plan.idname = request.user
         plan.groupid = request.user # 원래는 groupid 값을 가져와야하는데 아직 group 테이블이 없어서 대체함
         plan.save()
         return HttpResponseRedirect(reverse('cal:calendar'))
@@ -90,3 +93,11 @@ def detail(request, event_id=None):
 def total(request):
     plans = Event.objects.order_by('start_date') # 시간 오름차순 정렬
     return render(request, 'cal/total.html', {'plans': plans})
+
+# Daily의 count up 함수
+def count_up(request, pk):
+    # daily = Daily.objects.filter(date=timezone.now)
+    daily = get_object_or_404(Daily, pk=pk) # 1 : 사료, 2 : 물, 3 : 간식
+    daily.count = daily.count + 1 
+    daily.save()
+    return render(request, 'cal/calendar.html', {'daily': daily})
