@@ -6,8 +6,8 @@
     {% for plan in plans.all %}
         <div class="container">
             <h3>{{ plan.title }}</h3>
-            <p>{{ plan.start_time }}</p>
-            <p>{{ plan.description }}</p>
+            <p>{{ plan.start_date }}</p>
+            <p>{{ plan.context }}</p>
         </div>
     {% endfor %}
     <div class="clearfix">
