@@ -1,6 +1,9 @@
 from django.db import models
 from django.urls import reverse
 from datetime import datetime
+from django.utils import timezone
+# from django.contrib.auth.models import User
+from django.conf import settings
 
 TODO_CHOICES = (
     ('사료', '사료'),
@@ -31,9 +34,9 @@ class Event(models.Model):
 
 class Daily(models.Model):
     date = models.DateField(default=timezone.now)
-    category = models.CharField(max_length=200)
-    count = models.IntegerField(default=0)
+    saryo_count = models.IntegerField(default=0)
+    water_count = models.IntegerField(default=0)
+    gansic_count = models.IntegerField(default=0)
     groupid = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,) 
-
 
 
