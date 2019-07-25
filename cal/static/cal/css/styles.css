@@ -185,17 +185,15 @@ h1{
 }
 
 .content{
-  padding-left:50px;
-  padding-right:50px;
-  padding-bottom:50px;
+  padding: 0 50px 50px 50px;
 }  
-.inner1{padding: 50px;
-border: solid #916E59;
-border-radius: 30px;
-position: relative;
-height: 100%;}
-
-
+.inner1{
+  padding: 50px;
+  border: solid #916E59;
+  border-radius: 30px;
+  position: relative;
+  height: 100%;
+}
 
 #main{
   flex:1;
@@ -262,17 +260,10 @@ footer{
 }
 
 .login-box{
-  padding-bottom: 10%;
-  padding-left: 18%;
-  padding-right: 18%;
-  padding-top: 5%;
+  padding: 5% 18% 10% 18%;
   margin-left: 22%;
   margin-right: 22%;
-  /*border-color: rgb(125, 105, 92);
-  border-width: 10px;*/
-  
   border-radius: 20px;
-
   border: 3px solid rgb(171, 144, 126); margin-bottom:20px
 }
 

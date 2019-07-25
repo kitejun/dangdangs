@@ -1,63 +1,78 @@
-
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>게시판</title>
-    <style>
-        #A {
-            background-color: burlywood;
-            font-family: '맑은 고딕';
-            text-align: center;
-        }
-    </style>
-</head>
-
-<body id="A">
-    <center>
-        <br><br><br><br>
-        <div class="container">
-            <div class="list-group">
-                {% for board in posts %}
-                <a href="{% url 'detail' board.id %}" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5>제목: {{ board.title }}</h5>
-                        <small>날짜: {{ board.pub_date }}</small>
+<center>
+  <br><br><br><br>
+           
+              <div class="container">
+                
+                  <table class="bordered">
+                    <div class="centered">
+                      <thead style="background-color: #D0C3B4">
+                        <tr>
+                            <th style=>제목</th>
+                            <th>등록자</th>
+                            <th>날짜</th>
+                            <th>  </th>
+                        </tr>
+                      </thead>
+              
+                      <tbody>
+                        <tr>
+                          <td>Alvin</td>
+                          <td>Eclair</td>
+                          <td>2019.07.25</td>
+                          <td><i class="material-icons" style="float: left;">favorite </i><p style="float:left;">10</p>  <i class="material-icons" style="float: left;">comment</i>   <p style="float: left;">25</p></td>
+                        </tr>
+                        <tr>
+                          <td>Alan</td>
+                          <td>Jellybean</td>
+                          <td>2019.07.20</td>
+                          <td><i class="material-icons" style="float: left;">favorite </i><p style="float:left;">10</p>  <i class="material-icons" style="float: left;">comment</i>   <p style="float: left;">25</p></td>
+                        </tr>
+                        <tr>
+                          <td>Jonathan</td>
+                          <td>Lollipop</td>
+                          <td>2019.07.17</td>
+                          <td><i class="material-icons" style="float: left;">favorite </i><p style="float:left;">10</p>  <i class="material-icons" style="float: left;">comment</i>   <p style="float: left;">25</p></td>
+                        </tr>
+                        <tr>
+                            <td>Alvin</td>
+                            <td>Eclair</td>
+                            <td>2019.07.13</td>
+                            <td><i class="material-icons" style="float: left;">favorite </i><p style="float:left;">10</p>  <i class="material-icons" style="float: left;">comment</i>   <p style="float: left;">25</p></td>
+                          </tr>
+                          <tr>
+                            <td>Alan</td>
+                            <td>Jellybean</td>
+                            <td>2019.07.01</td>
+                            <td><i class="material-icons" style="float: left;">favorite </i><p style="float:left;">10</p>  <i class="material-icons" style="float: left;">comment</i>   <p style="float: left;">25</p></td>
+                          </tr>
+                          <tr>
+                            <td>Jonathan</td>
+                            <td>Lollipop</td>
+                            <td>2019.06.21</td>
+                            <td><i class="material-icons" style="float: left;">favorite </i><p style="float:left;">10</p>  <i class="material-icons" style="float: left;">comment</i>   <p style="float: left;">25</p></td>
+                            
+                          </tr>
+                      </tbody>
                     </div>
-
-                    <img src="{{board.image.url}}" width="300px">
-                    <br><br>
-                    <p class="mb-1"> {{ board.summary }}</p>
-                </a>
-                <a class="btn btn-dark" href="{% url 'update' board.id %}">수정</a>
-                <a class="btn btn-dark" href="{% url 'delete' board.id %}">삭제</a>
-
-                <br>
-                {% endfor %}
-            </div>
-        </div>
-        {%if posts.has_previous%}
-        <a href="?page=1">First</a>
-        <a href="?page={{posts.previous_page_number}}">Previous</a>
-        {%endif%}
-
-        <span>{{posts.number}}</span>
-        <span>of</span>
-        <span>{{posts.paginator.num_pages}}</span>
-
-        {%if posts.has_next%}
-        <a href="?page={{posts.next_page_number}}">Next</a>
-        <a href="?page={{posts.paginator.num_pages}}">Last</a>
-        {%endif%}
-
-        <div align="right" height: 100px;">
-            <a class="btn btn-success" href="{%url 'new'%}" role="button">글쓰기</a>
-        </div>
-    </center>
-</body>
-
-</html>
+                  </table>
+  
+                
+                  
+                    
+              </div>    
+              <br>
+              
+                <ul class="pagination" >
+                  <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                  <li class="waves-effect"><a href="#!">1</a></li>
+                  <li class="waves-effect"><a href="#!">2</a></li>
+                  <li class="waves-effect"><a href="#!">3</a></li>
+                  <li class="waves-effect"><a href="#!">4</a></li>
+                  <li class="waves-effect"><a href="#!">5</a></li>
+                  <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                </ul>
+             
+          </center>
+          
+        
+  
