@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+{% block content %}
+<style>
+        .daily-container{
+            border:3px solid #D0C3B4;
+            border-radius: 60px;
+            margin: auto;
+            padding:50px;
+        }
+</style>
+
+<div class="album py-5 bg-light">
+        <div class="container">
+            <div class="clearfix">
+                    <a class="btn btn-clear right" href="{% url 'cal:calendar' %}"> Calendar </a>
+                    <br><br>
+            </div>
+                <div class="daily-container" >
+                    <h1>제목 : {{ plan.title }}</h1>
+                    <p>{{ plan.start_time }}</p>
+                    <h4> Memo : {{ plan.context }}</h4>
+                    <div class="clearfix">
+                        <a class="btn btn-light right" href="{% url 'cal:event_delete' plan.pk %}"> Delete </a>
+                        <a class="btn btn-light right" href="{% url 'cal:event_edit' plan.pk %}"> Edit </a>
+                </div>
+            </div>
+        </div>
+            <br><br>
+
+    
+</div>
+
+    
+    
+{% endblock %}

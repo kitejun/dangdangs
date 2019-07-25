@@ -26,7 +26,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+<<<<<<< Updated upstream
     'board.apps.BoardConfig',
+=======
+    'board',
+    'cal.apps.CalConfig',
+    'accounts.apps.AccountsConfig',
+>>>>>>> Stashed changes
 
     'imagekit'
 ]
@@ -97,13 +103,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul' # 한국시간을 표시하기 위해 UTC -> Asia/Seoul로 변경
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False # 한국시간을 표시하기 위해 True -> False로 변경
 
 
 # Static files (CSS, JavaScript, Images)
@@ -120,3 +126,5 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+AUTH_USER_MODEL = 'accounts.User'
