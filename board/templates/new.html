@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+
+{% block content %}
+<center>
+        <div class="container" >
+          <form action="{% url 'update' %}">
+              <div class="form-group">
+                  <label for="title" style="float:left; color:black; font-size: 15px; font-family:맑은 고딕"><b>제목</b></label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" cols= "5" rows="2"></textarea>
+                </div>
+             
+             
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" style="float:left; color:black; font-size: 15px; font-family:맑은 고딕" >내용</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" cols=40 rows=6></textarea>
+              </div>
+              <div class="form-group">
+                  <label for="exampleFormControlFile1" style="float:left; color:black; font-size: 15px; font-family:맑은 고딕" >첨부파일</label>
+                  <input type="file" class="form-control-file" id="exampleFormControlFile1" style="size:5px">
+                </div>
+              <div class="form-group">
+
+              </div>  
+          </form>
+          <button class="btn" type="submit" name="action" style="font-family:배달의민족 주아; font-size:17px; background-color: #D7CEBF">등록
+              <i class="material-icons right">send</i>
+            </button>
+                  
+        </div>    
+      </center> 
+
+
+{%endblock%}
