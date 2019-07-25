@@ -27,6 +27,65 @@
       background-color: #D0C3B4;
 
     }
+    .count-content{
+      border:3px solid #D0C3B4; 
+      border-radius: 60px;
+      width: 800px; 
+      margin-left: auto;
+      margin-right: auto;
+    }  
+    
+    .calendar-header{
+      width: 80%;
+      height: 150px;
+      background-color: #EAE5DE;
+      margin: auto;
+      color: #767171;
+      text-align: center;
+    }
+
+    #calender-header-title{
+    background-color: white; 
+    border-radius: 20px;
+    display: inline;
+    }
+
+    .count-header{
+      padding: 20px;
+      /*border: solid #916E59;
+      border-radius: 20px;*/
+      position: relative;
+      height: 200px;
+      display: flex;
+      justify-content:center;
+      flex-direction: column;
+    }
+
+    #icon{
+      padding-left: 40px;
+      padding-right: 40px;
+      width: 200px;
+      height:70px;
+    }
+
+    .icon-div{
+      display: flex;
+      justify-content: center;
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+    
+    .count-div{
+      display: flex;
+      justify-content: center;
+      padding-left: 10px;
+      padding-right: 10px;
+      flex-direction: row;
+    }
+    #blank{
+      margin-left: 54px;
+      margin-right: 54px;
+    }
   </style>
   <title>Django Calendar App</title>
 </head>
@@ -45,7 +104,7 @@
       <img
         src="http://www.urbanbrush.net/web/wp-content/uploads/edd/2017/09/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7-2017-09-19-%EC%98%A4%ED%9B%84-2.17.32.png"
         width="50" height="50"><br>
-      <a href="#">
+      <a href="{%url 'home'%}">
         <h1>댕댕쓰</h1>
       </a>
       <div id="link2">
@@ -55,26 +114,61 @@
       </div>
     </nav>
   </header>
-
-	<article class="content">
-		<div class="inner1">
-			<div class="clearfix">
-				<a class="btn btn-info left"href="{% url 'cal:calendar' %}?{{ prev_month }}"> 이전 달 </a>
-				<a class="btn btn-info left" href="{% url 'cal:calendar' %}?{{ next_month }}"> 다음 달 </a>
-				<a class="btn btn-info right" href="{% url 'cal:event_new' %}"> 일정 추가 </a>
-				<a class="btn btn-info right" href="{% url 'cal:event_total' %}"> 전체 일정</a>
-				<div class="content">
-					{{ calendar }}
-				</div>
-			</div>		  
-		</div>
-	</article>
+ 
+   <article class="content">
+      <div class="inner1">
+         <div class="clearfix">
+        <!--버튼 변경(양소)-->
+        <a class="btn btn-light left"href="{% url 'cal:calendar' %}?{{ prev_month }}"> 이전 달 </a>
+        <a class="btn btn-light left" href="{% url 'cal:calendar' %}?{{ next_month }}"> 다음 달 </a>
+        <a class="btn btn-light right" href="{% url 'cal:event_new' %}"> 일정 추가 </a>
+        <a class="btn btn-light right" href="{% url 'cal:event_total' %}"> 전체 일정</a>
+            <br><br><br>
+            <article class="count-content">
+              <div class="count-header">
+                <div class="icon-div">
+                  <img id="icon" class="img-fluid" src="/static/img/saryo.png">
+                  <img id="icon" class="img-fluid" src="/static/img/water.png">
+                  <img id="icon" class="img-fluid" src="/static/img/gansic.png">
+                </div><br>
+                <div class="count-div">
+                  <div id="blank"><!--사료-->
+                    <input class="btn btn-light left" type="button" value="-">
+                    <!--사료카운트-->&nbsp;0&nbsp;
+                    <input class="btn btn-light right" type="button" value="+">
+                  </div>
+                  <div id="blank"><!--물-->
+                    <input class="btn btn-light left" type="button" value="-">
+                    <!--사료카운트-->&nbsp;1&nbsp;
+                    <input class="btn btn-light right" type="button" value="+">
+                  </div>
+                  <div id="blank"><!--간식-->
+                    <input class="btn btn-light left" type="button" value="-">
+                    <!--사료카운트-->&nbsp;0&nbsp;
+                    <input class="btn btn-light right" type="button" value="+">
+                  </div>
+                </div>
+              </div>
+            </article> 
+            <br>
+            <div class="content">
+              <!--<div class="calendar-header"><br>
+                  <img src="/static/img/dog2.png" width="95" height="80">
+                  <br>
+                  <div id="calender-header-title">&nbsp;&nbsp;dangdangs&nbsp;&nbsp;</div><br>
+              </div>-->
+               {{ calendar }}
+              
+            </div>
+         </div>        
+      </div>
+   </article>
 
 <!-- 새로고침을 해도 그 스크롤 위치(300) 지정 -->
 <script>
-	window.onload = function() {
-		window.scrollTo(0, 300)
-	}
+   window.onload = function() {
+      window.scrollTo(0, 300)
+   }
 </script>
 
 <!-- Optional JavaScript -->

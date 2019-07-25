@@ -10,32 +10,49 @@ class Calendar(HTMLCalendar):
 
    # formats a day as a td
    # filter events by day
-   def formatday(self, day, events):
-      events_per_day = events.filter(start_time__day=day)
+   def formatday(self, day, events, group):
+      events_per_day = events.filter(start_date__day=day)
       d = ''
+      img = ''
+      group = group
+
       for event in events_per_day:
-         d += f'<li> {event.get_html_url} </li>'
+         if event.groupid_id == int(group.groupid):
+            if event.todo == "병원":
+               img += f'<img src="/static/img/hospital.png" alt="병원">'
+            elif event.todo == "산책":
+               img += f'<img src="/static/img/walk.png" alt="산책">'       
+            elif event.todo == "목욕":
+               img += f'<img src="/static/img/bubble.png" alt="목욕">'    
+            d += f'<li> {event.get_html_url} {event.groupid_id}그룹 : {group.groupid} </li>'
+
 
       if day != 0:
-         return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
+         if datetime.today().day == day and datetime.today().month == self.month and datetime.today().year == self.year:
+            return f"<td><span class='today'>{day}</span>{img}<ul> {d} </ul></td>"
+         else:
+            return f"<td><span class='date'>{day}</span>{img}<ul> {d} </ul></td>"
       return '<td></td>'
 
    # formats a week as a tr
-   def formatweek(self, theweek, events):
+   def formatweek(self, theweek, events, group):
       week = ''
+      group = group
       for d, weekday in theweek:
-         week += self.formatday(d, events)
+         week += self.formatday(d, events, group)
       return f'<tr> {week} </tr>'
 
 
-   def formatmonth(self, withyear=True):
-      events = Event.objects.filter(start_time__year=self.year, start_time__month=self.month)
+   def formatmonth(self, withyear=True, group=0):
+      events = Event.objects.filter(start_date__year=self.year, start_date__month=self.month)
+
+      group = group
 
       cal = f'<table border="0" cellpadding="0" cellspacing="0" class="calendar">\n'
       cal += f'{self.formatmonthname(self.year, self.month, withyear=withyear)}\n'
       cal += f'{self.formatweekheader()}\n'
       for week in self.monthdays2calendar(self.year, self.month):
-         cal += f'{self.formatweek(week, events)}\n'
+         cal += f'{self.formatweek(week, events, group)}\n'
       return cal
    
    
