@@ -1,0 +1,1 @@
+web: gunicorn dangdangs.wsgi --log-file -
