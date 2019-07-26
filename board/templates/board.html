@@ -1,81 +1,62 @@
-{%extends 'base.html'%}
-
+{% extends 'base.html' %}
 {% block content %}
-<center>
-        <br><br><br><br>
+<style>
+.table {
+    border:1px solid  #D0C3B4;
+  }
+</style>
+<div class="container">
+        <br><br>
+        <a class="btn btn-outline-light" href="{% url 'new' %}" title="{{board.body}}" style="float: right;">글쓰기</a>
+        <br><br>
+        <table class="table">
+            <thead class="thead-light" >
+                <tr>
+                    <th style="background-color: #D0C3B4;">번호</th>
+                    <th style="background-color: #D0C3B4;">제목</th>
+                    <th style="background-color: #D0C3B4;">등록일</th>
+                    <th style="background-color: #D0C3B4;">좋아요</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for board in posts %}
+                <tr>
+                    <td>{{board.id }} </td>
+                    <td><a href="{% url 'detail' board.id %}" title="{{board.context}}">{{board.title}}</a></td>
+                    </div>
+                    <td>{{ board.pub_date }}</td>
+                    <td >{{ board.like}}</td>
+                </tr>
                  
-                    <div class="container">
-                      
-                        <table class="bordered">
-                          <div class="centered">
-                            <thead style="background-color: #D0C3B4">
-                              <tr>
-                                  <th style=>제목</th>
-                                  <th>등록자</th>
-                                  <th>날짜</th>
-                                  <th>  </th>
-                              </tr>
-                            </thead>
-                    
-                            <tbody>
-                              <tr>
-                                <td>Alvin</td>
-                                <td>Eclair</td>
-                                <td>2019.07.25</td>
-                                <td><i class="material-icons" style="float: left;">favorite </i><p style="float:left;">10</p>  <i class="material-icons" style="float: left;">comment</i>   <p style="float: left;">25</p></td>
-                              </tr>
-                              <tr>
-                                <td>Alan</td>
-                                <td>Jellybean</td>
-                                <td>2019.07.20</td>
-                                <td><i class="material-icons" style="float: left;">favorite </i><p style="float:left;">10</p>  <i class="material-icons" style="float: left;">comment</i>   <p style="float: left;">25</p></td>
-                              </tr>
-                              <tr>
-                                <td>Jonathan</td>
-                                <td>Lollipop</td>
-                                <td>2019.07.17</td>
-                                <td><i class="material-icons" style="float: left;">favorite </i><p style="float:left;">10</p>  <i class="material-icons" style="float: left;">comment</i>   <p style="float: left;">25</p></td>
-                              </tr>
-                              <tr>
-                                  <td>Alvin</td>
-                                  <td>Eclair</td>
-                                  <td>2019.07.13</td>
-                                  <td><i class="material-icons" style="float: left;">favorite </i><p style="float:left;">10</p>  <i class="material-icons" style="float: left;">comment</i>   <p style="float: left;">25</p></td>
-                                </tr>
-                                <tr>
-                                  <td>Alan</td>
-                                  <td>Jellybean</td>
-                                  <td>2019.07.01</td>
-                                  <td><i class="material-icons" style="float: left;">favorite </i><p style="float:left;">10</p>  <i class="material-icons" style="float: left;">comment</i>   <p style="float: left;">25</p></td>
-                                </tr>
-                                <tr>
-                                  <td>Jonathan</td>
-                                  <td>Lollipop</td>
-                                  <td>2019.06.21</td>
-                                  <td><i class="material-icons" style="float: left;">favorite </i><p style="float:left;">10</p>  <i class="material-icons" style="float: left;">comment</i>   <p style="float: left;">25</p></td>
-                                  
-                                </tr>
-                            </tbody>
-                          </div>
-                        </table>
-        
-                      
-                        
-                          
-                    </div>    
-                    <br>
-                    
-                      <ul class="pagination" >
-                        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                        <li class="waves-effect"><a href="#!">1</a></li>
-                        <li class="waves-effect"><a href="#!">2</a></li>
-                        <li class="waves-effect"><a href="#!">3</a></li>
-                        <li class="waves-effect"><a href="#!">4</a></li>
-                        <li class="waves-effect"><a href="#!">5</a></li>
-                        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-                      </ul>
-                   
-                </center>
-                
-              
-{%endblock%}        
+                {%endfor%}
+            </tbody>
+        </table>
+
+    
+        <br>
+
+        <!--pagenation-->
+        <nav aria-label="container"  >
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                {%if posts.has_previous%}
+                <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                {%endif%}  
+                </a>
+              </li>
+              {% for page in page_range %}
+                <li {% if page == page_obj.number %}class="active"{% endif %} class="page-item"><a class="page-link" a href="?page={{ page }}">{{ page }}</a></li>
+             {% endfor %}
+              <li class="page-item">
+                {%if posts.has_next%}
+                <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                {%endif%}  
+
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+{% endblock %}

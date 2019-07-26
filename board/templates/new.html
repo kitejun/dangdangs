@@ -1,33 +1,79 @@
 {%extends 'base.html'%}
 
 {% block content %}
-<center>
-        <div class="container" >
-          <form action="{% url 'update' %}">
-              <div class="form-group">
-                  <label for="title" style="float:left; color:black; font-size: 15px; font-family:맑은 고딕"><b>제목</b></label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" cols= "5" rows="2"></textarea>
-                </div>
-             
-             
-              <div class="form-group">
-                <label for="exampleFormControlTextarea1" style="float:left; color:black; font-size: 15px; font-family:맑은 고딕" >내용</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" cols=40 rows=6></textarea>
+<style>
+    #board-container {
+    margin:auto;
+    width: 700px;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    border:3px solid #D0C3B4; 
+    border-radius: 20px;
+}
+
+  #board-sidebar {
+    justify-content: center;
+    justify-content: space-around;
+    margin-right: 50px;
+    position: relative;
+  }
+  #board-footer {
+        clear: both;
+        padding: 20px;
+        border: 1px solid #bcbcbc;
+      }
+  @media ( max-width: 480px ) {
+    #board-container {
+      width: auto;
+     
+    }
+    #board-sidebar {
+      float: none;
+      width: auto;
+
+    }
+  }
+</style>
+
+<body>
+<div id="board-container">
+  <div id="board-header">
+  </div>
+ 
+  <div id="board-sidebar">
+              <!--버튼 변경(양소)-->
+              <div class="clearfix">
+                <p  style="margin-left:60px; color: rgb(125, 105, 92); font-size: 30px;">게시판에 추가하세요!</p>
               </div>
-              <div class="form-group">
-                  <label for="exampleFormControlFile1" style="float:left; color:black; font-size: 15px; font-family:맑은 고딕" >첨부파일</label>
-                  <input type="file" class="form-control-file" id="exampleFormControlFile1" style="size:5px">
-                </div>
-              <div class="form-group">
+            <!--<div class="clearfix">  <a class="btn btn-info left" href="{% url 'cal:calendar' %}"> Calendar </a> </div>-->
+      {% if form.errors %}
+          {% for field in form %}
+              {% for error in field.errors %}
+                  <div class="alert alert-danger">
+                      {{ field.label }} <strong>{{ error|escape }}</strong>
+                  </div>
+              {% endfor %}
+          {% endfor %}
+          {% for error in form.non_field_errors %}
+              <div class="alert alert-danger">
+                  {{ field.label }} <strong>{{ error|escape }}</strong>
+              </div>
+          {% endfor %}
+      {% endif %}
 
-              </div>  
-          </form>
-          <button class="btn" type="submit" name="action" style="font-family:배달의민족 주아; font-size:17px; background-color: #D7CEBF">등록
-              <i class="material-icons right">send</i>
-            </button>
-                  
-        </div>    
-      </center> 
-
-
+      <form method="post">
+        {% csrf_token %}
+        <table class="form form-table">
+          {{ form }}
+        <br><tr><td colspan="2"><br>
+          </div>
+          <button type="submit" class="btn btn-light right"> Submit </button></td></tr>
+        </table>
+      </form>
+      </div>
+</div>
+</body>
+</html>
 {%endblock%}

@@ -41,11 +41,15 @@ def update(request,board_id):
 
     form = BoardPost(request.POST,instance=board)
     
-    if form.is_valid():
-        form.save()
+    if request.POST and form.is_valid():
+        board=form.save(commit=False)
+        board.save()
         return redirect('board')
 
-    return render(request,'input.html',{'form':form})
+    return render(request,'new.html',{'form':form})
+
+
+
 
 def delete(request,board_id):
     board=get_object_or_404(Board,pk=board_id)

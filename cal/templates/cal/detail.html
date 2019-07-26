@@ -1,17 +1,29 @@
 {%extends 'base.html'%}
 
+
 {% block content %}
-    <div class="container">
-        Title : <h1>{{ plan.title }}</h1>
-        <p>{{ plan.start_date }}</p>
-        Memo : <p>{{ plan.context }}</p>
-        
-    </div>
-    <div class="clearfix">
-        <a class="btn btn-info left" href="{% url 'cal:calendar' %}"> Calendar </a>
-    </div>
-    <div class="clearfix">
-      <a class="btn btn-info right" href="{% url 'cal:event_delete' plan.pk %}"> Delete </a>
-        <a class="btn btn-info right" href="{% url 'cal:event_edit' plan.pk %}"> Edit </a>
-    </div>
+<style>
+.container{
+    border:3px solid #D0C3B4; 
+    border-radius: 60px;
+    padding: 40px;
+}
+</style>
+<div class="album py-5 bg-light">
+        <div class="clearfix">
+                <a class="btn btn-clear right" href="{% url 'cal:calendar' %}"> Calendar </a>
+        </div>
+        <div class="container" >
+            <h1>Title :  {{ plan.title }}</h1>
+            <p>{{ plan.start_date }}</p>
+            <h4>Memo : {{ plan.context }}</h4>
+            <div class="clearfix">
+                <a class="btn btn-light right" href="{% url 'cal:event_delete' plan.pk %}"> Delete </a>
+                <a class="btn btn-light right" href="{% url 'cal:event_edit' plan.pk %}"> Edit </a>
+            </div>
+          </div>
+            <br><br>
+
+    
+</div>
 {% endblock %}

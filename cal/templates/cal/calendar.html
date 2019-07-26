@@ -1,4 +1,5 @@
 {% load staticfiles %}
+
 <!doctype html>
 <html lang="en">
 
@@ -87,6 +88,7 @@
       margin-right: 54px;
     }
   </style>
+ 
   <title>Django Calendar App</title>
 </head>
 
@@ -94,27 +96,33 @@
   <header class="header">
     <nav class="sub-navbar">
       <div class="link1">
-        <a href="#">로그아웃</a>
-        <a href="#">회원가입</a>
-        <a href="#">포인트 </a>
+
+         <!--캘린더 화면에서 -->
+         {% if user.is_authenticated %} <!-- 로그인 되어있는 상태에서-->
+         <a href="javascript:{document.getElementById('logout').submit()}" >로그아웃</a>
+         <form id="logout" method="POST" action="{% url 'logout' %}">
+             {% csrf_token %} <input type="hidden" />
+           </form>
+         <a href="#" >마이페이지 </a>  
+       {% else %} 
+         <a href="{% url 'login' %}" >로그인 </a>  
+         <a href="{% url 'signup' %}" >회원가입 </a>  
+        {% endif %}
       </div><br>
       <a href="" class="news" style="color:#FFC300;">▶ 오늘의 뉴스! 잔디밭에서 진드기에 물렸다면?</a>
     </nav>
     <nav class="main-navbar">
-      <img
-        src="http://www.urbanbrush.net/web/wp-content/uploads/edd/2017/09/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7-2017-09-19-%EC%98%A4%ED%9B%84-2.17.32.png"
-        width="50" height="50"><br>
-      <a href="{%url 'home'%}">
-        <h1>댕댕쓰</h1>
-      </a>
-      <div id="link2">
-        <a href="{% url 'cal:calendar' %}" style="color: #916E59;">마이페이지</a>
+      <a href="{% url 'home' %}">
+        <img src="/static/img/title.png" width="180" height="120"></a>
+      <div id="link2" style="margin-top:20px;">
+        {% if user.is_authenticated %}
+        <a href="{% url 'cal:calendar' %}" style="color: #916E59;">내 캘린더</a>
+        {% endif %}
         <a href="#">근처 동물병원</a>
-        <a href="#">소통방</a>
+        <a href="{% url 'board' %}" style="color: #916E59;">소통방</a>
       </div>
     </nav>
-  </header>
- 
+  </header>  
    <article class="content">
       <div class="inner1">
          <div class="clearfix">
@@ -164,6 +172,7 @@
       </div>
    </article>
 
+
 <!-- 새로고침을 해도 그 스크롤 위치(300) 지정 -->
 <script>
    window.onload = function() {
@@ -192,6 +201,3 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
-</body>
-
-</html>
