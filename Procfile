@@ -1,1 +1,1 @@
-web: gunicorn dangdangs.wsgi --log-file -
+web: gunicorn dangdangs.wsgi
