@@ -27,6 +27,7 @@
                     <div class="d-flex w-100 justify-content-between">
                         <h5>제목: {{ board.title }}</h5>
                         <small>날짜: {{ board.created_at }}</small>
+                        <small>조회수: {{ board.hits }}</small>
                     </div>
 
                     <img src="{{board.image.url}}" width="300px">

@@ -8,4 +8,5 @@ urlpatterns = [
     
     path('detail/<int:board_id>/update', views.update, name='update'),
     path('detail/<int:board_id>/delete', views.delete, name='delete'),
+    # path('detail/<int:board_id>/like-toggle',views.board_like_toggle,name='like-toggle'),
 ]
