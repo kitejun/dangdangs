@@ -54,6 +54,32 @@
         <a href="?page={{posts.next_page_number}}">Next</a>
         <a href="?page={{posts.paginator.num_pages}}">Last</a>
         {%endif%}
+        
+        <br><br><br><br>
+
+
+        <div id="content">
+                <form action="{% url 'search' %}" method="POST">
+                    {% csrf_token %}
+                    <table>
+                            {{form.as_table}}
+                    </table>
+                    <input type="submit" value="Search">
+                </form>
+            
+                <br><br>
+            
+                {% if object_list %}
+                    {% for post in object_list %}
+                        <h2><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h2>
+                        {{ post.created_at|date:'N d, Y' }}
+                        <p>{{ post.context }}</p>
+                    {% endfor %}
+                {% elif search_term %}
+                    <b><i>Search Word({{ search_term }}) Not Found !</i></b>
+                {% endif %}
+            </div>
+        
 
         <div align="right" height: 100px;">
             <a class="btn btn-success" href="{%url 'new'%}" role="button">글쓰기</a>

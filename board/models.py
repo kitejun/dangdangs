@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 class Post(models.Model):
     title=models.CharField(max_length=100)
@@ -14,6 +13,10 @@ class Post(models.Model):
     def summary(self):
         return self.context[:50]
     
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('detail', args=[self.id])
+
     @property
     def update_counter(self):
         self.hits=self.hits+1

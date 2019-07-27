@@ -7,8 +7,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.files.storage import FileSystemStorage
 
 from .models import Post, Comment
-from .forms import PostForm, CommentForm
-
+from .forms import PostForm, PostSearchForm, CommentForm
+from django.views.generic.edit import FormView
+from django.db.models import Q
 # Create your views here.
 
 def home(request):
@@ -89,6 +90,24 @@ def delete(request,board_id):
     board=get_object_or_404(Post,pk=board_id)
     board.delete()
     return redirect('board')
+
+
+
+class SearchFormView(FormView):
+    form_class = PostSearchForm
+    template_name = 'board.html'
+
+    def form_valid(self, form):
+        search_word = self.request.POST['search_word']
+        post_list = Post.objects.filter(Q(title__icontains=search_word) | Q(context__icontains=search_word))
+
+        context = {}
+        context['form'] = form
+        context['search_term'] = search_word
+        context['object_list'] = post_list
+
+        return render(self.request, self.template_name, context)
+    
 
 # comment 부분 시작
 def comment_new(request, board_id):
