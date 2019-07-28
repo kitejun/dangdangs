@@ -1,11 +1,15 @@
+from django.shortcuts import render
+
+# Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.files.storage import FileSystemStorage
 
 from .models import Post, Comment
-from .forms import PostForm, CommentForm
-
+from .forms import PostForm, PostSearchForm, CommentForm
+from django.views.generic.edit import FormView
+from django.db.models import Q
 # Create your views here.
 
 def home(request):
@@ -53,15 +57,13 @@ def new(request):
 
 
 def update(request,board_id):
-    board=get_object_or_404(Post,pk=board_id)
-
+    board=Post.objects.get(id=board_id)
 
     # 글을 수정사항을 입력하고 제출을 눌렀을 때
     if request.method == "POST":
-        form = PostForm(request.POST, request.FILES, instance=Post)
-        if form.is_valid(): #error
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
 
-            board=form.save(commit=False)
 
             print(form.cleaned_data)
             board.title = form.cleaned_data['title']
@@ -69,8 +71,8 @@ def update(request,board_id):
             board.image = form.cleaned_data['image']
             board.updated_at = timezone.now()
 
-            post.save()
-            return redirect('/detail/'+str(board.pk))
+            board.save()
+            return redirect('board')
         
     # 수정사항을 입력하기 위해 페이지에 처음 접속했을 때
     else:
@@ -88,6 +90,24 @@ def delete(request,board_id):
     board=get_object_or_404(Post,pk=board_id)
     board.delete()
     return redirect('board')
+
+
+
+class SearchFormView(FormView):
+    form_class = PostSearchForm
+    template_name = 'board.html'
+
+    def form_valid(self, form):
+        search_word = self.request.POST['search_word']
+        post_list = Post.objects.filter(Q(title__icontains=search_word) | Q(context__icontains=search_word))
+
+        context = {}
+        context['form'] = form
+        context['search_term'] = search_word
+        context['object_list'] = post_list
+
+        return render(self.request, self.template_name, context)
+    
 
 # comment 부분 시작
 def comment_new(request, board_id):

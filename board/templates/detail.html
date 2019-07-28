@@ -72,6 +72,9 @@
             <img height="380rem;" src="{{ board.image.url }}" class="card-img-top" alt="댕댕이">
             <div class="card-body">
                 <h5 class="card-title">{{ board.title}}</h5>
+                {{board.update_counter}}
+                조회수: {{ board.hits }}
+
                 <p class="card-text">{{ board.context }}</p>
                 <hr>
 
