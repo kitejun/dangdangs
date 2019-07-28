@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 class Post(models.Model):
     title=models.CharField(max_length=100)
@@ -7,12 +6,23 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True) # 최초의 저장된 시간이 저장
     updated_at = models.DateTimeField(auto_now=True) # 매번 저장이 될 때마다 시간이 저장
     image = models.FileField(upload_to="images/%Y/%m/%d", default='https://image.flaticon.com/icons/svg/149/149852.svg')
-    
+    hits=models.PositiveIntegerField(default=0)
     def __str__(self):
         return self.title
 
     def summary(self):
         return self.context[:50]
+    
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('detail', args=[self.id])
+
+    @property
+    def update_counter(self):
+        self.hits=self.hits+1
+        self.save()
+
+    
 
 class Comment(models.Model):
     title = models.ForeignKey(Post, on_delete=models.CASCADE)
