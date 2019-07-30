@@ -101,3 +101,6 @@ def count_up(request, pk):
     daily.count = daily.count + 1 
     daily.save()
     return render(request, 'cal/calendar.html', {'daily': daily})
+
+def mypage(request):
+    return render(request,'account/mypage.html')

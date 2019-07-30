@@ -54,3 +54,7 @@ def delete(request,board_id):
 
 def home(request):
     return render(request, 'home.html')
+
+    
+def mypage(request):
+    return render(request,'account/mypage.html')
