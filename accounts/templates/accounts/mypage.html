@@ -1,0 +1,48 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error %}
+{{ error }}
+<br>
+<br>
+{% endif %}
+
+<style>
+   .btn {
+      background-color: #EAE5DE;
+      color: #767171;
+    }
+
+    .btn:hover {
+      background-color: #D0C3B4;
+
+    }
+.form-control:focus{
+  border-color: #E6DFD5;
+  color: #495057;
+  background-color: #fff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #E6DFD5;
+}       
+</style>
+  
+<body>
+        <div class="login-box">
+            <div class="text-center mb-4">
+                <div class="login-img">
+                    <img src="/static/img/dangdang.png">
+                </div>
+        
+        <h1 class="h3 mb-3 font-weight-normal">마이페이지</h1>
+     
+    
+      <button class="btn btn-lg btn-light btn-block" type="submit">정보 수정하기</button>
+  
+                
+    </div>
+</div>
+
+
+{% endblock %}

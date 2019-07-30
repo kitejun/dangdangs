@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+
+{% block content %}
+    <div class="container">
+        Title : <h1>{{ plan.title }}</h1>
+        <p>{{ plan.start_date }}</p>
+        Memo : <p>{{ plan.context }}</p>
+        
+    </div>
+    <div class="clearfix">
+        <a class="btn btn-info left" href="{% url 'cal:calendar' %}"> Calendar </a>
+    </div>
+    <div class="clearfix">
+      <a class="btn btn-info right" href="{% url 'cal:event_delete' plan.pk %}"> Delete </a>
+        <a class="btn btn-info right" href="{% url 'cal:event_edit' plan.pk %}"> Edit </a>
+    </div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{%extends 'base.html'%}
+
+{% block content %}
+<style>
+.like-button {
+            display: inline-block;
+            position: relative;
+            font-size: 15px;
+            cursor: pointer;
+            float: left;
+        }
+
+        .like-button::before {
+            font-size: 3em;
+            color: #000;
+            content: '♥';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .like-button::after {
+            font-size: 3em;
+            color: #ff3252;
+            content: '♥';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%) scale(0);
+            transform: translate(-50%, -50%) scale(0);
+            transition: -webkit-transform 0.2s;
+            transition: transform 0.2s;
+            transition: transform 0.2s, -webkit-transform 0.2s;
+        }
+
+        .like-button.liked::after {
+            -webkit-transform: translate(-50%, -50%) scale(1.1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+</style>
+
+     <center>   
+            <br><br><br><br>
+            
+        <div class="container">
+        
+                <div class="card" style="width: 75rem;">
+
+                        <div class="card-body" style="border:3px solid #D0C3B4; ">
+                          
+                          <h5 class="card-title"> <i class="material-icons"><a href="board.html"></a>{{board.title}}</h5>
+                          <p>{{ board.pub_date }}</p>
+                          <p class="card-text">{{board.context}}</p>
+                          <img src="http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG"  style="width: 250px; height:auto;">  
+                          <br>
+                          <hr style="color:#D7CEBF">
+                          
+                          <button class="like-button"></button>
+                          <div class="clearfix">
+                            <a class="btn btn-light right" href="{% url 'delete' board.pk %}"> Delete </a>
+                            <a class="btn btn-light right" href="{% url 'update' board.pk %}"> Edit </a>
+                        </div>
+                        </div>
+                      
+                 </div>
+                 
+                 
+                  <script>
+                     document.querySelector('.like-button').addEventListener('click', (e) => { e.currentTarget.classList.toggle('liked'); });
+                  </script>  
+        
+        </div>
+{%endblock%}
