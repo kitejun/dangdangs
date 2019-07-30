@@ -11,7 +11,7 @@
         <a class="btn btn-info left" href="{% url 'cal:calendar' %}"> Calendar </a>
     </div>
     <div class="clearfix">
-      <a class="btn btn-info right" href="{% url 'cal:event_delete' plan.pk %}"> Delete </a>
+        <a class="btn btn-info right" href="{% url 'cal:event_delete' plan.pk %}"> Delete </a>
         <a class="btn btn-info right" href="{% url 'cal:event_edit' plan.pk %}"> Edit </a>
     </div>
 {% endblock %}
