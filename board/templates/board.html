@@ -22,7 +22,7 @@
                 {% for board in posts %}
                 <tr>
                     <td>{{board.id }} </td>
-                    <td><a href="{% url 'detail' board.id %}" title="{{board.context}}">{{board.title}}</a></td>
+                    <td><a href="{% url 'detail' board.id %}" title="{{board.summary}}">{{board.title}}</a></td>
                     </div>
                     <td>{{ board.pub_date }}</td>
                     <td >{{ board.like}}</td>
