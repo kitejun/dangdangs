@@ -137,3 +137,22 @@ dmypy.json
 .pyre/
 
 # End of https://www.gitignore.io/api/django
+dangdangs/__pycache__/urls.cpython-37.pyc
+dangdangs/__pycache__/settings.cpython-37.pyc
+dangdangs/__pycache__/__init__.cpython-37.pyc
+cal/migrations/__pycache__/__init__.cpython-37.pyc
+cal/migrations/__pycache__/0001_initial.cpython-37.pyc
+cal/__pycache__/views.cpython-37.pyc
+cal/__pycache__/utils.cpython-37.pyc
+cal/__pycache__/urls.cpython-37.pyc
+cal/__pycache__/models.cpython-37.pyc
+cal/__pycache__/forms.cpython-37.pyc
+cal/__pycache__/admin.cpython-37.pyc
+board/migrations/__pycache__/__init__.cpython-37.pyc
+board/migrations/__pycache__/0001_initial.cpython-37.pyc
+board/__pycache__/views.cpython-37.pyc
+board/__pycache__/urls.cpython-37.pyc
+board/__pycache__/models.cpython-37.pyc
+board/__pycache__/forms.cpython-37.pyc
+board/__pycache__/admin.cpython-37.pyc
+board/__pycache__/__init__.cpython-37.pyc
