@@ -14,11 +14,11 @@
               <div class="card border-light mb-3" >
                 <div class="card-header"><h4>{{ plan.title }}</h4></div>
                  <div class="card-body" style="font-size:10px;">{{ plan.start_time }}
-                  <p class="card-text" style="font-size:20px;">{{ plan.description }}</p>
+                  <p class="card-text" style="font-size:20px;">{{ plan.context }}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-light">View</button>
-                      <button type="button" class="btn btn-sm btn-light">Edit</button>
+                        <a class="btn btn-light " href="{% url 'cal:event_edit' plan.pk %}"> Edit </a>
+                        <a class="btn btn-light" href="{% url 'cal:event_delete' plan.pk %}"> Delete </a>
                     </div>
                     <small class="text-muted"></small>
                   </div>
@@ -30,6 +30,5 @@
           </div>
             <br><br>
 
-    
 </div>
 {% endblock %}

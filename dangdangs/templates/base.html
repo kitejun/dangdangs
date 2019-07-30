@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
    -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
     integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="{% static 'cal/css/styles.css' %}">
@@ -42,28 +44,45 @@
          <form id="logout" method="POST" action="{% url 'logout' %}">
              {% csrf_token %} <input type="hidden" />
            </form>
-         <a href="#" >포인트 </a>  
+         <a href="{% url 'mypage' %}" >마이페이지 </a>  
        {% else %} 
          <a href="{% url 'login' %}" >로그인 </a>  
          <a href="{% url 'signup' %}" >회원가입 </a>  
         {% endif %}
-      </div><br>
+      </div>
+      
       <a href="" class="news" style="color:#FFC300;">▶ 오늘의 뉴스! 잔디밭에서 진드기에 물렸다면?</a>
     </nav>
-    <nav class="main-navbar">
-      <img
-        src="http://www.urbanbrush.net/web/wp-content/uploads/edd/2017/09/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7-2017-09-19-%EC%98%A4%ED%9B%84-2.17.32.png"
-        width="50" height="50"><br>
-      <a href="{% url 'home' %}">
-        <h1>댕댕쓰</h1>
-      </a>
-      <div id="link2">
-        <a href="{% url 'cal:calendar' %}" style="color: #916E59;">내 캘린더</a>
-        <a href="#">근처 동물병원</a>
-        <a href="{% url 'board' %}" style="color: #916E59;">소통방</a>
-      </div>
-    </nav>
+    
   </header>
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container" ">
+          <a class="navbar-brand js-scroll-trigger" href="#page-top"><a href="{% url 'home' %}">
+              <img id="icon" class="animated infinite bounce delay-2s" src="/static/img/title2.png" width="170">
+          </a></a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav" style="font-size:25px; padding-top:20px;">
+              <li class="nav-item">
+                {% if user.is_authenticated %}
+                <a class="nav-link js-scroll-trigger" href="{% url 'cal:calendar' %}" style="color: #916E59;">내 캘린더</a>
+                {% else %}
+                <a class="nav-link js-scroll-trigger" href="{% url 'login' %}" style="color: #916E59;">내 캘린더</a>
+                {% endif %}
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#" style="color: #916E59;">근처 동물병원 </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{% url 'board' %}" style="color: #916E59;">소통방</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  
 
   {% block content %}
 
@@ -73,7 +92,7 @@
   <div class="empty">
   </div>
 
-  <footer class="footer">
+  <footer class="footer mt-auto py-3" >
     <div>
       <img id="img" src="https://ideathon-2019.s3.amazonaws.com/user/839/350B2CF6-4987-477D-B0B3-757DDABFA810.png"
         width="50" height="50"><br>

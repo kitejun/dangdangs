@@ -45,7 +45,7 @@ body {
 }
 
 .calendar {
-  width: 70%;
+  width: 90%;
   margin: auto;
   font-size: 13px;
 }
@@ -61,8 +61,8 @@ body {
 }
 
 .calendar td {
-  width: 200px;
-  height: 100px;
+  width: 10%;
+  height: 120px;
   padding: 20px 0px 0px 5px;
 }
 
@@ -80,9 +80,8 @@ body {
 
 ul {
   height: 90%;
-  padding: 0px 5px 0px 20px;
+  padding: 5px 5px 0px 20px;
 }
-
 a {
   color: #17a2b8;
 }
@@ -190,11 +189,11 @@ h1{
 }
 
 .header{
-  padding:30px;
+  padding-top:30px; padding-right:30px;
 }
 
-.content{padding:50px;}  
-.inner1{padding: 50px;
+/*.content{padding:50px;}  */
+.inner1{padding: 20px;
 border: solid #916E59;
 border-radius: 5%;
 position: relative;
