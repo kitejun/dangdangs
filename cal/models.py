@@ -22,7 +22,7 @@ class Event(models.Model):
     start_date = models.DateField(default=timezone.now) # start_time -> start_date, Datetime -> DateField
     end_time = models.DateTimeField(auto_now=True) # end_time -> update time, 갱신시 자동 update
     # idname = models.ForeignKey(User, on_delete=models.CASCADE, )  # User table의 id 참조(ForeignKey), CASCADE => user id 업데이트 시 얘도 변경됨
-    groupid = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,) 
+    groupid = models.CharField(max_length=15, blank=True, default='')
 
     @property
     def get_html_url(self):

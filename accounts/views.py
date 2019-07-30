@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth import get_user_model
+import random
+from .models import Group
 User = get_user_model()
 # Create your views here.
 
@@ -9,7 +11,12 @@ User = get_user_model()
 def signup(request):
     if request.method == 'POST':
         if request.POST['password1'] == request.POST['password2']:
-            user = User.objects.create_user( username=request.POST['username'], password=request.POST['password1'],groupid= request.POST['groupid'])
+            
+            user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'],groupid=request.POST['groupid'])
+
+            group = Group()
+            group.groupid= user.groupid
+            group.save()
             auth.login(request, user)
             return redirect('home')
     return render(request, 'accounts/signup.html')

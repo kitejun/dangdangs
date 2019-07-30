@@ -18,14 +18,14 @@ class Calendar(HTMLCalendar):
       group = group
 
       for event in events_per_day:
-         if event.groupid_id == int(group.groupid):
+         if event.groupid == group.groupid:
             if event.todo == "병원":
                img += f'<img src="/static/img/hospital.png" alt="병원">'
             elif event.todo == "산책":
                img += f'<img src="/static/img/walk.png" alt="산책">'       
             elif event.todo == "목욕":
                img += f'<img src="/static/img/bubble.png" alt="목욕">'    
-            d += f'<li> {event.get_html_url} {event.groupid_id}그룹 : {group.groupid} </li>'
+            d += f'<li> {event.get_html_url} </li>'
 
 
       if day != 0:

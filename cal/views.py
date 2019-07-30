@@ -69,7 +69,7 @@ def event(request, event_id=None): # 일정 추가 & 수정
     form = EventForm(request.POST or None, instance=instance)
     if request.POST and form.is_valid():
         plan = form.save(commit=False)
-        plan.groupid = request.user # 원래는 groupid 값을 가져와야하는데 아직 group 테이블이 없어서 대체함
+        plan.groupid = request.user.groupid # 원래는 groupid 값을 가져와야하는데 아직 group 테이블이 없어서 대체함
         plan.save()
         return HttpResponseRedirect(reverse('cal:calendar'))
     return render(request, 'cal/event.html', {'form': form})
