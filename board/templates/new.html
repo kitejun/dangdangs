@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+
+{% block content %}
+
+<div class="container">
+
+    <form action="{% url 'new' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <table>
+            {{form.as_table}}
+        </table>
+
+        <input class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" type="submit" value="등록">
+    </form>
+</div>
+{% endblock %}
