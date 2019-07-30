@@ -6,10 +6,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse
 from django.utils.safestring import mark_safe
-<<<<<<< HEAD
-=======
-
->>>>>>> 1eb28f560adbbac798c6db725c646f0fb4d2a119
 import calendar
 
 from .models import *
@@ -24,38 +20,25 @@ class CalendarView(generic.ListView):
     template_name = 'cal/calendar.html'
 
     def get_context_data(self, **kwargs):
-<<<<<<< HEAD
 
         context = super().get_context_data(**kwargs)
         
         group = self.request.user
         
-=======
-        
-        context = super().get_context_data(**kwargs)
-
->>>>>>> 1eb28f560adbbac798c6db725c646f0fb4d2a119
         # use today's date for the calendar
         # d = get_date(self.request.GET.get('day', None))
         d = get_date(self.request.GET.get('month',None))
         # Instantiate our calendar class with today's year and date
         cal = Calendar(d.year, d.month)
-<<<<<<< HEAD
         # html_cal = cal.formatmonth(withyear=True)
         html_cal = cal.formatmonth(withyear=True, group=group)
 
-=======
-
-        # Call the formatmonth method, which returns our calendar as a table
-        html_cal = cal.formatmonth(withyear=True)
->>>>>>> 1eb28f560adbbac798c6db725c646f0fb4d2a119
         # html_cal = html_cal.replace('<td','<td width="50"')
         context['calendar'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
        
         return context
-<<<<<<< HEAD
     
 def prev_month(d): # 이전 달 url return 
     first = d.replace(day=1)
@@ -76,44 +59,6 @@ def get_date(req_month):
         return date(year, month, day=1)
     return datetime.today()
 
-=======
- 
-    def event(request, event_id=None): # 일정 추가
-        instance = Event()
-        if event_id:
-            instance = get_object_or_404(Event, pk=event_id)
-        else:
-            instance = Event()
-    
-        form = EventForm(request.POST or None, instance=instance)
-
-        if request.POST and form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('cal:calendar'))
-        return render(request, 'cal/event.html', {'form': form})
-        # return render(request, 'cal/detail.html', {'instance' : instance})
-    
-def prev_month(d):
-    first = d.replace(day=1)
-    prev_month = first - timedelta(days=1)
-    month = 'month=' + str(prev_month.year) + '-' + str(prev_month.month)
-    return month
-
-def next_month(d):
-    days_in_month = calendar.monthrange(d.year, d.month)[1]
-    last = d.replace(day=days_in_month)
-    next_month = last + timedelta(days=1)
-    month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
-    return month    
-
-def get_date(req_day):
-    if req_day:
-        year, month = (int(x) for x in req_day.split('-'))
-        return date(year, month, day=1)
-    return datetime.today()
-
-
->>>>>>> 1eb28f560adbbac798c6db725c646f0fb4d2a119
 def event(request, event_id=None): # 일정 추가 & 수정
     instance = Event()
     if event_id:
@@ -123,7 +68,6 @@ def event(request, event_id=None): # 일정 추가 & 수정
     
     form = EventForm(request.POST or None, instance=instance)
     if request.POST and form.is_valid():
-<<<<<<< HEAD
         plan = form.save(commit=False)
         plan.groupid = request.user.groupid # 원래는 groupid 값을 가져와야하는데 아직 group 테이블이 없어서 대체함
         plan.save()
@@ -131,20 +75,11 @@ def event(request, event_id=None): # 일정 추가 & 수정
     return render(request, 'cal/event.html', {'form': form})
 
 
-=======
-        form.save()
-        return HttpResponseRedirect(reverse('cal:calendar'))
-    return render(request, 'cal/event.html', {'form': form})
-
->>>>>>> 1eb28f560adbbac798c6db725c646f0fb4d2a119
 # 일정을 삭제하는 함수
 def delete(request, event_id=None): 
     plan = get_object_or_404(Event, pk=event_id)
     plan.delete()
-<<<<<<< HEAD
 
-=======
->>>>>>> 1eb28f560adbbac798c6db725c646f0fb4d2a119
     return HttpResponseRedirect(reverse('cal:calendar'))
 
 # 해당 날짜의 일정을 불러오는 함수
@@ -156,7 +91,6 @@ def detail(request, event_id=None):
     
 # 전체 일정을 불러오는 함수
 def total(request):
-<<<<<<< HEAD
     plans = Event.objects.order_by('start_date') # 시간 오름차순 정렬
     return render(request, 'cal/total.html', {'plans': plans})
 
@@ -167,7 +101,3 @@ def count_up(request, pk):
     daily.count = daily.count + 1 
     daily.save()
     return render(request, 'cal/calendar.html', {'daily': daily})
-=======
-    plans = Event.objects.order_by('start_time') # 시간 오름차순 정렬
-    return render(request, 'cal/total.html', {'plans': plans})
->>>>>>> 1eb28f560adbbac798c6db725c646f0fb4d2a119

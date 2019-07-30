@@ -1,7 +1,6 @@
 {%extends 'base.html'%}
 
 {% block content %}
-<<<<<<< HEAD
 <div class="album py-5 bg-light">
         <div class="container">
             <h2>전체 일정 확인하기</h2>
@@ -34,19 +33,3 @@
     
 </div>
 {% endblock %}
-=======
-<div class = "container">
-    <h1>전체 일정 확인하기</h1><br><br>
-    {% for plan in plans.all %}
-        <div class="container">
-            <h3>{{ plan.title }}</h3>
-            <p>{{ plan.start_time }}</p>
-            <p>{{ plan.description }}</p>
-        </div>
-    {% endfor %}
-    <div class="clearfix">
-        <a class="btn btn-info left" href="{% url 'cal:calendar' %}"> Calendar </a>
-    </div>
-</div>
-{% endblock %}
->>>>>>> 1eb28f560adbbac798c6db725c646f0fb4d2a119
