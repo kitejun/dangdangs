@@ -19,13 +19,33 @@ Confirm Password:
 <br>
 <input name="password2"  type="password" value="">
 <br>
-family ID: <!--가족아이디를 직접입력하게 우선은 만들었어요-->
+<!--family ID: --><!--가족아이디를 직접입력하게 우선은 만들었어요-->
 <br>
+<p>
+<input type="checkbox" id="test-1">
+<label for="test-1">이미 가족이 있습니까?</label>
+
+</p>
+가족코드를 입력하세요. 마이페이지에서 확인하실 수 있습니다.
 <input name="groupid"  type="password" value="">
 <br>
 
 <br>
 <input class="btn btn-primary" type="submit" value="Sign Up!">
 </form>
+
+<script> 
+$(document).ready(function() { 
+    $("input:checkbox").on('click', function() { 
+        if ( $(this).prop('checked') ) { 
+            $(this).parent().addClass("selected");
+             } else { 
+                 $(this).parent().removeClass("selected");
+            }
+        }); 
+    }); 
+</script>
+
+
 
 {% endblock %}
