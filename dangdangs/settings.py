@@ -19,6 +19,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    
+    'accounts.apps.AccountsConfig', #로그인 기능 추가 
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -28,9 +31,14 @@ INSTALLED_APPS = [
 
     'board',
     'cal.apps.CalConfig',
+<<<<<<< HEAD
     'accounts.apps.AccountsConfig',
 
     'imagekit'
+=======
+    
+    'imagekit',
+>>>>>>> 1eb28f560adbbac798c6db725c646f0fb4d2a119
 ]
 
 MIDDLEWARE = [

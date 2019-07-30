@@ -66,16 +66,24 @@ body {
   padding: 20px 0px 0px 5px;
 }
 
+<<<<<<< HEAD
 /* month 헤더 폰트 + 색깔 */
 .month { 
   font-size: 20px;
   background-color: #EAE5DE;
+=======
+.month {
+  font-size: 20px;
+>>>>>>> 1eb28f560adbbac798c6db725c646f0fb4d2a119
 }
 
 .date {
   padding: 3px;
   font-size: 16px;
+<<<<<<< HEAD
   color: #4E2004;
+=======
+>>>>>>> 1eb28f560adbbac798c6db725c646f0fb4d2a119
 }
 
 ul {
@@ -86,6 +94,7 @@ ul {
 a {
   color: #17a2b8;
 }
+<<<<<<< HEAD
 /* 오늘 날짜에 해당하는 date */
 .today{
   background-image: url(/static/img/circle2.png);
@@ -94,6 +103,8 @@ a {
   padding: 3px;
 }
 
+=======
+>>>>>>> 1eb28f560adbbac798c6db725c646f0fb4d2a119
 
 /* 태영 코드 */
 *{
@@ -244,7 +255,12 @@ footer{
 }
 
 .event-box{
+<<<<<<< HEAD
   padding: 5%; 
+=======
+  padding: 5%;
+  
+>>>>>>> 1eb28f560adbbac798c6db725c646f0fb4d2a119
   width: 100%;
   height: 50rem;
 }
@@ -257,7 +273,11 @@ footer{
 }
 
 .inner3{
+<<<<<<< HEAD
   padding: 1%;
+=======
+  padding: 10px;
+>>>>>>> 1eb28f560adbbac798c6db725c646f0fb4d2a119
   height: 33rem;
   position: absolute;
   width: 40%;
