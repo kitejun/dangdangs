@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+.table {
+    border:1px solid  #D0C3B4;
+  }
+</style>
+<div class="container">
+        <br><br>
+        <a class="btn btn-outline-light" href="{% url 'new' %}" title="{{board.body}}" style="float: right;">글쓰기</a>
+        <br><br>
+        <table class="table">
+            <thead class="thead-light" >
+                <tr>
+                    <th style="background-color: #D0C3B4;">번호</th>
+                    <th style="background-color: #D0C3B4;">제목</th>
+                    <th style="background-color: #D0C3B4;">등록일</th>
+                    <th style="background-color: #D0C3B4;">좋아요</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for board in posts %}
+                <tr>
+                    <td>{{board.id }} </td>
+                    <td><a href="{% url 'detail' board.id %}" title="{{board.context}}">{{board.title}}</a></td>
+                    </div>
+                    <td>{{ board.pub_date }}</td>
+                    <td >{{ board.like}}</td>
+                </tr>
+                 
+                {%endfor%}
+            </tbody>
+        </table>
+
+    
+        <br>
+
+        <!--pagenation-->
+        <nav aria-label="container"  >
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                {%if posts.has_previous%}
+                <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                {%endif%}  
+                </a>
+              </li>
+              {% for page in page_range %}
+                <li {% if page == page_obj.number %}class="active"{% endif %} class="page-item"><a class="page-link" a href="?page={{ page }}">{{ page }}</a></li>
+             {% endfor %}
+              <li class="page-item">
+                {%if posts.has_next%}
+                <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                {%endif%}  
+
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+{% endblock %}
