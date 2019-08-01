@@ -187,9 +187,13 @@
             <br><br><br>
             <article class="count-content">
               <div class="count-header">
+                <form method="POST" class="post-form" action="{% url 'cal:daily_count' %}" >
+                  {% csrf_token %}
+                
                   <div class="icon-div">
                     <div class="card" style="width: 18%; border: 1px solid white; margin-left: auto;margin-right: auto;">
                       <img src="/static/img/saryo.png" class="card-img-top" alt="...">
+                      <!-- 
                         <div class="dropdown" style="margin-top: 10px;">
                             <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               사료
@@ -200,10 +204,12 @@
                               <button class="dropdown-item" type="button">저녁</button>
                             </div>
                           </div>
+                        -->
+                        {{ daily.saryo_count }}
                     </div>
                     <div class="card" style="width: 18%; border: 1px solid white; margin-left: auto;margin-right: auto;">
                         <img src="/static/img/water.png" class="card-img-top" alt="...">
-                        
+                        <!-- 
                           <div class="dropdown" style="margin-top: 10px;">
                               <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 물
@@ -214,10 +220,12 @@
                                   <button class="dropdown-item" type="button">세 방울</button>        
                               </div>
                             </div>
+                            -->
+                          {{ daily.water_count }}
                       </div>
                       <div class="card" style="width: 18%; border: 1px solid white; margin-left: auto;margin-right: auto;">
                         <img src="/static/img/gansic.png" class="card-img-top" alt="...">
-                        
+                          <!--
                           <div class="dropdown" style="margin-top: 10px;">
                               <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 간식
@@ -227,10 +235,18 @@
                                   <button class="dropdown-item" type="button">돼지</button>
                                   <button class="dropdown-item" type="button">바보</button>        
                               </div>
+                              
                             </div>
-                      </div>
+                      </div>-->
+                      {{ daily.gansic_count }}
                   </div>
+                  <button type="submit" class="btn btn-light right">저장하기</button>
+                </form>
+                
+                <!--
                 <a class="btn btn-light right" href="{% url 'cal:event_total' %} "style="margin-left:auto; margin-top:5px;">저장하기</a>
+                 -->
+                
               </div>
             </article> 
             <br>
