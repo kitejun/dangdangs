@@ -70,4 +70,14 @@
 
 
 
+<script type="text/javascript">
+    $(document).ready(function(){
+       $('.hasParent').change(function(){
+           var input = $('.group-id') 
+    
+           $(this).prop('checked') ? input.css({'display': 'block'}) : input.css({'display': 'none'})
+       });
+    })
+    </script>
+
 {% endblock %}
