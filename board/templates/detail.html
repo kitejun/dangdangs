@@ -13,11 +13,19 @@
 
                 <h5 class="card-title"> <i class="material-icons"><a href="board.html"></a>{{details.title}}</h5>
                 <p>{{ details.pub_date }}</p>
+
+                <!-- 조회수 증가 -->
+                {{details.update_counter}}
+                조회수: {{ details.hits }}
+                
                 <p class="card-text">{{details.context}}</p>
                 <img src="{{ details.image.url }}" alt="댕댕이">
                 <br>
                 <hr style="color:#D7CEBF">
 
+                
+                
+                
                 <div class="clearfix">
                     <a class="btn btn-light right" href="{% url 'delete' details.pk %}"> Delete </a>
                     <a class="btn btn-light right" href="{% url 'update' details.pk %}"> Edit </a>
