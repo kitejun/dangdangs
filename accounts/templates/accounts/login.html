@@ -1,0 +1,65 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error %}
+{{ error }}
+<br>
+<br>
+{% endif %}
+
+<style>
+   .btn {
+      background-color: #EAE5DE;
+      color: #767171;
+    }
+
+    .btn:hover {
+      background-color: #D0C3B4;
+
+    }
+.form-control:focus{
+  border-color: #E6DFD5;
+  color: #495057;
+  background-color: #fff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #E6DFD5;
+}       
+</style>
+  
+<body>
+        <div class="login-box">
+            <div class="text-center mb-4">
+                <div class="login-img">
+                    <img src="/static/img/dangdang.png">
+                </div>
+        
+        <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+        <p>댕댕쓰의 다양한 기능을 누려보세요!</p></div>
+      
+    <form method="POST" action="{% url 'login'%}" class="form-signin">
+        {% csrf_token %}
+      <div class="form-label-group">
+        아이디
+        <input name="username" type="text" class="form-control" value="" required autofocus>
+        
+      </div>
+      <br>비밀번호
+      <div class="form-label-group">
+        <input name="password" type="password" class="form-control" value="" required>
+        
+      </div>
+    
+      <div class="checkbox mb-3">
+        <label><br>
+          <input type="checkbox" value="remember-me"> 기억할래요!
+      </div>
+      <button class="btn btn-lg btn-light btn-block" type="submit">로그인</button>
+  
+    </form>
+    
+</div>
+
+
+    {% endblock %}
