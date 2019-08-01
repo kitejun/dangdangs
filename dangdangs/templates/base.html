@@ -1,0 +1,128 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+   -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+    integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'cal/css/styles.css' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+  <style>
+    .btn {
+      background-color: #EAE5DE;
+      color: #767171;
+    }
+
+    .btn:hover {
+      background-color: #D0C3B4;
+
+    }
+  </style>
+  <title>Django Calendar App</title>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="sub-navbar">
+      <div class="link1">
+
+         <!--캘린더 화면에서 -->
+         {% if user.is_authenticated %} <!-- 로그인 되어있는 상태에서-->
+         <a href="javascript:{document.getElementById('logout').submit()}" >로그아웃</a>
+         <form id="logout" method="POST" action="{% url 'logout' %}">
+             {% csrf_token %} <input type="hidden" />
+           </form>
+         <a href="{% url 'mypage' %}" >마이페이지 </a>  
+       {% else %} 
+         <a href="{% url 'login' %}" >로그인 </a>  
+         <a href="{% url 'signup' %}" >회원가입 </a>  
+        {% endif %}
+      </div>
+      
+      <a href="" class="news" style="color:#FFC300;">▶ 오늘의 뉴스! 잔디밭에서 진드기에 물렸다면?</a>
+    </nav>
+    
+  </header>
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container" ">
+          <a class="navbar-brand js-scroll-trigger" href="#page-top"><a href="{% url 'home' %}">
+              <img id="icon" class="animated infinite bounce delay-2s" src="/static/img/title2.png" width="170">
+          </a></a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav" style="font-size:25px; padding-top:20px;">
+              <li class="nav-item">
+                {% if user.is_authenticated %}
+                <a class="nav-link js-scroll-trigger" href="{% url 'cal:calendar' %}" style="color: #916E59;">내 캘린더</a>
+                {% else %}
+                <a class="nav-link js-scroll-trigger" href="{% url 'login' %}" style="color: #916E59;">내 캘린더</a>
+                {% endif %}
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#" style="color: #916E59;">근처 동물병원 </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{% url 'board' %}" style="color: #916E59;">소통방</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  
+
+  {% block content %}
+
+  {% endblock %}
+
+
+  <div class="empty">
+  </div>
+
+  <footer class="footer mt-auto py-3" >
+    <div>
+      <img id="img" src="https://ideathon-2019.s3.amazonaws.com/user/839/350B2CF6-4987-477D-B0B3-757DDABFA810.png"
+        width="50" height="50"><br>
+      <br>
+      <p id="copyright">Copyright &copy; 2019.dangdangs<br>
+        all rights reserved.</p>
+  </footer>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
