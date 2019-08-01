@@ -110,7 +110,7 @@ def daily(request):
 # daily를 저장하는 함수
 def daily_count(request):
     
-    daily = Daily.objects.filter(date=timezone.now()).first() # 현재 날짜와 같은 오브젝트
+    daily = Daily.objects.filter(date=timezone.now(), groupid=request.user.groupid).first() # 현재 날짜와 같은 오브젝트
     if daily:
         instance = daily
     else:
