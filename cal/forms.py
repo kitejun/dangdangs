@@ -18,6 +18,7 @@ class EventForm(ModelForm):
     self.fields['start_date'].input_formats = ('%Y-%m-%d',)
     # self.fields['update_time'].input_formats = ('%Y-%m-%dT%H:%M',)
 
+
 class DailyForm(ModelForm):
   class Meta:
     model = Daily
