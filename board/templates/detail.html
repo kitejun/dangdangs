@@ -1,96 +1,50 @@
-<!DOCTYPE html>
-<html>
+{%extends 'base.html'%}
 
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>본문</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 35px;
-            margin: 0;
-            background-color: burlywood;
-            font-family: '맑은 고딕';
-        }
+{% block content %}
 
-        .like-button {
-            display: inline-block;
-            position: relative;
-            font-size: 15px;
-            cursor: pointer;
-            float: left;
-        }
+<center>
+    <br><br><br><br>
 
-        .like-button::before {
-            font-size: 3em;
-            color: #000;
-            content: '♥';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-        }
+    <div class="container">
 
-        .like-button::after {
-            font-size: 3em;
-            color: #ff3252;
-            content: '♥';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            -webkit-transform: translate(-50%, -50%) scale(0);
-            transform: translate(-50%, -50%) scale(0);
-            transition: -webkit-transform 0.2s;
-            transition: transform 0.2s;
-            transition: transform 0.2s, -webkit-transform 0.2s;
-        }
+        <div class="card" style="width: 75rem;">
 
-        .like-button.liked::after {
-            -webkit-transform: translate(-50%, -50%) scale(1.1);
-            transform: translate(-50%, -50%) scale(1.1);
-        }
+            <div class="card-body" style="border:3px solid #D0C3B4; ">
 
-        #A {
-            background-color: burlywood;
-            font-family: '맑은 고딕';
-            text-align: center;
-        }
-    </style>
-</head>
+                <h5 class="card-title"> <i class="material-icons"><a href="board.html"></a>{{details.title}}</h5>
+                <p>{{ details.pub_date }}</p>
+                <p class="card-text">{{details.context}}</p>
+                <img src="{{ details.image.url }}" alt="댕댕이">
+                <br>
+                <hr style="color:#D7CEBF">
 
-<body id="A">
-    <center>
-        <pre>
-            </pre>
+                <div class="clearfix">
+                    <a class="btn btn-light right" href="{% url 'delete' details.pk %}"> Delete </a>
+                    <a class="btn btn-light right" href="{% url 'update' details.pk %}"> Edit </a>
+                    <a class="btn btn-light right" href="{%url 'board'%}">게시판으로</a>
 
-        <div class="card" style="width: 33rem;">
-            <img height="380rem;" src="{{ board.image.url }}" class="card-img-top" alt="댕댕이">
-            <div class="card-body">
-                <h5 class="card-title">{{ board.title}}</h5>
-                <p class="card-text">{{ board.context }}</p>
-                <hr>
-
-                <button class="like-button"></button>
-
+                </div>
             </div>
 
+
+
+            <hr>
+            <form action="{% url 'comment_write' details.id%}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="content" placeholder="댓글을 입력해주세요.">
+                <input type="submit" value="확인">
+            </form>
+            <hr>
+            {% for comment in details.comments.all %}
+            <div>
+                <p>{{ comment.comment_date }}</p>
+                <p>{{ comment.comment_body }}</p>
+            </div>
+            <hr>
+            {% empty %}
+            <p>No comments here yet</p>
+            {% endfor %}
         </div>
-        <br>
-        <script>
-            document.querySelector('.like-button').addEventListener('click', (e) => { e.currentTarget.classList.toggle('liked'); });
-        </script>
-
-
-        <ul class="list-group">
-            <li class="list-group-item">댓글</li>
-            <li class="list-group-item">댓글</li>
-        </ul>
-    </center>
-</body>
-
-</html>
+    </div>
+</center>
+{%endblock%}

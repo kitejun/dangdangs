@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+
+{% block content %}
+<div class="album py-5 bg-light">
+        <div class="container">
+            <h2>전체 일정 확인하기</h2>
+            <div class="clearfix">
+                    <a class="btn btn-clear right" href="{% url 'cal:calendar' %}"> Calendar </a>
+            </div>
+          <div class="row">
+            {% for plan in plans.all %}
+            <div class="col-md-4">
+            <div class="rounded"style="border: 1px solid #EAE5DE; margin-bottom:20px" >
+              <div class="card border-light mb-3" >
+                <div class="card-header"><h4>{{ plan.title }}</h4></div>
+                 <div class="card-body" style="font-size:10px;">{{ plan.start_time }}
+                  <p class="card-text" style="font-size:20px;">{{ plan.context }}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a class="btn btn-light " href="{% url 'cal:event_edit' plan.pk %}"> Edit </a>
+                        <a class="btn btn-light" href="{% url 'cal:event_delete' plan.pk %}"> Delete </a>
+                    </div>
+                    <small class="text-muted"></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            {% endfor %}
+          </div>
+            <br><br>
+
+</div>
+{% endblock %}
