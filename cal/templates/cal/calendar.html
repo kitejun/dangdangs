@@ -34,13 +34,6 @@
       background-color: #D0C3B4;
 
     }
-    .count-content{
-      border:3px solid #D0C3B4; 
-      border-radius: 40px;
-      width: 800px; 
-      margin-left: auto;
-      margin-right: auto;
-    }  
     
     .calendar-header{
       width: 80%;
@@ -103,7 +96,32 @@
       border:1xp solid #767171;
       box-shadow: 0 0 0 0.2rem #E6DFD5;
     }
+/*웹*/
+@media (min-width: 1025px)  {
+  .count-content{
+      width: 75%;
+      border:3px solid #D0C3B4; 
+      border-radius: 40px;
+      width: 800px; 
+      margin-left: auto;
+      margin-right: auto;
+    }  
+}
+/*모바일*/
+@media (max-width: 1025px)  {
+  .count-content{
+      width: 75%;
+      border:3px solid #D0C3B4; 
+      border-radius: 40px;
+      width: 900px; 
+      justify-content:center;
+      display:flex;
 
+    }  
+  .clearfix {
+  margin: 0;
+  }
+}
     
   </style>
   <title>Django Calendar App</title>
@@ -167,11 +185,15 @@
         <a class="btn btn-light right" href="{% url 'cal:event_new' %}"> 일정 추가 </a>
         <a class="btn btn-light right" href="{% url 'cal:event_total' %}"> 전체 일정</a>
             <br><br><br>
-            <article class="count-content" style="width: 75%">
+            <article class="count-content">
               <div class="count-header">
+                <form method="POST" class="post-form" action="{% url 'cal:daily_count' %}" >
+                  {% csrf_token %}
+                
                   <div class="icon-div">
                     <div class="card" style="width: 18%; border: 1px solid white; margin-left: auto;margin-right: auto;">
                       <img src="/static/img/saryo.png" class="card-img-top" alt="...">
+                      <!-- 
                         <div class="dropdown" style="margin-top: 10px;">
                             <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               사료
@@ -182,10 +204,12 @@
                               <button class="dropdown-item" type="button">저녁</button>
                             </div>
                           </div>
+                        -->
+                        {{ daily.saryo_count }}
                     </div>
                     <div class="card" style="width: 18%; border: 1px solid white; margin-left: auto;margin-right: auto;">
                         <img src="/static/img/water.png" class="card-img-top" alt="...">
-                        
+                        <!-- 
                           <div class="dropdown" style="margin-top: 10px;">
                               <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 물
@@ -196,10 +220,12 @@
                                   <button class="dropdown-item" type="button">세 방울</button>        
                               </div>
                             </div>
+                            -->
+                          {{ daily.water_count }}
                       </div>
                       <div class="card" style="width: 18%; border: 1px solid white; margin-left: auto;margin-right: auto;">
                         <img src="/static/img/gansic.png" class="card-img-top" alt="...">
-                        
+                          <!--
                           <div class="dropdown" style="margin-top: 10px;">
                               <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 간식
@@ -209,10 +235,18 @@
                                   <button class="dropdown-item" type="button">돼지</button>
                                   <button class="dropdown-item" type="button">바보</button>        
                               </div>
+                              
                             </div>
-                      </div>
+                      </div>-->
+                      {{ daily.gansic_count }}
                   </div>
+                  <button type="submit" class="btn btn-light right">저장하기</button>
+                </form>
+                
+                <!--
                 <a class="btn btn-light right" href="{% url 'cal:event_total' %} "style="margin-left:auto; margin-top:5px;">저장하기</a>
+                 -->
+                
               </div>
             </article> 
             <br>

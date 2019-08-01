@@ -37,11 +37,21 @@
         </div>
         <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
         <p>댕댕쓰의 새 가족이 되어주세요!</p>
+
     </div>
     <form method="POST" action="{% url 'signup'%}">
 
         {% csrf_token %}
         <div class="form-label-group">
+                {% if messages %}
+                <ul class="messages">
+                    <br><br>
+               {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+               {% endfor %}
+               </ul>
+               {% endif %}
+
             아이디
             <br>
             <input name="username" class="form-control" type="text" value="" required autofocus>
@@ -52,13 +62,7 @@
             <input name="password1" class="form-control" type="password" value="" required>
         </div><br>
 
-        {% if messages %}
-         <ul class="messages">
-        {% for message in messages %}
-         <li class="{{ message.tags }}">{{ message }}</li>
-        {% endfor %}
-        </ul>
-        {% endif %}
+        
 
         <div class="form-label-group">
             비밀번호 재확인
@@ -66,13 +70,16 @@
             <input name="password2" class="form-control" type="password" value="" required>
         </div><br>
 
-
+        
         가입한 가족이 있나요?
         <input class="hasParent" type="checkbox" name = "groupjudge" value="yes" checked="checked" >
         <br><br>        
 
 
-        <div class="form-label-group">
+        <div class="form-label-group group-id">
+            <br>
+            마이페이지에서 가족번호(ID)를 확인해주세요.
+            <br>
             가족 번호(ID)
             <!--가족아이디를 직접입력하게 우선은 만들었어요-->
             <br>
@@ -90,7 +97,6 @@
     $(document).ready(function(){
        $('.hasParent').change(function(){
            var input = $('.group-id') 
-    
            $(this).prop('checked') ? input.css({'display': 'block'}) : input.css({'display': 'none'})
        });
     })

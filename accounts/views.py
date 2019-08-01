@@ -21,7 +21,7 @@ def signup(request):
                 group = Group()
                 group.groupid= ra
                 group.save()
-                user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'],groupid=ra)
+                user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'], groupid=ra)
             else:   #이미 가입한 가족이 있다. 
                 event = Group.objects.filter(groupid=groupid_copy).first() 
                 if event: #가입한 가족코드가 존재하면 
@@ -31,6 +31,8 @@ def signup(request):
                     messages.warning(request,'입력하신 가족코드에 해당하는 가족이 없습니다.')
                     return render(request, 'accounts/signup.html')
                 
+
+
 
             return redirect('home')
        
