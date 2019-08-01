@@ -51,32 +51,16 @@
             <br>
             <input name="password1" class="form-control" type="password" value="" required>
         </div><br>
-
-        {% if messages %}
-         <ul class="messages">
-        {% for message in messages %}
-         <li class="{{ message.tags }}">{{ message }}</li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-
         <div class="form-label-group">
             비밀번호 재확인
             <br>
             <input name="password2" class="form-control" type="password" value="" required>
         </div><br>
-
-
-        가입한 가족이 있나요?
-        <input class="hasParent" type="checkbox" name = "groupjudge" value="yes" checked="checked" >
-        <br><br>        
-
-
         <div class="form-label-group">
             가족 번호(ID)
             <!--가족아이디를 직접입력하게 우선은 만들었어요-->
             <br>
-            <input name="groupid" class="form-control group-id" type="password" value="" >
+            <input name="groupid" class="form-control" type="password" value="" required>
         </div><br>
 
         <br>
