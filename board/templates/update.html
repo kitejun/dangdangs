@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+
+{%block contents%}
+
+<div class="container">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <br>
+        <button type="submit" class="btn btn-primary">제출하기</button>
+    </form>
+</div>
+
+{% endblock %}
