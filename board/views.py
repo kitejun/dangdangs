@@ -104,7 +104,7 @@ class SearchFormView(FormView):
 
     def form_valid(self, form):
         search_word = self.request.POST['search_word']
-        post_list = Post.objects.filter(Q(title__icontains=search_word) | Q(context__icontains=search_word))
+        post_list = Board.objects.filter(Q(title__icontains=search_word) | Q(context__icontains=search_word))
 
         context = {}
         context['form'] = form
