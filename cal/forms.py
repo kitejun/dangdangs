@@ -1,5 +1,5 @@
 from django.forms import ModelForm, DateInput
-from cal.models import Event
+from cal.models import Event, Daily
 from datetime import datetime
 
 class EventForm(ModelForm):
@@ -17,5 +17,13 @@ class EventForm(ModelForm):
     # input_formats to parse HTML5 datetime-local input to datetime field
     self.fields['start_date'].input_formats = ('%Y-%m-%d',)
     # self.fields['update_time'].input_formats = ('%Y-%m-%dT%H:%M',)
-  
- 
+
+class DailyForm(ModelForm):
+  class Meta:
+    model = Daily
+    fields = ['saryo_count', 'water_count', 'gansic_count']
+
+  def __init__(self, *args, **kwargs):
+    super(DailyForm, self).__init__(*args, **kwargs)
+   
+   
