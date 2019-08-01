@@ -17,11 +17,11 @@ def signup(request):
  
             ba = request.POST.get("groupjudge", None)
             if ba is None: # 가족들이 가입하지 않은 신규회원이면
-                user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'],groupid=request.POST['groupid'])
                 ra = random.randint(1,1000000001)
                 group = Group()
                 group.groupid= ra
                 group.save()
+                user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'],groupid=ra)
             else:   #이미 가입한 가족이 있다. 
                 event = Group.objects.filter(groupid=groupid_copy).first() 
                 if event: #가입한 가족코드가 존재하면 
@@ -31,8 +31,6 @@ def signup(request):
                     messages.warning(request,'입력하신 가족코드에 해당하는 가족이 없습니다.')
                     return render(request, 'accounts/signup.html')
                 
-
-
 
             return redirect('home')
        
