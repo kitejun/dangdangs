@@ -11,35 +11,11 @@
             float: left;
         }
 
-        .like-button::before {
-            font-size: 3em;
-            color: #000;
-            content: '♥';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-        }
+    <div class="container">
 
-        .like-button::after {
-            font-size: 3em;
-            color: #ff3252;
-            content: '♥';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            -webkit-transform: translate(-50%, -50%) scale(0);
-            transform: translate(-50%, -50%) scale(0);
-            transition: -webkit-transform 0.2s;
-            transition: transform 0.2s;
-            transition: transform 0.2s, -webkit-transform 0.2s;
-        }
+        <div class="card" style="width: 75rem;">
 
-        .like-button.liked::after {
-            -webkit-transform: translate(-50%, -50%) scale(1.1);
-            transform: translate(-50%, -50%) scale(1.1);
-        }
+            <div class="card-body" style="border:3px solid #D0C3B4; ">
 
 
 </style>

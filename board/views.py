@@ -6,16 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.files.storage import FileSystemStorage
 
 from .models import Board, Comment
-from .forms import BoardPost, PostSearchForm
-from django.views.generic.edit import FormView
-from django.db.models import Q
-
-def home(request):
-    return render(request, 'home.html')
-
-
-def home(request):
-    return render(request, 'home.html')
+from .forms import BoardPost
 
 
 def home(request):
@@ -71,12 +62,12 @@ def update(request,board_id):
     # 글을 수정사항을 입력하고 제출을 눌렀을 때
     if request.method == "POST":
         form = BoardPost(request.POST, request.FILES)
-        if form.is_valid():
+        if form.is_valid(): #error
                 
             # 검증에 성공한 값들은 사전타입으로 제공 
             print(form.cleaned_data)
             post.title = form.cleaned_data['title']
-            post.context = form.cleaned_data['body']
+            post.body = form.cleaned_data['body']
             post.image = form.cleaned_data['image']
             post.pub_date = timezone.now()
 
@@ -99,26 +90,6 @@ def delete(request, board_id):
     board = get_object_or_404(Board, pk=board_id)
     board.delete()
     return redirect('board')
-
-
-
-class SearchFormView(FormView):
-    form_class = PostSearchForm
-    template_name = 'board.html'
-
-    def form_valid(self, form):
-        search_word = self.request.POST['search_word']
-        post_list = Board.objects.filter(Q(title__icontains=search_word) | Q(context__icontains=search_word))
-
-        context = {}
-        context['form'] = form
-        context['search_term'] = search_word
-        context['object_list'] = post_list
-
-        return render(self.request, self.template_name, context)
-
-
-
 
 def comment_write(request, board_id):
     if request.method == 'POST':

@@ -34,6 +34,13 @@
       background-color: #D0C3B4;
 
     }
+    .count-content{
+      border:3px solid #D0C3B4; 
+      border-radius: 40px;
+      width: 800px; 
+      margin-left: auto;
+      margin-right: auto;
+    }  
     
     .calendar-header{
       width: 80%;
@@ -96,32 +103,6 @@
       border:1xp solid #767171;
       box-shadow: 0 0 0 0.2rem #E6DFD5;
     }
-/*웹*/
-@media (min-width: 1025px)  {
-  .count-content{
-      width: 75%;
-      border:3px solid #D0C3B4; 
-      border-radius: 40px;
-      width: 800px; 
-      margin-left: auto;
-      margin-right: auto;
-    }  
-}
-/*모바일*/
-@media (max-width: 1025px)  {
-  .count-content{
-      width: 75%;
-      border:3px solid #D0C3B4; 
-      border-radius: 40px;
-      width: 900px; 
-      justify-content:center;
-      display:flex;
-
-    }  
-  .clearfix {
-  margin: 0;
-  }
-}
     
   </style>
   <title>Django Calendar App</title>
@@ -185,7 +166,7 @@
         <a class="btn btn-light right" href="{% url 'cal:event_new' %}"> 일정 추가 </a>
         <a class="btn btn-light right" href="{% url 'cal:event_total' %}"> 전체 일정</a>
             <br><br><br>
-            <article class="count-content">
+            <article class="count-content" style="width: 75%">
               <div class="count-header">
                 <form method="POST" class="post-form" action="{% url 'cal:daily_count' %}" >
                   {% csrf_token %}
