@@ -67,3 +67,6 @@ def mypage(request):
 
 def info(request):
     return render(request, 'accounts/info.html')
+
+def map(request):
+    return render(request, 'accounts/map.html')
