@@ -1,29 +1,12 @@
 {%extends 'base.html'%}
 
 {% block content %}
-  <!DOCTYPE html>
-  <html lang="ko">
-  <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>댕댕쓰 - 멍멍사전</title>
    <style>
-   font{
-     font-family: "배달의민족 주아";
-   }
-   p{
-     font-family: "배달의민족 주아";
-     color: #767171;
-     
-   }
-   h1, h2, h3, h4, h5{
-     color: black;
-     font-family: "배달의민족 주아";
-   }
-   footer{
-    font-family: "배달의민족 주아";
-   
-   }
+
    div {
        float: left;
    }
@@ -146,7 +129,7 @@
 }
 .wrapper .inside {
   z-index: 9;
-  background: #ff1744;
+  background: rgb(231, 221, 210);
   width: 140px;
   height: 140px;
   position: absolute;
@@ -183,6 +166,7 @@
 .wrapper .inside .contents {
   padding: 5%;
   opacity: 0;
+
   transform: scale(0.5);
   transform: translateY(-200%);
   transition: opacity 0.2s, transform 0.8s;
@@ -196,6 +180,45 @@
 }
 .wrapper .inside .contents p {
   font-size: 13px;
+}
+.top{
+    height: 82.7%;
+}
+
+.wrapper>.container{
+    background-color: white;
+    border: 4px solid rgb(231, 221, 210);
+}
+
+#sources{
+    color: rgb(164, 153, 140);
+    text-align: center;
+}
+
+
+.contents{
+    line-height: 20%;
+    overscroll-behavior: contain;
+}
+
+.contents h5{
+    line-height: 150%;
+    text-indent: 15px;
+}
+
+@media screen and (min-width: 865px)  {
+  center{
+    width: 100%;
+    padding-right: 15%;
+    padding-left: 15%;
+    margin-right: auto;
+    margin-left: auto;
+    }  
+
+}
+#foot{
+    position: relative;
+    left: 45%;
 }
    </style> 
     <!-- CSS  -->
@@ -212,8 +235,9 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
 <center>
 <div class="wrapper">
         <div class="container">
+            
           <div class="top">
-              <img src="/static/baby2.jpg" width="100%" height="410px"/>
+              <br><br><br><img src="/static/img/charity.png" width="70%" height="55%"/>
         </div>
           <div class="bottom">
             <div class="left">
@@ -231,12 +255,13 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
             </table>
           </div>
         </div>
-      </div>
+
+</div>
 
       <div class="wrapper">
             <div class="container">
               <div class="top">
-                  <img src="/static/baby3.png" width="100%" height="410px"/>
+                <br><br><br><img src="/static/img/breeding.png" width="80%" height="70%"/>
             </div>
               <div class="bottom">
                 <div class="left">
@@ -249,38 +274,21 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
             <div class="inside">
               <div class="icon"><i class="material-icons">search</i></div>
               <div class="contents">
+                  
                 <table>
-                  <h5>출산 증상은 아무래도 암컷 강아지의 신체 변화를 들 수 있는데요. 바로 젖꼭지가 커지는 것입니다. 새끼를 낳았을 때 젖을 물려야 하기 때문에 이렇게 변화하는 것입니다. 이외의 행동은 무기력하면서 식욕만 넘쳐나는 것입니다. 마지막으로 동물의 본능에 따라 새끼를 지켜야 하기 때문에 자신의 영역을 만들고 지키려는 행동을 보입니다. 그리고  교배 2주 후부터는 사람과 같이 입덧이라는 강아지출산증상이 생기는데요. 입덧이 오게 되면 입맛이 떨어지고, 밥을 잘 먹지 못하게 되어 영양을 챙겨주셔야 하는데요. 영양제를 먹이는 것 보다는 무염치즈나 명치파우더로 칼슘을 보충해주고 바나나, 오이, 브로콜리 등 다양한 채소와 과일이 섞인 특식으로 입맛을 돋아 주시는 것이 좋습니다.</h5>
+                  <h5>출산 증상은 아무래도 암컷 강아지의 신체 변화를 들 수 있는데요, 바로 젖꼭지가 커지는 것입니다. 새끼를 낳았을 때 젖을 물려야 하기 때문에 이렇게 변화하는 것입니다. 
+                      이외의 행동은 무기력하면서 식욕만 넘쳐나는 것입니다. 
+                      마지막으로 동물의 본능에 따라 새끼를 지켜야 하기 때문에 자신의 영역을 만들고 지키려는 행동을 보입니다. 그리고  교배 2주 후부터는 사람과 같이 입덧이라는 강아지출산증상이 생기는데요. 입덧이 오게 되면 입맛이 떨어지고, 밥을 잘 먹지 못하게 되어 영양을 챙겨주셔야 하는데요. 영양제를 먹이는 것 보다는 무염치즈나 명치파우더로 칼슘을 보충해주고 바나나, 오이, 브로콜리 등 다양한 채소와 과일이 섞인 특식으로 입맛을 돋아 주시는 것이 좋습니다.</h5>
                 </table>
+                
               </div>
             </div>
           </div>
-          <div class="wrapper">
-                <div class="container">
-                  <div class="top">
-                      <img src="/static/ddong2.jpg" width="100%" height="410px"/>
-                </div>
-                  <div class="bottom">
-                    <div class="left">
-                      <div class="details">
-                        <h3>#똥 #배변 #소변</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="inside">
-                  <div class="icon"><i class="material-icons">search</i></div>
-                  <div class="contents">
-                    <table>
-                      <h4>dddsd</h4>
-                    </table>
-                  </div>
-                </div>
-              </div>
+
               <div class="wrapper">
                     <div class="container">
                       <div class="top">
-                          <img src="/static/diet2.jpg" width="100%" height="410px"/>
+                            <br><br><br><img src="/static/img/weight-scale (1).png" width="70%" height="60%"/>
                     </div>
                       <div class="bottom">
                         <div class="left">
@@ -304,12 +312,12 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
                   <div class="wrapper">
                         <div class="container">
                           <div class="top">
-                              <img src="/static/etc4.jpg" width="100%" height="410px"/>
+                            <br><br><br><img src="/static/img/vaccine.png" width="70%" height="60%"/>
                         </div>
                           <div class="bottom">
                             <div class="left">
                               <div class="details">
-                                <h3>#강아지 #분양 #예방접종</h3>
+                                <h4>#강아지 #분양 #예방접종</h4>
                               </div>
                             </div>
                           </div>
@@ -326,7 +334,7 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
                       <div class="wrapper">
                             <div class="container">
                               <div class="top">
-                                  <img src="/static/makeup3.jpg" width="100%" height="410px"/>
+                                  <br><br><br><img src="/static/img/grooming (1).png" width="70%" height="60%"/>
                             </div>
                               <div class="bottom">
                                 <div class="left">
@@ -348,12 +356,34 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
                           <div class="wrapper">
                                 <div class="container">
                                   <div class="top">
-                                      <img src="/static/old1.jpg" width="100%" height="410px"/>
+                                      <br><br><br><img src="/static/img/poop.png" width="70%" height="60%"/>
                                 </div>
                                   <div class="bottom">
                                     <div class="left">
                                       <div class="details">
-                                        <h3>#노견 #나이 #노안 #늙음</h3>
+                                        <h3>#똥 #배변 #소변</h3>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="inside">
+                                  <div class="icon"><i class="material-icons">search</i></div>
+                                  <div class="contents">
+                                    <table>
+                                      <h4>dddsd</h4>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                          <div class="wrapper">
+                                <div class="container">
+                                  <div class="top">
+                                    <br><br><br><img src="/static/img/old-english-sheepdog.png" width="70%" height="60%"/>
+                                </div>
+                                  <div class="bottom">
+                                    <div class="left">
+                                      <div class="details">
+                                        <h4>#노견 #나이 #노안 #늙음</h4>
                                       </div>
                                     </div>
                                   </div>
@@ -370,7 +400,7 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
                               <div class="wrapper">
                                     <div class="container">
                                       <div class="top">
-                                          <img src="/static/shower2.jpg" width="100%" height="410px"/>
+                                          <br><br><br><img src="/static/img/pet-shampoo.png" width="70%" height="60%"/>
                                     </div>
                                       <div class="bottom">
                                         <div class="left">
@@ -398,12 +428,12 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
                                   <div class="wrapper">
                                         <div class="container">
                                           <div class="top">
-                                              <img src="/static/sick3.jpg" width="100%" height="410px"/>
+                                              <br><br><br><img src="/static/img/veterinary.png" width="70%" height="60%"/>
                                         </div>
                                           <div class="bottom">
                                             <div class="left">
                                               <div class="details">
-                                                <h3>#병 #아픔 #아프다 #병원</h3>
+                                                <h4>#병 #아픔 #아프다 #병원</h4>
                                               </div>
                                             </div>
                                           </div>
@@ -420,7 +450,7 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
                                       <div class="wrapper">
                                             <div class="container">
                                               <div class="top">
-                                                  <img src="/static/sleep3.jpg" width="100%" height="410px"/>
+                                                  <br><br><br><img src="/static/img/pillow.png" width="70%" height="60%"/>
                                             </div>
                                               <div class="bottom">
                                                 <div class="left">
@@ -443,7 +473,7 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
                                           <div class="wrapper">
                                                 <div class="container">
                                                   <div class="top">
-                                                      <img src="/static/snack1.png" width="100%" height="410px"/>
+                                                    <br><br><br><br><img src="/static/img/pet-food.png" width="60%" height="60%"/>
                                                 </div>
                                                   <div class="bottom">
                                                     <div class="left">
@@ -468,7 +498,7 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
                                               <div class="wrapper">
                                                     <div class="container">
                                                       <div class="top">
-                                                          <img src="/static/walk1.png" width="100%" height="410px"/>
+                                                          <br><br><br><img src="/static/img/walking-the-dog.png" width="70%" height="60%"/>
                                                     </div>
                                                       <div class="bottom">
                                                         <div class="left">
@@ -491,7 +521,7 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
                                                   <div class="wrapper">
                                                       <div class="container">
                                                         <div class="top">
-                                                            <img src="/static/baby2.jpg" width="100%" height="410px"/>
+                                                            <br><br><br><img src="/static/img/female.png" width="70%" height="60%"/>
                                                       </div>
                                                         <div class="bottom">
                                                           <div class="left">
@@ -514,7 +544,7 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
                                                     <div class="wrapper">
                                                         <div class="container">
                                                           <div class="top">
-                                                              <img src="/static/etc1.jpg" width="100%" height="410px"/>
+                                                              <br><br><br><img src="/static/img/genderless.png" width="70%" height="60%"/>
                                                         </div>
                                                           <div class="bottom">
                                                             <div class="left">
@@ -540,7 +570,7 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
                                                       <div class="wrapper">
                                                           <div class="container">
                                                             <div class="top">
-                                                                <img src="/static/snack1.png" width="100%" height="410px"/>
+                                                                <br><br><br><img src="/static/img/no-pets.png" width="70%" height="60%"/>
                                                           </div>
                                                             <div class="bottom">
                                                               <div class="left">
@@ -564,21 +594,23 @@ alert("CTRL + F5를 하여 특정 단어를 검색하세요! Ex) 샤워");
                                                           </div>
                                                         </div>
 
-                                                      
+                                                        
         </center>
+        <br><br>
+        <div id="sources">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
 
 
 
 </html>
-{%endblock%}
 
 
 
+{% endblock %}
 
 
 

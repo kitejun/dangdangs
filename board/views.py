@@ -6,8 +6,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.files.storage import FileSystemStorage
 
 from .models import Board, Comment
-from .forms import BoardPost
-
+from .forms import BoardPost, PostSearchForm
+from django.views.generic.edit import FormView
+from django.db.models import Q
 
 def home(request):
     return render(request, 'home.html')
@@ -67,7 +68,7 @@ def update(request,board_id):
             # 검증에 성공한 값들은 사전타입으로 제공 
             print(form.cleaned_data)
             post.title = form.cleaned_data['title']
-            post.body = form.cleaned_data['body']
+            post.context = form.cleaned_data['context']
             post.image = form.cleaned_data['image']
             post.pub_date = timezone.now()
 
@@ -90,6 +91,30 @@ def delete(request, board_id):
     board = get_object_or_404(Board, pk=board_id)
     board.delete()
     return redirect('board')
+
+
+
+class SearchFormView(FormView):
+    # form_class를 forms.py에서 정의했던 PostSearchForm으로 정의
+    form_class = PostSearchForm
+    template_name = 'board.html'
+
+    def form_valid(self, form):
+        search_word = self.request.POST['search_word']
+        # Board 객체중 제목이나 설명이나 내용에 해당 단어가 대소문자관계없이(icontains) 속해있는 객체를 필터링
+        # Q객체는 |(or)과 &(and) 두개의 operator와 사용가능
+        post_list = Board.objects.filter(Q(title__icontains=search_word) | Q(context__icontains=search_word))
+
+        context = {}
+        # context에 form객체, 즉 PostSearchForm객체 저장
+        context['form'] = form
+        context['search_term'] = search_word
+        context['object_list'] = post_list
+
+        return render(self.request, self.template_name, context)
+
+
+
 
 def comment_write(request, board_id):
     if request.method == 'POST':
