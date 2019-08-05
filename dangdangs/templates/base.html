@@ -27,6 +27,32 @@
       background-color: #D0C3B4;
 
     }
+/*nav*/
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 12px 12px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
   </style>
   <title>Django Calendar App</title>
 </head>
@@ -42,7 +68,13 @@
          <form id="logout" method="POST" action="{% url 'logout' %}">
              {% csrf_token %} <input type="hidden" />
            </form>
-         <a href="#" >마이페이지 </a>  
+         <li class="dropdown">  
+         <a href="javascript:void(0)" class="dropbtn" >마이페이지 </a> 
+         <div class="dropdown-content">
+            <a href="{% url 'board' %}">보러가기</a>
+            <a href="#">수정하기</a>
+          </div> 
+          </li>
        {% else %} 
          <a href="{% url 'login' %}" >로그인 </a>  
          <a href="{% url 'signup' %}" >회원가입 </a>  
@@ -51,6 +83,7 @@
       <a href="" class="news" style="color:#FFC300;">▶ 오늘의 뉴스! 잔디밭에서 진드기에 물렸다면?</a>
     </nav>
     <nav class="main-navbar">
+      
       <a href="{% url 'home' %}">
         <img src="/static/img/title.png" width="180" height="120"></a>
       <div id="link2" style="margin-top:20px;">
@@ -58,7 +91,14 @@
         <a href="{% url 'cal:calendar' %}" style="color: #916E59;">내 캘린더</a>
         {% endif %}
         <a href="#">근처 동물병원</a>
-        <a href="{% url 'board' %}" style="color: #916E59;">소통방</a>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">소통방</a>
+          <div class="dropdown-content">
+            <a href="{% url 'board' %}">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </li>
       </div>
     </nav>
   </header>
