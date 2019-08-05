@@ -63,6 +63,7 @@
          <!--캘린더 화면에서 -->
          {% if user.is_authenticated %} <!-- 로그인 되어있는 상태에서-->
          <a href="javascript:{document.getElementById('logout').submit()}" >로그아웃</a>
+         <a href="{% url 'mypage' %}" >마이페이지 </a>  
          <form id="logout" method="POST" action="{% url 'logout' %}">
              {% csrf_token %} <input type="hidden" />
            </form>
@@ -95,7 +96,7 @@
                 {% endif %}
               </li>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#" style="color: #916E59;">근처 동물병원 </a>
+                <a class="nav-link js-scroll-trigger" href="{% url 'map' %}" style="color: #916E59;">근처 동물병원 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="{% url 'board' %}" style="color: #916E59;">소통방</a>
