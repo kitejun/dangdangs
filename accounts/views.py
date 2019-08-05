@@ -73,6 +73,7 @@ def mypage(request):
             if newpassword1== newpassword2:
                 user.set_password(newpassword1)
                 user.save()
+                auth.login(request, user)
                 return redirect('home')
             else:
                 messages.warning(request,'새로만드는 비밀번호를 일치시켜주세요.')
