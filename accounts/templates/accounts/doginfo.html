@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error %}
+{{ error }}
+<br>
+<br>
+{% endif %}
+
+<style>
+   .btn {
+      background-color: #EAE5DE;
+      color: #767171;
+    }
+
+    .btn:hover {
+      background-color: #D0C3B4;
+
+    }
+.form-control:focus{
+  border-color: #E6DFD5;
+  color: #495057;
+  background-color: #fff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #E6DFD5;
+}       
+</style>
+  
+<body>
+        <div class="login-box">
+            <div class="text-center mb-4">
+                <div class="login-img">
+                    <img src="/static/img/dangdang.png">
+                </div>
+        
+          
+                <h1 class="h3 mb-3 font-weight-normal">my page</h1>
+               </div>
+              
+            
+               <form method="POST" action="{% url 'doginfo'%}">
+
+                {% csrf_token %}
+                <br>
+                강아지 이름
+                <input name="dogname" class="form-control" type="text" value="{{ group.dogname }}" required>
+                <br>
+                강아지 생일
+                <input name="dogbirth" class="form-control" type="text" value="{{group.dogbirth}}" required>
+                <br>
+                강아지 종
+                <input name="dogspecies" class="form-control" type="text" value="{{group.dogspecies}}" required>
+                <br>
+                강아지 성별
+                <input name="dogbio" class="form-control" type="text" value="{{group.dogbio}}" required>
+                <br>
+
+              
+              
+              <button class="btn btn-lg btn-light btn-block" type="submit">정보 수정하기</button>
+
+
+             
+  
+            </form>
+    </div>
+</div>
+
+
+{% endblock %}
