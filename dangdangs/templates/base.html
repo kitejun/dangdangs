@@ -40,7 +40,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-
+    
+    <!-- 카카오 채팅 -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  
   <style>
     .btn {
       background-color: #EAE5DE;
@@ -63,6 +66,7 @@
          <!--캘린더 화면에서 -->
          {% if user.is_authenticated %} <!-- 로그인 되어있는 상태에서-->
          <a href="javascript:{document.getElementById('logout').submit()}" >로그아웃</a>
+         <a href="{% url 'mypage' %}" >마이페이지 </a>  
          <form id="logout" method="POST" action="{% url 'logout' %}">
              {% csrf_token %} <input type="hidden" />
            </form>
@@ -95,7 +99,7 @@
                 {% endif %}
               </li>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#" style="color: #916E59;">근처 동물병원 </a>
+                <a class="nav-link js-scroll-trigger" href="{% url 'map' %}" style="color: #916E59;">근처 동물병원 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="{% url 'board' %}" style="color: #916E59;">소통방</a>
@@ -126,8 +130,18 @@
         all rights reserved.</p>
   </footer>
 
-
-  
+  <div style="position:fixed; right:0px; bottom:0px;" id="plusfriend-chat-button"></div>
+  <script type='text/javascript'>
+    //<![CDATA[
+      // 사용할 앱의 JavaScript 키를 설정해 주세요.
+      Kakao.init('d5cd85ff5b121ec50def237cdd0c736c');
+      // 플러스친구 1:1채팅 버튼을 생성합니다.
+      Kakao.PlusFriend.createChatButton({
+        container: '#plusfriend-chat-button',
+        plusFriendId: '_hpxdwT' // 플러스친구 홈 URL에 명시된 id로 설정합니다.
+      });
+    //]]>
+  </script>
 
 </body>
 

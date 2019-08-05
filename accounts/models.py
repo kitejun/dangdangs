@@ -13,6 +13,6 @@ class Group(models.Model):
    # groupid = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True,)
     #groupkey =models.CharField(max_length=15, blank=True, default='')
     dogname = models.CharField(max_length=30, blank=True, default='noname')
-    dogbirth = models.CharField(max_length=20, blank=True, default='080925' )
+    dogbirth = models.CharField(max_length=20, blank=True, default='000000' )
     dogbio = models.CharField(max_length=10,blank=True, default='male')
     dogspecies = models.CharField(max_length=30,blank=True, default='nospec')
