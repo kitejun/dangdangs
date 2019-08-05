@@ -56,16 +56,17 @@
 
             <div class="card-body" style="border:3px solid #D0C3B4; ">
 
-                <h5 class="card-title"> <i class="material-icons"><a href="board.html"></a>{{details.title}}</h5>
-                <p>{{ details.pub_date }}</p>
-
-                <!-- 조회수 증가 -->
-                작성일:{{details.update_counter}} 
-                작성자:{{details.}}
-                조회수: {{ details.hits }}
+                <h5 class="card-title"> <i class="material-icons"><a href="board.html"></a>제목: {{details.title}}</h5>
                 
-                <p class="card-text">{{details.context}}</p>
-                <img src="{{ details.image.url }}" alt="댕댕이">
+                <!-- 조회수 증가 -->
+                작성일: {{details.pub_date}} <br>
+                작성자: {{details.}} <br>
+                조회수: {{ details.hits }} <br>
+                
+                <p class="card-text">내용: {{details.context}}</p>
+
+                <img src="{{ details.image.url }}" alt="사진 불러오기 오류">
+
                 <br>
                 <hr style="color:#D7CEBF">
                 <!--하트 버튼-->
@@ -100,7 +101,7 @@
             </div>
             <hr>
             {% empty %}
-            <p>No comments here yet</p>
+            <p>댓글이 없습니다.</p>
             {% endfor %}
         </div>
     </div>
