@@ -40,7 +40,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-
+    
+    <!-- 카카오 채팅 -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  
   <style>
     .btn {
       background-color: #EAE5DE;
@@ -123,8 +126,18 @@
         all rights reserved.</p>
   </footer>
 
-
-  
+  <div style="position:fixed; right:0px; bottom:0px;" id="plusfriend-chat-button"></div>
+  <script type='text/javascript'>
+    //<![CDATA[
+      // 사용할 앱의 JavaScript 키를 설정해 주세요.
+      Kakao.init('d5cd85ff5b121ec50def237cdd0c736c');
+      // 플러스친구 1:1채팅 버튼을 생성합니다.
+      Kakao.PlusFriend.createChatButton({
+        container: '#plusfriend-chat-button',
+        plusFriendId: '_hpxdwT' // 플러스친구 홈 URL에 명시된 id로 설정합니다.
+      });
+    //]]>
+  </script>
 
 </body>
 
