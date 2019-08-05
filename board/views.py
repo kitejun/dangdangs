@@ -13,14 +13,6 @@ from django.db.models import Q
 def home(request):
     return render(request, 'home.html')
 
-
-def home(request):
-    return render(request, 'home.html')
-
-
-def home(request):
-    return render(request, 'home.html')
-
 # Create your views here.
 def board(request):
     boards=Board.objects
@@ -63,6 +55,14 @@ def new(request):
         form = BoardPost()
         return render(request, 'new.html', {'form':form}) # form형태로 전달
 
+def create(request):
+    blog = Board()
+    blog.title = request.GET['title']
+    blog.image = request.GET['image']
+    blog.context= request.GET['context']
+    blog.pub_date = timezone.datetime.now()
+    blog.save()
+    return redirect('/blog/' + str(blog.id))
 
 # 수정하기
 def update(request,board_id):
