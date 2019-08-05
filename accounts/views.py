@@ -86,7 +86,6 @@ def info(request):
 
 def map(request):
     return render(request, 'accounts/map.html')
-<<<<<<< HEAD
 
 def doginfo(request):
     group = Group.objects.filter(groupid=request.user.groupid).first() # 해당 그룹아이디를 받아옵니다. 
@@ -100,5 +99,3 @@ def doginfo(request):
         return redirect('home')
 
     return render(request,'accounts/doginfo.html',{'group':group})
-=======
->>>>>>> origin
