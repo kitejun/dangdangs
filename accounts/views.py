@@ -64,3 +64,6 @@ def logout(request):
 
 def mypage(request):
     return render(request, 'accounts/mypage.html')
+
+def info(request):
+    return render(request, 'accounts/info.html')
