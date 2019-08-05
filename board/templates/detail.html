@@ -60,7 +60,8 @@
                 <p>{{ details.pub_date }}</p>
 
                 <!-- 조회수 증가 -->
-                {{details.update_counter}}
+                작성일:{{details.update_counter}} 
+                작성자:{{details.}}
                 조회수: {{ details.hits }}
                 
                 <p class="card-text">{{details.context}}</p>
@@ -74,8 +75,10 @@
                 
                 
                 <div class="clearfix">
+                    
                     <a class="btn btn-light right" href="{% url 'delete' details.id %}"> Delete </a>
                     <a class="btn btn-light right" href="{% url 'update' details.id %}"> Edit </a>
+
                     <a class="btn btn-light right" href="{%url 'board'%}">게시판으로</a>
 
                 </div>

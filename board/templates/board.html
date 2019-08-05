@@ -24,72 +24,72 @@
         <tr>
           <td>{{board.id }} </td>
           <td><a href="{% url 'detail' board.id %}" title="{{board.summary}}">{{board.title}}</a></td>
-          
-  </div>
-  <td>{{ board.pub_date }}</td>
-  <td>{{ board.like }}</td>  <!-- 하트 아이콘 // <p>&hearts;</p> // 안보이다가 detail에서 하트 누르면  board에서 ♥  1 공백 // <p> &nbsp </p>-->
-  <td>{{ board.hits }} </td>
+          <td>{{ board.pub_date }}</td>
+          <td>{{ board.like }}</td>
+          <!-- 하트 아이콘 // <p>&hearts;</p> // 안보이다가 detail에서 하트 누르면  board에서 ♥  1 공백 // <p> &nbsp </p>-->
+          <td>{{ board.hits }} </td>
 
-  </tr>
+        </tr>
 
-  {%endfor%}
-  </tbody>
+        {%endfor%}
 
-
-  </table>
-  <a class="btn btn-outline-light" href="{% url 'new' %}" title="{{board.body}}" style="float: right;">글쓰기</a>
-
-  <br>
-
-  <!--pagenation-->
-  <nav aria-label="container">
-    <ul class="pagination justify-content-center">
-      <li class="page-item">
-        {%if posts.has_previous%}
-        <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          {%endif%}
-        </a>
-      </li>
-      {% for page in page_range %}
-      <li {% if page == page_obj.number %}class="active" {% endif %} class="page-item"><a class="page-link" a
-          href="?page={{ page }}">{{ page }}</a></li>
-      {% endfor %}
-      <li class="page-item">
-        {%if posts.has_next%}
-        <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          {%endif%}
-
-        </a>
-      </li>
-
-
-      <!-- 검색기능 -->
-      <div id="content">
-        <form action="{% url 'search' %}" method="POST">
-            {% csrf_token %}
-            <table>
-                    {{form.as_table}}
-            </table>
-            <input type="submit" value="Search">
-        </form>
-    
-        <br><br>
-    
         {% if object_list %}
-            {% for post in object_list %}
-                <h2><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h2>
-                {{ post.created_at|date:'N d, Y' }}
-                <p>{{ post.context }}</p>
-            {% endfor %}
+        {% for post in object_list %}
+        <h2><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h2>
+        {{ post.created_at|date:'N d, Y' }}
+        <p>{{ post.context }}</p>
+        {% endfor %}
         {% elif search_term %}
-            <b><i>Search Word({{ search_term }}) Not Found !</i></b>
+        <b><i>Search Word({{ search_term }}) Not Found !</i></b>
         {% endif %}
+      </tbody>
+    </table>
+
+    <!-- 글쓰기 -->
+    <a class="btn btn-outline-light" href="{% url 'new' %}" title="{{board.body}}" style="float: right;">글쓰기</a>
+
+    <br>
+
+    <!--pagenation-->
+    <div>
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          {%if posts.has_previous%}
+          <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            {%endif%}
+          </a>
+        </li>
+        {% for page in page_range %}
+        <li {% if page == page_obj.number %}class="active" {% endif %} class="page-item"><a class="page-link" a
+            href="?page={{ page }}">{{ page }}</a></li>
+        {% endfor %}
+        <li class="page-item">
+          {%if posts.has_next%}
+          <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            {%endif%}
+          </a>
+        </li>
+      </ul>
     </div>
-      
-    </ul>
-  </nav>
+
+    <!-- 검색기능 -->
+    <form action="{% url 'search' %}" method="POST">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <th>
+            <label for="id_search_word">검색:</label>
+          </th>
+          <td>
+            <input type="text" name="search_word" value="f" required id="id_search_word">
+          </td>
+        </tr>
+      </table>
+      <input type="submit" value="Search">
+    </form>
+    <br>
   </div>
-</center>  
+</center>
 {% endblock %}
