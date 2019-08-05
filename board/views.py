@@ -96,14 +96,18 @@ def delete(request, board_id):
 
 
 class SearchFormView(FormView):
+    # form_class를 forms.py에서 정의했던 PostSearchForm으로 정의
     form_class = PostSearchForm
     template_name = 'board.html'
 
     def form_valid(self, form):
         search_word = self.request.POST['search_word']
+        # Board 객체중 제목이나 설명이나 내용에 해당 단어가 대소문자관계없이(icontains) 속해있는 객체를 필터링
+        # Q객체는 |(or)과 &(and) 두개의 operator와 사용가능
         post_list = Board.objects.filter(Q(title__icontains=search_word) | Q(context__icontains=search_word))
 
         context = {}
+        # context에 form객체, 즉 PostSearchForm객체 저장
         context['form'] = form
         context['search_term'] = search_word
         context['object_list'] = post_list
