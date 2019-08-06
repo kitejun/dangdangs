@@ -107,18 +107,18 @@
             </form>
             <br> <br>
             
-            {% for comment in details.comments.all %}
+            
             <div>
+                {% for comment in details.comments.all %}
                 <p style="float:left;">  {{ comment.comment_body }}</p>
                 <small style="float:right;">{{ comment.author }}&nbsp;&nbsp;{{ comment.comment_date }}</small>
-                 
+                <br>
+                {% empty %}
+                <p>댓글이 없습니다.</p>
                 
+                {% endfor %} 
             </div>
            <hr> 
-            {% empty %}
-            <p>댓글이 없습니다.</p>
-            
-            {% endfor %}
         
     </div>
     <script> document.querySelector('.like-button').addEventListener('click', (e) => { e.currentTarget.classList.toggle('liked'); });

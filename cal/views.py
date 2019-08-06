@@ -12,6 +12,7 @@ from .models import *
 from .utils import Calendar
 from .forms import *
 
+
 def index(request):
     return HttpResponse('hello')
 
@@ -24,21 +25,16 @@ class CalendarView(generic.ListView):
         context = super().get_context_data(**kwargs)
         group = self.request.user
 
-        # dailys_per_day = Daily.objects.filter(date=timezone.now) # 현재 날짜와 같은 daily 데이터가 있는지
-
-        # use today's date for the calendar
         # d = get_date(self.request.GET.get('day', None))
         d = get_date(self.request.GET.get('month',None))
-        # Instantiate our calendar class with today's year and date
         cal = Calendar(d.year, d.month)
-        # html_cal = cal.formatmonth(withyear=True)
         html_cal = cal.formatmonth(withyear=True, group=group)
-
         # html_cal = html_cal.replace('<td','<td width="50"')
-        #context['daily'] = dailys_per_day
+    
         context['calendar'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
+        context['daily'] = daily(self.request)
        
         return context
     
@@ -96,6 +92,20 @@ def total(request):
     plans = Event.objects.order_by('start_date') # 시간 오름차순 정렬
     return render(request, 'cal/total.html', {'plans': plans})
 
+# 저장된 daily 값들을 불러오는 함수
+def daily(request): 
+
+    daily = Daily.objects.filter(date=timezone.now(), groupid=request.user.groupid).first() # 현재 날짜와 같은 오브젝트
+    if daily:
+        instance = daily
+    else: # 해당 오브젝트가 없으면 생성
+        instance = Daily()
+        instance.groupid = request.user.groupid
+        instance.save()
+
+    form = DailyForm(request.POST or None, instance=instance)
+
+    return form
 
 # 저장된 daily 값들을 불러오는 함수
 def daily(request): 
