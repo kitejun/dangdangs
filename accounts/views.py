@@ -30,9 +30,6 @@ def signup(request):
                 else:
                     messages.warning(request,'입력하신 가족코드에 해당하는 가족이 없습니다.')
                     return render(request, 'accounts/signup.html')
-                
-
-
 
             return redirect('home')
        
