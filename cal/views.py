@@ -107,6 +107,21 @@ def daily(request):
 
     return form
 
+# 저장된 daily 값들을 불러오는 함수
+def daily(request): 
+
+    daily = Daily.objects.filter(date=timezone.now(), groupid=request.user.groupid).first() # 현재 날짜와 같은 오브젝트
+    if daily:
+        instance = daily
+    else: # 해당 오브젝트가 없으면 생성
+        instance = Daily()
+        instance.groupid = request.user.groupid
+        instance.save()
+
+    form = DailyForm(request.POST or None, instance=instance)
+
+    return form
+
 # daily를 저장하는 함수
 def daily_count(request):
     

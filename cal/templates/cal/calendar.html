@@ -96,6 +96,12 @@
     a:link {text-decoration:none; color:black;} 
     a:visited {text-decoration:none; color:black;} 
     a:hover {text-decoration:none; color:darkgrey;} 
+    #username{
+      color: #767171;
+      font-size: 16px;
+      position: relative;
+      top: 3px;
+    }
 /*웹*/
 @media (min-width: 1025px)  {
   .count-content{
@@ -181,6 +187,7 @@
   
            <!--캘린더 화면에서 -->
            {% if user.is_authenticated %} <!-- 로그인 되어있는 상태에서-->
+           <p id="username">{{user.username}}님 환영합니다&nbsp;</p>
            <a href="javascript:{document.getElementById('logout').submit()}" >로그아웃</a>
            <form id="logout" method="POST" action="{% url 'logout' %}">
                {% csrf_token %} <input type="hidden" />
@@ -218,6 +225,9 @@
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="{% url 'board' %}" style="color: #916E59;">소통방</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{% url 'info' %}" style="color: #916E59;">댕댕사전</a>
+              </li>
             </ul>
 >>>>>>> 9467b00831726118fc7a6fdf2359e4c5f3f004cb
           </div>
@@ -233,8 +243,8 @@
             <br><br><br>
             <article class="count-content">
               <div class="count-header">
-                <!--<form method="POST" class="post-form" action="{% url 'cal:daily_count' %}" >-->
-                    <form method="POST" class="post-form" action="#s" >
+                <form method="POST" class="post-form" action="{% url 'cal:daily_count' %}" >
+                    <!--<form method="POST" class="post-form" action="#s" >-->
                   {% csrf_token %}
                 
                   <div class="icon-div">
