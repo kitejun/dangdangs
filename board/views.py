@@ -10,6 +10,9 @@ from .forms import BoardPost, PostSearchForm
 from django.views.generic.edit import FormView
 from django.db.models import Q
 
+# 메세지 라이브러리
+from django.contrib import messages
+
 def home(request):
     return render(request, 'home.html')
 
@@ -49,6 +52,7 @@ def new(request):
             # 날짜는 자동으로 현재 입력해주는 것
             post.pub_date = timezone.now()
             post.save()
+            messages.info(request, '새 글이 등록되었습니다.') 
             return redirect('board')     # 바로 home으로 redirect
     
     # 2. 빈 페이지를 띄어주는 기능 -> GET
@@ -60,6 +64,10 @@ def new(request):
 # 수정하기
 def update(request,board_id):
     post=Board.objects.get(id=board_id)
+
+    if post.author != request.user:
+        messages.warning(request, '잘못된 접근입니다.')
+        return redirect('board')
 
     # 글을 수정사항을 입력하고 제출을 눌렀을 때
     if request.method == "POST":
@@ -90,7 +98,11 @@ def update(request,board_id):
 # 삭제하기
 def delete(request, board_id):
     board = get_object_or_404(Board, pk=board_id)
+    if board.author != request.user:
+        messages.info(request, '잘못된 접근입니다.')
+        return redirect('board')
     board.delete()
+    messages.info(request, '삭제 완료')
     return redirect('board')
 
 
