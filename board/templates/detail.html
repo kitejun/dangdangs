@@ -60,7 +60,7 @@
                 
                 <!-- 조회수 증가 -->
                 작성일: {{details.pub_date}} <br>
-                작성자: {{details.}} <br>
+                작성자: {{ details.author }} <br>
                 조회수: {{ details.hits }} <br>
                 
                 <p class="card-text">내용: {{details.context}}</p>
@@ -96,8 +96,10 @@
             <hr>
             {% for comment in details.comments.all %}
             <div>
-                <p>{{ comment.comment_date }}</p>
-                <p>{{ comment.comment_body }}</p>
+                <p>내용: {{ comment.comment_body }}</p>
+                <p>작성일: {{ comment.comment_date }}</p>
+                <p>작성자: {{ comment.author }}</p>
+
             </div>
             <hr>
             {% empty %}

@@ -45,6 +45,7 @@ def new(request):
         form = BoardPost(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False) # DB에 저장하지 않고 form에 임시 저장
+            post.author=request.user
             # 날짜는 자동으로 현재 입력해주는 것
             post.pub_date = timezone.now()
             post.save()
@@ -120,6 +121,6 @@ def comment_write(request, board_id):
     if request.method == 'POST':
         board = get_object_or_404(Board, pk=board_id)
         content = request.POST.get('content')
-
-        Comment.objects.create(board=board, comment_body=content)
+        author_user=request.user
+        Comment.objects.create(board=board, comment_body=content, author=author_user)
         return redirect('/board/detail/' + str(board.id))

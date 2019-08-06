@@ -25,7 +25,7 @@
         <tr>
           <td>{{board.id }} </td>
           <td><a href="{% url 'detail' board.id %}" title="{{board.summary}}">{{board.title}}</a></td>
-          <td>Null</td>
+          <td>{{ board.author }}</td>
           <td>{{ board.pub_date }}</td>
           <td>{{ board.like }}</td>
           <!-- 하트 아이콘 // <p>&hearts;</p> // 안보이다가 detail에서 하트 누르면  board에서 ♥  1 공백 // <p> &nbsp </p>-->
