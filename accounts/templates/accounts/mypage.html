@@ -36,30 +36,48 @@
         
           
                 <h1 class="h3 mb-3 font-weight-normal">my page</h1>
-                <p> 정보를 관리해요</p></div>
+               </div>
               
-            <form method="POST" action="{% url 'login'%}" class="form-signin">
-                {% csrf_token %}
+               <a class="btn btn-lg btn-light btn-block" href="{% url 'doginfo' %}">댕댕이정보 수정하기</a> <br>
+               
               <div class="form-label-group">
-                아이디
-                <input name="username" type="text" class="form-control" value="" required autofocus> 
-                
-              </div>
-              <br>비밀번호 
-              <div class="form-label-group">
-                <input name="password" type="password" class="form-control" value="" required>
-                
-              </div>
-              <div class="form-label-group">
-                비밀번호 재확인
+                  {% if messages %}
+                  <ul class="messages">
+                      <br><br>
+                 {% for message in messages %}
+                  <li class="{{ message.tags }}">{{ message }}</li>
+                 {% endfor %}
+                 </ul>
+                 {% endif %}
+                <h5>아이디: {{user.username}}</h5>
                 <br>
-                <input name="password2" class="form-control" type="password" value="" required>
-            </div><br>
-            
+                <h3>가족코드 : {{user.groupid}}</h3>
               
-              <button class="btn btn-lg btn-light btn-block" type="submit">정보 수정하기</button>
-  
+              
+              </div>
+              <form method="POST" action="{% url 'mypage'%}"> <!--마이페이지에 전달할 정보입니다. -->
+                {% csrf_token %}
+              <br>현재 비밀번호
+              <div class="form-label-group">
+                <input name="password" type="password" class="form-control" value="" required> 
+              </div>
+              <br>변경 비밀번호
+              <div class="form-label-group">
+                <input name="newpassword1" type="password" class="form-control" value="" required> 
+              </div>
+
+              <div class="form-label-group">
+                비밀번호 확인
+                <br>
+              
+                  <input name="newpassword2" type="password" class="form-control" value="" required> 
+                </div>
+             
+              <br>
+              
+              <button class="btn btn-lg btn-light btn-block" type="submit">비밀번호 변경하기</button>
             </form>
+              
                 
   
                 
