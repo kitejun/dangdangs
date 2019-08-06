@@ -97,19 +97,31 @@ def total(request):
     return render(request, 'cal/total.html', {'plans': plans})
 
 
-# Daily의 count up 함수
-def count_up(request): # POST 방식으로 object를 받아와서 현재시간과 같은 object를 filter하고 DB에 저장
-    if request.POST and form.is_valid():
-        daily = Daily.objects.filter(date=timezone.now)
-        if daily: # DB에 있으면 업데이트 
-             daily = Daily.objects.filter(date=timezone.now)
-        else:
-            daily = Daily() # 없으면 
-    form = EventForm(request.POST or None, instance=daily)
+# 저장된 daily 값들을 불러오는 함수
+def daily(request): 
 
-    daily = get_object_or_404(Daily, pk=pk) # 1 : 사료, 2 : 물, 3 : 간식
-    daily.count = daily.count + 1 
-    daily.save()
-    return render(request, 'cal/calendar.html', {'daily': daily})
+    daily = Daily.objects.filter(date=timezone.now(), groupid=request.user.groupid).first() # 현재 날짜와 같은 오브젝트
+    if daily:
+        instance = daily
+    else: # 해당 오브젝트가 없으면 생성
+        instance = Daily()
+        instance.groupid = request.user.groupid
+        instance.save()
 
+    form = DailyForm(request.POST or None, instance=instance)
+
+    return form
+
+# daily를 저장하는 함수
+def daily_count(request):
     
+    daily = Daily.objects.filter(date=timezone.now(), groupid=request.user.groupid).first() # 현재 날짜와 같은 오브젝트
+
+    form = DailyForm(request.POST or None, instance=daily)
+    
+    if request.POST and form.is_valid(): # 제출시 form 내용 DB에 저장
+        daily = form.save(commit=False)
+        daily.groupid = request.user.groupid 
+        daily.save()
+        
+    return HttpResponseRedirect(reverse('cal:calendar'))

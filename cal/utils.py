@@ -12,7 +12,7 @@ class Calendar(HTMLCalendar):
    # formats a day as a td
    # filter events by day
    def formatday(self, day, events, group):
-      events_per_day = events.filter(start_date__day=day)
+      events_per_day = events.filter(date__day=day)
       d = ''
       group = group
 
@@ -37,7 +37,7 @@ class Calendar(HTMLCalendar):
 
 
    def formatmonth(self, withyear=True, group=0):
-      events = Event.objects.filter(start_date__year=self.year, start_date__month=self.month)
+      events = Event.objects.filter(date__year=self.year, date__month=self.month)
 
       group = group
 
