@@ -30,7 +30,7 @@ INSTALLED_APPS = [
 
     'board',
     'cal.apps.CalConfig',
-    'accounts.apps.AccountsConfig',
+    'accounts',
 
     'imagekit'
 ]
@@ -101,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
 TIME_ZONE = 'Asia/Seoul' # 한국시간을 표시하기 위해 UTC -> Asia/Seoul로 변경
 

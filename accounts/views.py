@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth import get_user_model
 from django.contrib import messages
-
+from django.contrib.auth.hashers import make_password
 User = get_user_model()
 from .models import Group
 import random
@@ -60,4 +60,40 @@ def logout(request):
     return render(request, 'accounts/signup.html')
 
 def mypage(request):
+    if request.method == 'POST':
+        password = request.POST['password']
+        newpassword1 =request.POST['newpassword1']
+        newpassword2 =request.POST['newpassword2']
+        user = User.objects.get(username__exact=request.user.username)
+        
+        if user.check_password(password):
+            if newpassword1== newpassword2:
+                user.set_password(newpassword1)
+                user.save()
+                auth.login(request, user)
+                return redirect('home')
+            else:
+                messages.warning(request,'새로만드는 비밀번호를 일치시켜주세요.')
+        else:
+             messages.warning(request,'현재비밀번호가 일치하지 않습니다.')
+
     return render(request, 'accounts/mypage.html')
+
+def info(request):
+    return render(request, 'accounts/info.html')
+
+def map(request):
+    return render(request, 'accounts/map.html')
+
+def doginfo(request):
+    group = Group.objects.filter(groupid=request.user.groupid).first() # 해당 그룹아이디를 받아옵니다. 
+    if request.method == 'POST':
+        
+        group.dogname = request.POST['dogname']
+        group.dogbirth = request.POST['dogbirth']
+        group.dogbio = request.POST['dogbio']
+        group.dogspecies = request.POST['dogspecies']
+        group.save()
+        return redirect('home')
+
+    return render(request,'accounts/doginfo.html',{'group':group})

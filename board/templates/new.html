@@ -2,16 +2,28 @@
 
 {% block content %}
 
-<div class="container">
+<center>
+    <div class="container">
 
-    <form action="{% url 'new' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-
-        <table>
-            {{form.as_table}}
-        </table>
-
-        <input class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" type="submit" value="등록">
-    </form>
-</div>
+        <form action="{% url 'new' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <br>
+            <div class="form-group">
+                <label for="title" style="float:left" >title</label>
+                <input type="text" class="form-control" name="title" >
+                <br>
+              <div class="form-group">
+                <label for="text" style="float:left">text</label>
+                <textarea  rows="5" name="context" class="form-control"></textarea>
+              </div>
+              <br>
+              <div class="form-group">              
+                <input id="id_image" type="file" class="" name="image">
+              </div>
+              
+            <input class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" type="submit" value="등록" style="background-color: #D0C3B4">
+        </form>
+    </div>
+    
+</center>
 {% endblock %}

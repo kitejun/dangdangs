@@ -1,13 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # 파일 저장 import문
 from django.core.files.storage import FileSystemStorage
 
 from .models import Board, Comment
-from .forms import BoardPost
+from .forms import BoardPost, PostSearchForm
+from django.views.generic.edit import FormView
+from django.db.models import Q
 
+# 메세지 라이브러리
+from django.contrib import messages
 
 def home(request):
     return render(request, 'home.html')
@@ -19,7 +23,16 @@ def board(request):
     board_list=Board.objects.all()
     paginator = Paginator(board_list,3)
     page = request.GET.get('page')
-    posts = paginator.get_page(page)
+    try:
+        posts = paginator.get_page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        posts = paginator.page(paginator.num_pages)
+
+
 
     return render(request,'board.html',{'boards':boards,'posts':posts})
 
@@ -35,9 +48,11 @@ def new(request):
         form = BoardPost(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False) # DB에 저장하지 않고 form에 임시 저장
+            post.author=request.user
             # 날짜는 자동으로 현재 입력해주는 것
             post.pub_date = timezone.now()
             post.save()
+            messages.info(request, '새 글이 등록되었습니다.') 
             return redirect('board')     # 바로 home으로 redirect
     
     # 2. 빈 페이지를 띄어주는 기능 -> GET
@@ -50,6 +65,10 @@ def new(request):
 def update(request,board_id):
     post=Board.objects.get(id=board_id)
 
+    if post.author != request.user:
+        messages.warning(request, '작성자만 수정 할 수 있습니다.')
+        return redirect('board')
+
     # 글을 수정사항을 입력하고 제출을 눌렀을 때
     if request.method == "POST":
         form = BoardPost(request.POST, request.FILES)
@@ -58,7 +77,7 @@ def update(request,board_id):
             # 검증에 성공한 값들은 사전타입으로 제공 
             print(form.cleaned_data)
             post.title = form.cleaned_data['title']
-            post.body = form.cleaned_data['body']
+            post.context = form.cleaned_data['context']
             post.image = form.cleaned_data['image']
             post.pub_date = timezone.now()
 
@@ -79,13 +98,41 @@ def update(request,board_id):
 # 삭제하기
 def delete(request, board_id):
     board = get_object_or_404(Board, pk=board_id)
+    if board.author != request.user:
+        messages.info(request, '작성자만 삭제 할 수 있습니다.')
+        return redirect('board')
     board.delete()
+    messages.info(request, '삭제 완료')
     return redirect('board')
+
+
+
+class SearchFormView(FormView):
+    # form_class를 forms.py에서 정의했던 PostSearchForm으로 정의
+    form_class = PostSearchForm
+    template_name = 'board.html'
+
+    def form_valid(self, form):
+        search_word = self.request.POST['search_word']
+        # Board 객체중 제목이나 설명이나 내용에 해당 단어가 대소문자관계없이(icontains) 속해있는 객체를 필터링
+        # Q객체는 |(or)과 &(and) 두개의 operator와 사용가능
+        post_list = Board.objects.filter(Q(title__icontains=search_word) | Q(context__icontains=search_word))
+
+        context = {}
+        # context에 form객체, 즉 PostSearchForm객체 저장
+        context['form'] = form
+        context['search_term'] = search_word
+        context['object_list'] = post_list
+
+        return render(self.request, self.template_name, context)
+
+
+
 
 def comment_write(request, board_id):
     if request.method == 'POST':
         board = get_object_or_404(Board, pk=board_id)
         content = request.POST.get('content')
-
-        Comment.objects.create(board=board, comment_body=content)
+        author_user=request.user
+        Comment.objects.create(board=board, comment_body=content, author=author_user)
         return redirect('/board/detail/' + str(board.id))
