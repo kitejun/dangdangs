@@ -66,7 +66,7 @@ def update(request,board_id):
     post=Board.objects.get(id=board_id)
 
     if post.author != request.user:
-        messages.warning(request, '잘못된 접근입니다.')
+        messages.warning(request, '작성자만 수정 할 수 있습니다.')
         return redirect('board')
 
     # 글을 수정사항을 입력하고 제출을 눌렀을 때
@@ -99,7 +99,7 @@ def update(request,board_id):
 def delete(request, board_id):
     board = get_object_or_404(Board, pk=board_id)
     if board.author != request.user:
-        messages.info(request, '잘못된 접근입니다.')
+        messages.info(request, '작성자만 삭제 할 수 있습니다.')
         return redirect('board')
     board.delete()
     messages.info(request, '삭제 완료')
