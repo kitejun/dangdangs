@@ -44,6 +44,7 @@
                 <h2><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h2>
                 {{ post.created_at|date:'N d, Y' }}
           -->
+          <td>{{ post.author }}</td>
           <td>{{ post.pub_date }}</td>
           <td>{{ post.like }}</td>
           <td>{{ post.hits }} </td>
@@ -93,7 +94,7 @@
       <table>
         <tr>
           <td>
-            <input type="text" name="search_word" value="f" required id="id_search_word">
+            <input type="text" name="search_word" required id="id_search_word">
             <input type="submit" value="검색하기">
           </td>
         </tr>

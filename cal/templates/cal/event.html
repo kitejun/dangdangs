@@ -53,6 +53,25 @@
 
     }
   }
+
+  @media screen and (max-width: 865px){
+    #event-container{
+      background-image: none;
+      padding: 2%;
+      display: flex;
+      flex-direction: column;
+      padding-top: 0%;
+    }
+    #event-content{
+      padding-left: 13%;
+      padding-top: 0px;
+    }
+    #event-sidebar{
+      padding-left: 0%;
+      padding-right: 65%;
+      width: 100%;
+    }
+  }
 </style>
 
 <body>
@@ -64,8 +83,7 @@
   </div>
   <div id="event-sidebar">
               <!--버튼 변경(양소)-->
-              <div class="clearfix">
-                <a class="btn btn-light left" href="{% url 'cal:calendar' %}"> Calendar </a>
+              <div class="clearfix"style="padding-left:70px; margin-top:20px; margin-bottom: 0;">
                 <p  style="color: rgb(125, 105, 92);   font-size: 20px;">캘린더에 일정을 추가하세요!</p>
               </div>
             <!--<div class="clearfix">  <a class="btn btn-info left" href="{% url 'cal:calendar' %}"> Calendar </a> </div>-->
@@ -90,7 +108,7 @@
           {{ form }}
         <br><tr><td colspan="2"><br>
           </div>
-          <button type="submit" class="btn btn-light right"> Submit </button></td></tr>
+          <button type="submit" class="btn btn-light right"> 제출하기 </button></td></tr>
         </table>
       </form>
       </div>
