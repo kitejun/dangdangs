@@ -76,10 +76,10 @@
                 <br>
                 <div class="clearfix" >
                     {% if user == details.author %}
-                    <a class="btn btn-light " href="{% url 'delete' details.id %}" style="float:right;"> Delete </a>
-                    <a class="btn btn-light " href="{% url 'update' details.id %}"style="float:right;"> Edit </a>
+                    <a class="btn btn-light " href="{% url 'delete' details.id %}" style="float:right;"> 삭제 </a>
+                    <a class="btn btn-light " href="{% url 'update' details.id %}"style="float:right;"> 수정 </a>
                     {% endif %}
-                    <a class="btn btn-light " href="{%url 'board'%}"style="float:right;">게시판으로</a>
+                    <a class="btn btn-light " href="{%url 'board'%}"style="float:right;">목록</a>
                 </div>
                 <br>
                 <br>
@@ -94,8 +94,8 @@
             <br><br>
             <form action="{% url 'comment_write' details.id%}" method="POST">
                 {% csrf_token %}
-                <input type="text" name="content" class="form-control" placeholder="댓글을 입력해주세요." style="float:right;">
-                <br>
+                <input type="text" name="content" class="form-control" placeholder="댓글을 입력해주세요.">
+    
                 <input type="submit" value="확인" style="float:right;">
             </form>
             <br> <br>
@@ -109,7 +109,7 @@
             </div>
            <hr> 
             {% empty %}
-            <p>No comments here yet</p>
+            <p>댓글이 없습니다.</p>
             
             {% endfor %}
         
