@@ -13,8 +13,7 @@
       <thead class="thead-light">
         <tr>
           <th style="background-color: #D0C3B4;" width="10%">번호</th>
-          <th style="background-color: #D0C3B4;" width="25%">제목</th>
-          <th style="background-color: #D0C3B4;" width="15%">작성자</th>
+          <th style="background-color: #D0C3B4;" width="40%">제목</th>
           <th style="background-color: #D0C3B4;" width="30%">등록일</th>
           <th style="background-color: #D0C3B4;" width="10%">좋아요</th>
           <th style="background-color: #D0C3B4;" width="10%">조회수</th>
@@ -44,7 +43,6 @@
                 <h2><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h2>
                 {{ post.created_at|date:'N d, Y' }}
           -->
-          <td>Null</td>
           <td>{{ post.pub_date }}</td>
           <td>{{ post.like }}</td>
           <td>{{ post.hits }} </td>
