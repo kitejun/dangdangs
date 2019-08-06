@@ -3,11 +3,7 @@
 
 {% block content %}
 
-{% if error %}
-{{ error }}
-<br>
-<br>
-{% endif %}
+
 
 <style>
    .btn {
@@ -37,6 +33,12 @@
         
         <h1 class="h3 mb-3 font-weight-normal">Login</h1>
         <p>댕댕쓰의 다양한 기능을 누려보세요!</p></div>
+        {% if error %}
+        {{ error }}
+        
+<br>
+<br>
+{% endif %}
       
     <form method="POST" action="{% url 'login'%}" class="form-signin">
         {% csrf_token %}
