@@ -13,7 +13,7 @@
 
         .like-button::before {
             font-size: 3em;
-            color: #000;
+            color: rgb(211, 194, 173);
             content: '♥';
             position: absolute;
             left: 50%;
@@ -24,7 +24,7 @@
 
         .like-button::after {
             font-size: 3em;
-            color: #ff3252;
+            color: #F15F5F;
             content: '♥';
             position: absolute;
             left: 50%;
@@ -40,7 +40,13 @@
             -webkit-transform: translate(-50%, -50%) scale(1.1);
             transform: translate(-50%, -50%) scale(1.1);
         }
-
+         .form-control:focus{
+            border-color: #E6DFD5;
+            color: #495057;
+            background-color: #fff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem #E6DFD5;
+}       
 
 </style>
 
@@ -52,54 +58,68 @@
 
     <div class="container">
 
-        <div class="card" style="width: 75rem;">
+        <div class="card" style="width: 70rem;">
 
             <div class="card-body" style="border:3px solid #D0C3B4; ">
-
-                <h5 class="card-title"> <i class="material-icons"><a href="board.html"></a>{{details.title}}</h5>
-                <p>{{ details.pub_date }}</p>
-
+                <h3 class="card-title" style="float:left;"> {{details.title}}</h3>
+                
+                <small style="float:right;">{{details.pub_date}}</small>
                 <!-- 조회수 증가 -->
                 {{details.update_counter}}
-                조회수: {{ details.hits }}
+                <br><br>
                 
-                <p class="card-text">{{details.context}}</p>
-                <img src="{{ details.image.url }}" alt="댕댕이">
-                <br>
+                <p style="float:left;">{{details.context}}</p>
+                <br><br><br>
+                <img src="{{ details.image.url }}" alt="댕댕이" style= " width:350px; height:auto;">
+                <br><br>
                 <hr style="color:#D7CEBF">
+                <br>
                 <!--하트 버튼-->
-                <button class="like-button"></button>
+                &nbsp;<button class="like-button"></button> <!-- 하트 눌러진 총 갯수 보이게 하면 어떨까염-->
 
-                
-                
-                
-                <div class="clearfix">
-                    <a class="btn btn-light right" href="{% url 'delete' details.pk %}"> Delete </a>
-                    <a class="btn btn-light right" href="{% url 'update' details.pk %}"> Edit </a>
-                    <a class="btn btn-light right" href="{%url 'board'%}">게시판으로</a>
+               
+                <p style="float:right;">작성자 {{details.author}} &nbsp; 조회수 {{details.hits}}</p>
+                <br>
 
+                <div class="clearfix" >
+                    {% if user == details.author %}
+                    <a class="btn btn-light " href="{% url 'delete' details.id %}" style="float:right;"> 삭제 </a>
+                    <a class="btn btn-light " href="{% url 'update' details.id %}"style="float:right;"> 수정 </a>
+                    {% endif %}
+                    <a class="btn btn-light " href="{%url 'board'%}"style="float:right;">목록</a>
                 </div>
+                <br>
+                <br>
+                
+               
+
             </div>
 
+            
+       </div>
 
-
-            <hr>
+            <br><br>
             <form action="{% url 'comment_write' details.id%}" method="POST">
                 {% csrf_token %}
-                <input type="text" name="content" placeholder="댓글을 입력해주세요.">
-                <input type="submit" value="확인">
+                <input type="text" name="content" class="form-control" placeholder="댓글을 입력해주세요.">
+    
+                <input type="submit" value="확인" style="float:right;">
             </form>
-            <hr>
-            {% for comment in details.comments.all %}
+            <br> <br>
+            
+            
             <div>
-                <p>{{ comment.comment_date }}</p>
-                <p>{{ comment.comment_body }}</p>
+                {% for comment in details.comments.all %}
+                <p style="float:left;">  {{ comment.comment_body }}</p>
+                <small style="float:right;">{{ comment.author }}&nbsp;&nbsp;{{ comment.comment_date }}</small>
+                <br>
+                {% empty %}
+                <p>댓글이 없습니다.</p>
+                
+                {% endfor %} 
             </div>
-            <hr>
-            {% empty %}
-            <p>No comments here yet</p>
-            {% endfor %}
-        </div>
+           <hr> 
+        
     </div>
     <script> document.querySelector('.like-button').addEventListener('click', (e) => { e.currentTarget.classList.toggle('liked'); });
         </script>

@@ -1,17 +1,23 @@
 {%extends 'base.html'%}
 
 {% block content %}
-    <div class="container">
-        Title : <h1>{{ plan.title }}</h1>
+<style>
+.detail-container{
+    border: 1px solid #916529; 
+    border-radius: 20px; 
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top:30px;
+    padding:20px;
+}
+</style>
+    <div class="detail-container">
+        <h2>제목 : {{ plan.title }}</h2>
         <p>{{ plan.start_date }}</p>
-        Memo : <p>{{ plan.context }}</p>
-        
-    </div>
-    <div class="clearfix">
-        <a class="btn btn-info left" href="{% url 'cal:calendar' %}"> Calendar </a>
-    </div>
-    <div class="clearfix">
-        <a class="btn btn-info right" href="{% url 'cal:event_delete' plan.pk %}"> Delete </a>
-        <a class="btn btn-info right" href="{% url 'cal:event_edit' plan.pk %}"> Edit </a>
-    </div>
+        <p>카테고리 : {{plan.todo}}</p>
+        <p>메모 : {{ plan.context }}</p>
+            <a class="btn btn-light right " href="{% url 'cal:event_edit' plan.pk %}"> 수정 </a>
+            <a class="btn btn-light right" href="{% url 'cal:event_delete' plan.pk %}"> 삭제 </a>
+</div>
 {% endblock %}
