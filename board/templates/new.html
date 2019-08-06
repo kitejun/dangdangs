@@ -7,21 +7,23 @@
 
         <form action="{% url 'new' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-
-            <h4>제목: </h4>
-	        <input type="text" name="title">
-	        <br>
-	        <br>
-	        <h4>본문: </h4>
-	        <textarea cols=40 rows=10 name="context"></textarea>
-	        <br>
             <br>
-            <h4>이미지: </h4>
-            <input id="id_image" type="file" class="" name="image">
-            <br>
-            <br>
+            <div class="form-group">
+                <label for="title" style="float:left" >title</label>
+                <input type="text" class="form-control" name="title" >
+                <br>
+              <div class="form-group">
+                <label for="text" style="float:left">text</label>
+                <textarea  rows="5" name="context" class="form-control"></textarea>
+              </div>
+              <br>
+              <div class="form-group">              
+                <input id="id_image" type="file" class="" name="image">
+              </div>
+              
             <input class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" type="submit" value="등록" style="background-color: #D0C3B4">
         </form>
     </div>
+    
 </center>
 {% endblock %}
