@@ -23,10 +23,6 @@
   
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<<<<<<< HEAD
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-=======
->>>>>>> 9467b00831726118fc7a6fdf2359e4c5f3f004cb
   <style>
     .btn {
       background-color: #EAE5DE;
@@ -136,7 +132,6 @@
 <body>
    <article class="content" style="margin: auto; margin-top:20px;">
     <header class="header">
-<<<<<<< HEAD
         <nav class="sub-navbar">
           <div class="link1">
     
@@ -181,55 +176,6 @@
                 </li>
               </ul>
             </div>
-=======
-      <nav class="sub-navbar">
-        <div class="link1">
-  
-           <!--캘린더 화면에서 -->
-           {% if user.is_authenticated %} <!-- 로그인 되어있는 상태에서-->
-           <p id="username">{{user.username}}님 환영합니다&nbsp;</p>
-           <a href="javascript:{document.getElementById('logout').submit()}" >로그아웃</a>
-           <form id="logout" method="POST" action="{% url 'logout' %}">
-               {% csrf_token %} <input type="hidden" />
-             </form>
-           <a href="{% url 'mypage' %}" >마이페이지 </a>  
-         {% else %} 
-           <a href="{% url 'login' %}" >로그인 </a>  
-           <a href="{% url 'signup' %}" >회원가입 </a>  
-          {% endif %}
-        </div>
-        <a href="" class="news" style="color:#FFC300;">▶ 오늘의 뉴스! 잔디밭에서 진드기에 물렸다면?</a>
-      </nav>
-      
-    </header>
-    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-        <div class="container" ">
-          <a class="navbar-brand js-scroll-trigger" href="#page-top"><a href="{% url 'home' %}">
-              <img class="animated infinite bounce delay-2s" src="/static/img/title2.png" width="170">
-          </a></a>
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav" style="font-size:25px; padding-top:20px;">
-              <li class="nav-item">
-                {% if user.is_authenticated %}
-                <a class="nav-link js-scroll-trigger" href="{% url 'cal:calendar' %}" style="color: #916E59;">내 캘린더</a>
-                {% else %}
-                <a class="nav-link js-scroll-trigger" href="{% url 'login' %}" style="color: #916E59;">내 캘린더</a>
-                {% endif %}
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#" style="color: #916E59;">근처 동물병원 </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'board' %}" style="color: #916E59;">소통방</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'info' %}" style="color: #916E59;">댕댕사전</a>
-              </li>
-            </ul>
->>>>>>> 9467b00831726118fc7a6fdf2359e4c5f3f004cb
           </div>
         </div>
       </nav>
@@ -280,10 +226,6 @@
 </script>
 <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<<<<<<< HEAD
-
-=======
->>>>>>> 9467b00831726118fc7a6fdf2359e4c5f3f004cb
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
@@ -293,10 +235,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
-<<<<<<< HEAD
-  
-=======
->>>>>>> 9467b00831726118fc7a6fdf2359e4c5f3f004cb
 
 </body>
 </html>
