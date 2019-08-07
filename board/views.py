@@ -13,6 +13,9 @@ from django.db.models import Q
 # 메세지 라이브러리
 from django.contrib import messages
 
+from django.conf import settings
+from django.shortcuts import render
+
 def home(request):
     return render(request, 'home.html')
 
@@ -41,8 +44,11 @@ def detail(request, board_id):
     details = get_object_or_404(Board, pk=board_id)
     return render(request, 'detail.html', {'details': details})
 
-
+# 글쓰기
 def new(request):
+    # 로그인 안 되어있을 때 로그인 페이지로
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     # 1. 입력된 내용을 처리하는 기능 -> POST
     if request.method == 'POST':
         form = BoardPost(request.POST, request.FILES)

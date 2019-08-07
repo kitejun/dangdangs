@@ -83,9 +83,8 @@
 
                 <div class="clearfix">
                     <a class="btn btn-light right" href="{%url 'board'%}">목록</a>
+
                     {% if user == details.author %}
-                
-               
                     <a class="btn btn-light right" href="{% url 'delete' details.id %}"> 삭제 </a>
                     <a class="btn btn-light right" href="{% url 'update' details.id %}"> 수정 </a>
                     {% endif %}
