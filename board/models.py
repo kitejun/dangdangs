@@ -10,7 +10,7 @@ class Board(models.Model):
     pub_date=models.DateTimeField('date published')
     context=models.TextField()
     hits=models.PositiveIntegerField(default=0)
-    #like=models.PositiveIntegerField(default=0)
+    like=models.PositiveIntegerField(default=0)
     class Meta:
         ordering=['-id']
 
@@ -29,6 +29,11 @@ class Board(models.Model):
         self.hits=self.hits+1
         self.save()
 
+    @property
+    def update_counter(self):
+        self.like=self.like+1
+        self.save()
+
 class Comment(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     board = models.ForeignKey(Board, on_delete=models.CASCADE, null=True, related_name='comments')   
@@ -37,3 +42,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.author, self.comment_body
+    
+    class Meta:
+        ordering=['-id']

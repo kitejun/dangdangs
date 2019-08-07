@@ -111,8 +111,9 @@
                     </small></p>
                     <br>
                     <h5 style="text-align: left;"> {{ comment.comment_body }}</h5>
-                    {% if user == details.author %}
-                    <a href="{% url 'delete' details.id %}"> 삭제 </a>
+                    
+                    {% if user == comment.author %}
+                    <a href="{% url 'comment_delete' comment.id %}"> 삭제 </a>
                     {% endif %}
                 <hr>
         

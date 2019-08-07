@@ -139,3 +139,26 @@ def comment_write(request, board_id):
         author_user=request.user
         Comment.objects.create(board=board, comment_body=content, author=author_user)
         return redirect('/board/detail/' + str(board.id))
+
+# 댓글 삭제하기
+def comment_delete(request,comment_id):
+    
+    comment = get_object_or_404(Comment, pk=comment_id)
+    comment.delete()
+    return redirect('/board/detail/' + 'str(comment.id)')
+
+'''
+    def like(request, like_pk):
+        # 로그인 안 되어있을 때 로그인 페이지로
+        if not request.user.is_authenticated:
+            return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+        
+        tool = get_object_or_404(Board, pk=like_pk)
+        # 요청한 사용자
+        conn_user = request.user
+        conn_profile = Profile.objects.get(user=conn_user)
+        content = request.POST.get('content')
+        author_user=request.user
+        Comment.objects.create(board=board, comment_body=content, author=author_user)
+        return redirect('/board/detail/' + str(board.id))
+    '''
