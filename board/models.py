@@ -10,7 +10,10 @@ class Board(models.Model):
     pub_date=models.DateTimeField('date published')
     context=models.TextField()
     hits=models.PositiveIntegerField(default=0)
-    
+    #like=models.PositiveIntegerField(default=0)
+    class Meta:
+        ordering=['-id']
+
     def __str__(self):
         return self.title
 

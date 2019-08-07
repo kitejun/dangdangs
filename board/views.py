@@ -130,8 +130,9 @@ class SearchFormView(FormView):
 
 
 def comment_write(request, board_id):
-    if User is not None:
-        return render(request, 'accounts/login.html')
+    # 로그인 안 되어있을 때 로그인 페이지로
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     if request.method == 'POST':
         board = get_object_or_404(Board, pk=board_id)
         content = request.POST.get('content')
