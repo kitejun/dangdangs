@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.contrib.auth.models import User
+from django.contrib import auth
 # 파일 저장 import문
 from django.core.files.storage import FileSystemStorage
 
@@ -129,6 +130,8 @@ class SearchFormView(FormView):
 
 
 def comment_write(request, board_id):
+    if User is not None:
+        return render(request, 'accounts/login.html')
     if request.method == 'POST':
         board = get_object_or_404(Board, pk=board_id)
         content = request.POST.get('content')
