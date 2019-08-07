@@ -11,6 +11,7 @@ class Board(models.Model):
     context=models.TextField()
     hits=models.PositiveIntegerField(default=0)
     like=models.PositiveIntegerField(default=0)
+    
     class Meta:
         ordering=['-id']
 

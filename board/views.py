@@ -145,7 +145,9 @@ def comment_delete(request,comment_id):
     
     comment = get_object_or_404(Comment, pk=comment_id)
     comment.delete()
-    return redirect('/board/detail/' + 'str(comment.id)')
+    # return redirect('/board/detail/' + 'str(comment.id)')
+    # return redirect('/board/detail/', comment_id=comment.board.id)
+    return redirect('/board')
 
 '''
     def like(request, like_pk):
