@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.contrib.auth.models import User
+from django.contrib import auth
 # 파일 저장 import문
 from django.core.files.storage import FileSystemStorage
 
@@ -12,6 +13,9 @@ from django.db.models import Q
 
 # 메세지 라이브러리
 from django.contrib import messages
+
+from django.conf import settings
+from django.shortcuts import render
 
 def home(request):
     return render(request, 'home.html')
@@ -41,8 +45,11 @@ def detail(request, board_id):
     details = get_object_or_404(Board, pk=board_id)
     return render(request, 'detail.html', {'details': details})
 
-
+# 글쓰기
 def new(request):
+    # 로그인 안 되어있을 때 로그인 페이지로
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     # 1. 입력된 내용을 처리하는 기능 -> POST
     if request.method == 'POST':
         form = BoardPost(request.POST, request.FILES)
@@ -64,10 +71,6 @@ def new(request):
 # 수정하기
 def update(request,board_id):
     post=Board.objects.get(id=board_id)
-
-    if post.author != request.user:
-        messages.warning(request, '작성자만 수정 할 수 있습니다.')
-        return redirect('board')
 
     # 글을 수정사항을 입력하고 제출을 눌렀을 때
     if request.method == "POST":
@@ -98,9 +101,6 @@ def update(request,board_id):
 # 삭제하기
 def delete(request, board_id):
     board = get_object_or_404(Board, pk=board_id)
-    if board.author != request.user:
-        messages.info(request, '작성자만 삭제 할 수 있습니다.')
-        return redirect('board')
     board.delete()
     messages.info(request, '삭제 완료')
     return redirect('board')
@@ -130,6 +130,8 @@ class SearchFormView(FormView):
 
 
 def comment_write(request, board_id):
+    if User is not None:
+        return render(request, 'accounts/login.html')
     if request.method == 'POST':
         board = get_object_or_404(Board, pk=board_id)
         content = request.POST.get('content')
