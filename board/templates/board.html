@@ -46,7 +46,7 @@
           -->
           <td>{{ post.author }}</td>
           <td>{{ post.pub_date }}</td>
-          <td>{{ post.like }}</td>
+          <td>{{ post.comments.count }}</td>
           <td>{{ post.hits }} </td>
         </tr>
         {% endfor %}
@@ -62,8 +62,8 @@
     <!-- 글쓰기 -->
     <a class="btn btn-outline-light" href="{% url 'new' %}" title="{{board.body}}" style="float: right;">글쓰기</a>
 
-    <br>
 
+    <br>
     <!--pagenation-->
     <div>
       {% if board_list.has_other_pages %} 
@@ -104,7 +104,7 @@
         <tr>
           <td>
             <input type="text" name="search_word" required id="id_search_word">
-            <input type="submit" value="검색하기">
+            <input class="btn btn-outline-light" type="submit" value="검색하기">
           </td>
         </tr>
       </table>

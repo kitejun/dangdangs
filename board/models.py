@@ -10,7 +10,11 @@ class Board(models.Model):
     pub_date=models.DateTimeField('date published')
     context=models.TextField()
     hits=models.PositiveIntegerField(default=0)
+    like=models.PositiveIntegerField(default=0)
     
+    class Meta:
+        ordering=['-id']
+
     def __str__(self):
         return self.title
 
@@ -26,8 +30,19 @@ class Board(models.Model):
         self.hits=self.hits+1
         self.save()
 
+    @property
+    def update_counter(self):
+        self.like=self.like+1
+        self.save()
+
 class Comment(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     board = models.ForeignKey(Board, on_delete=models.CASCADE, null=True, related_name='comments')   
     comment_date = models.DateTimeField(auto_now_add=True)
     comment_body = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.author, self.comment_body
+    
+    class Meta:
+        ordering=['-id']
