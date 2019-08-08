@@ -22,19 +22,31 @@ def board(request):
 
     board_list=Board.objects.all()
     paginator = Paginator(board_list,3)
-    page = request.GET.get('page')
+    total_len=len(board_list)
+
+    page = request.GET.get('page',1)
+    posts = paginator.get_page(page)
+    
     try:
-        posts = paginator.get_page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        posts = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        posts = paginator.page(paginator.num_pages)
+        lines = paginator.page(page) 
+    except PageNotAnInteger: 
+        lines = paginator.page(1) 
+    except EmptyPage: 
+        lines = paginator.page(paginator.num_pages) 
+        
+    index = lines.number -1 
+    max_index = len(paginator.page_range) 
+    start_index = index -2 if index >= 2 else 0 
+    if index < 2 : 
+        end_index = 5-start_index
+    else : 
+        end_index = index+3 if index <= max_index - 3 else max_index 
+    page_range = list(paginator.page_range[start_index:end_index]) 
+    
+    context = { 'boards':boards,'board_list': board , 'posts':posts, 'page_range':page_range, 'total_len':total_len, 'max_index':max_index-2 } 
+    return render (request,'board.html', context )
+    
 
-
-
-    return render(request,'board.html',{'boards':boards,'posts':posts})
 
 
 def detail(request, board_id):

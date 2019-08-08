@@ -102,23 +102,25 @@
             <form action="{% url 'comment_write' details.id%}" method="POST">
                 {% csrf_token %}
                 <input type="text" name="content" class="form-control" placeholder="댓글을 입력해주세요.">
-    
-                <input type="submit" value="확인" style="float:right;">
+                
+                <input class="btn btn-light" type="submit" value="확인" style="float:right;">
             </form>
             <br> <br>
-            
-            {% for comment in details.comments.all %}
             <div>
+            {% for comment in details.comments.all %}
+     
+                <br>
                 <p style="float:left;">  {{ comment.comment_body }}</p>
-                <small style="float:right;">{{ comment.author }}&nbsp;&nbsp;{{ comment.comment_date }}</small>
-                 
-                
-            </div>
-           <hr> 
+                <small style="float:right;">{{ comment.author }}{{ comment.comment_date }}</small>
+                  
+        
+     
             {% empty %}
-            <p>댓글이 없습니다.</p>
+            
+            <p>댓글이 없어요.. ㅠㅠ</p>
             
             {% endfor %}
+        </div>
         
     </div>
     <script> document.querySelector('.like-button').addEventListener('click', (e) => { e.currentTarget.classList.toggle('liked'); });
