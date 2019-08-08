@@ -73,8 +73,12 @@ WSGI_APPLICATION = 'dangdangs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgresql-clear-25920',
+        'USER': 'ogkhxxsysmpvtf',
+        'PASSWORD': 'c46f801f205273992ca627362b1557c8559b9288dc00658ddfd60bc0d6457b77',
+        'HOST': 'https://dangdangs.herokuapp.com/',
+        'PORT': '5432',
     }
 }
 
