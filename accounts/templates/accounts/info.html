@@ -4,227 +4,231 @@ info.html 입니당
 
 {% block content %}
 
-<style>
-    div{
-        float: left;
-    }
-      
-    .wrapper {
-      width: 420px;
-      height: 500px;
-      background: #d7ccc8;
-      margin: 25px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 5px 5px 5px 5px;
-      box-shadow: 0;
-      transform: scale(0.95);
-      transition: box-shadow 0.5s, transform 0.5s;
-    }
-    .wrapper:hover {
-      transform: scale(1);
-      box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.2);
-    }
-    .wrapper .container {
-      width: 100%;
-      height: 100%;
-    }
-    .wrapper .container .bottom {
-      width: 200%;
-      height: 15%;
-    }
-    .wrapper .container .bottom.clicked {
-      transform: translateX(-50%);
-    }
-    .wrapper .container .bottom h1 {
-      margin: 0;
-      padding: 0;
-    }
-    .wrapper .container .bottom p {
-      margin: 0;
-      padding: 0;
-    }
-    .wrapper .container .bottom .left {
-      height: 100%;
-      width: 50%;
-      background: #efebe9;
-      position: relative;
-      float: left;
-    }
-    .wrapper .container .bottom .left .details {
-      padding: 10px;
-      float: left;
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>댕댕쓰 - 멍멍사전</title>
+   <style>
 
-    }
-    .wrapper .container .bottom .left .buy {
-      float: right;
-      width: calc(30% - 2px);
-      height: 100%;
-      background: #f1f1f1;
-      transition: background 0.5s;
-      border-left: solid thin rgba(0, 0, 0, 0.1);
-    }
-    .wrapper .container .bottom .left .buy i {
-      font-size: 30px;
-      padding: 30px;
-      color: #254053;
-      transition: transform 0.5s;
-    }
-    .wrapper .container .bottom .left .buy:hover {
-      background: #a6cdde;
-    }
-    .wrapper .container .bottom .left .buy:hover i {
-      transform: translateY(5px);
-      color: #00394b;
-    }
-    .wrapper .container .bottom .right {
-      width: 50%;
-      background: #a6cdde;
-      color: white;
-      float: right;
-      height: 200%;
-      overflow: hidden;
-    }
-    .wrapper .container .bottom .right .details {
-      padding: 20px;
-      float: right;
-      width: calc(70% - 40px);
-    }
-    .wrapper .container .bottom .right .done {
-      width: calc(30% - 2px);
-      float: left;
-      transition: transform 0.5s;
-      border-right: solid thin rgba(255, 255, 255, 0.3);
-      height: 50%;
-    }
-    .wrapper .container .bottom .right .done i {
-      font-size: 30px;
-      padding: 30px;
-      color: white;
-    }
-    .wrapper .container .bottom .right .remove {
-      width: calc(30% - 1px);
-      clear: both;
-      border-right: solid thin rgba(255, 255, 255, 0.3);
-      height: 50%;
-      background: #bc3b59;
-      transition: transform 0.5s, background 0.5s;
-    }
-    .wrapper .container .bottom .right .remove:hover {
-      background: #9b2847;
-    }
-    .wrapper .container .bottom .right .remove:hover i {
-      transform: translateY(5px);
-    }
-    .wrapper .container .bottom .right .remove i {
-      transition: transform 0.5s;
-      font-size: 30px;
-      padding: 30px;
-      color: white;
-    }
-    .wrapper .container .bottom .right:hover .remove, .wrapper .container .bottom .right:hover .done {
-      transform: translateY(-100%);
-    }
-    .wrapper .inside {
-      z-index: 9;
-      background: rgb(231, 221, 210);
-      width: 140px;
-      height: 140px;
-      position: absolute;
-      top: -70px;
-      right: -70px;
-      border-radius: 0px 0px 200px 200px;
-      transition: all 0.5s, border-radius 1s, top 1s;
-      overflow: hidden;
-    }
-    .wrapper .inside .icon {
-      position: absolute;
-      right: 85px;
-      top: 85px;
-      color: white;
-      opacity: 1;
-    }
-    .wrapper .inside:hover {
-      width: 100%;
-      right: 0;
-      top: 0;
-      border-radius: 0;
-      height: 80%;
-    }
-    .wrapper .inside:hover .icon {
-      opacity: 0;
-      right: 15px;
-      top: 15px;
-    }
-    .wrapper .inside:hover .contents {
-      opacity: 1;
-      transform: scale(1);
-      transform: translateY(0);
-    }
-    .wrapper .inside .contents {
-      padding: 5%;
-      opacity: 0;
+   div {
+       float: left;
+   }
+  
+.wrapper {
+  width: 420px;
+  height: 500px;
+  background: #d7ccc8;
+  margin: 25px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0;
+  transform: scale(0.95);
+  transition: box-shadow 0.5s, transform 0.5s;
+}
+.wrapper:hover {
+  transform: scale(1);
+  box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.2);
+}
+.wrapper .container {
+  width: 100%;
+  height: 100%;
+}
+.wrapper .container .bottom {
+  width: 200%;
+  height: 15%;
+}
+.wrapper .container .bottom.clicked {
+  transform: translateX(-50%);
+}
+.wrapper .container .bottom h1 {
+  margin: 0;
+  padding: 0;
+}
+.wrapper .container .bottom p {
+  margin: 0;
+  padding: 0;
+}
+.wrapper .container .bottom .left {
+  height: 100%;
+  width: 50%;
+  background: #efebe9;
+  position: relative;
+  float: left;
+}
+.wrapper .container .bottom .left .details {
+  padding: 10px;
+  float: left;
 
-      transform: scale(0.5);
-      transform: translateY(-200%);
-      transition: opacity 0.2s, transform 0.8s;
-    }
-    .wrapper .inside .contents table {
-      text-align: left;
-      width: 100%;
-    }
-    .wrapper .inside .contents h1, .wrapper .inside .contents p, .wrapper .inside .contents table {
-      color: white;
-    }
-    .wrapper .inside .contents p {
-      font-size: 13px;
-    }
-    .top{
-        height: 82.7%;
-    }
+}
+.wrapper .container .bottom .left .buy {
+  float: right;
+  width: calc(30% - 2px);
+  height: 100%;
+  background: #f1f1f1;
+  transition: background 0.5s;
+  border-left: solid thin rgba(0, 0, 0, 0.1);
+}
+.wrapper .container .bottom .left .buy i {
+  font-size: 30px;
+  padding: 30px;
+  color: #254053;
+  transition: transform 0.5s;
+}
+.wrapper .container .bottom .left .buy:hover {
+  background: #a6cdde;
+}
+.wrapper .container .bottom .left .buy:hover i {
+  transform: translateY(5px);
+  color: #00394b;
+}
+.wrapper .container .bottom .right {
+  width: 50%;
+  background: #a6cdde;
+  color: white;
+  float: right;
+  height: 200%;
+  overflow: hidden;
+}
+.wrapper .container .bottom .right .details {
+  padding: 20px;
+  float: right;
+  width: calc(70% - 40px);
+}
+.wrapper .container .bottom .right .done {
+  width: calc(30% - 2px);
+  float: left;
+  transition: transform 0.5s;
+  border-right: solid thin rgba(255, 255, 255, 0.3);
+  height: 50%;
+}
+.wrapper .container .bottom .right .done i {
+  font-size: 30px;
+  padding: 30px;
+  color: white;
+}
+.wrapper .container .bottom .right .remove {
+  width: calc(30% - 1px);
+  clear: both;
+  border-right: solid thin rgba(255, 255, 255, 0.3);
+  height: 50%;
+  background: #bc3b59;
+  transition: transform 0.5s, background 0.5s;
+}
+.wrapper .container .bottom .right .remove:hover {
+  background: #9b2847;
+}
+.wrapper .container .bottom .right .remove:hover i {
+  transform: translateY(5px);
+}
+.wrapper .container .bottom .right .remove i {
+  transition: transform 0.5s;
+  font-size: 30px;
+  padding: 30px;
+  color: white;
+}
+.wrapper .container .bottom .right:hover .remove, .wrapper .container .bottom .right:hover .done {
+  transform: translateY(-100%);
+}
+.wrapper .inside {
+  z-index: 9;
+  background: rgb(231, 221, 210);
+  width: 140px;
+  height: 140px;
+  position: absolute;
+  top: -70px;
+  right: -70px;
+  border-radius: 0px 0px 200px 200px;
+  transition: all 0.5s, border-radius 1s, top 1s;
+  overflow: hidden;
+}
+.wrapper .inside .icon {
+  position: absolute;
+  right: 85px;
+  top: 85px;
+  color: white;
+  opacity: 1;
+}
+.wrapper .inside:hover {
+  width: 100%;
+  right: 0;
+  top: 0;
+  border-radius: 0;
+  height: 80%;
+}
+.wrapper .inside:hover .icon {
+  opacity: 0;
+  right: 15px;
+  top: 15px;
+}
+.wrapper .inside:hover .contents {
+  opacity: 1;
+  transform: scale(1);
+  transform: translateY(0);
+}
+.wrapper .inside .contents {
+  padding: 5%;
+  opacity: 0;
 
-    .wrapper>.container{
-        background-color: white;
-        border: 4px solid rgb(231, 221, 210);
-    }
+  transform: scale(0.5);
+  transform: translateY(-200%);
+  transition: opacity 0.2s, transform 0.8s;
+}
+.wrapper .inside .contents table {
+  text-align: left;
+  width: 100%;
+}
+.wrapper .inside .contents h1, .wrapper .inside .contents p, .wrapper .inside .contents table {
+  color: white;
+}
+.wrapper .inside .contents p {
+  font-size: 13px;
+}
+.top{
+    height: 82.7%;
+}
 
-    #sources{
-        color: rgb(164, 153, 140);
-        text-align: center;
-    }
-    #sources a{
-      color: rgb(164, 153, 140);
-      text-decoration-line: none;
-    }
+.wrapper>.container{
+    background-color: white;
+    border: 4px solid rgb(231, 221, 210);
+}
+
+#sources{
+    color: rgb(164, 153, 140);
+    text-align: center;
+}
+#sources a{
+  color: rgb(164, 153, 140);
+  text-decoration-line: none;
+}
 
 
-    .contents{
-        line-height: 20%;
-        overscroll-behavior: contain;
-    }
+.contents{
+    line-height: 20%;
+    overscroll-behavior: contain;
+}
 
-    .contents h5{
-        line-height: 150%;
-        text-indent: 15px;
-    }
+.contents h5{
+    line-height: 150%;
+    text-indent: 15px;
+}
 
-    @media screen and (min-width: 865px)  {
-      center{
-        width: 100%;
-        padding-right: 70px;
-        padding-left: 275px;
-        margin-right: auto;
-        margin-left: auto;
-        }  
+@media screen and (min-width: 865px)  {
+  center{
+    width: 100%;
+    padding-right: 70px;
+    padding-left: 275px;
+    margin-right: auto;
+    margin-left: auto;
+    }  
 
-    }
+}
 
-  </style> 
-
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+   </style> 
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+<body>
 
 <hr>
 <center>
