@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .signup {
+        margin-left: 10%;
+        margin-right: 10%;
+        text-align: center;
+        padding-left: 25%;
+        padding-right: 25%;
+    }
+ 
+ 
+    .form-control:focus {
+        border-color: #E6DFD5;
+        color: #495057;
+        background-color: #fff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem #E6DFD5;
+    }
+
+    .h3 mb-3 font-weight-normal {
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+</style>
+<!--<div class="signup">-->
+
+
+<div class="login-box">
+    <div class="text-center mb-4">
+        <div class="login-img">
+            <img src="/static/img/dangdang.png">
+        </div>
+        <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+        <p>댕댕쓰의 새 가족이 되어주세요!</p>
+
+    </div>
+    <form method="POST" action="{% url 'signup'%}">
+
+        {% csrf_token %}
+        <div class="form-label-group">
+                {% if messages %}
+                <ul class="messages">
+                    <br><br>
+               {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+               {% endfor %}
+               </ul>
+               {% endif %}
+
+            아이디
+            <br>
+            <input name="username" class="form-control" type="text" value="" required autofocus>
+        </div><br>
+        <div class="form-label-group">
+            비밀번호
+            <br>
+            <input name="password1" class="form-control" type="password" value="" required>
+        </div><br>
+
+        
+
+        <div class="form-label-group">
+            비밀번호 재확인
+            <br>
+            <input name="password2" class="form-control" type="password" value="" required>
+        </div><br>
+
+        
+        가입한 가족이 있나요?
+        <input class="hasParent" type="checkbox" name = "groupjudge" value="yes" checked="checked" >
+        <br><br>        
+
+
+        <div class="form-label-group group-id">
+            <br>
+            마이페이지에서 가족번호(ID)를 확인해주세요.
+            <br>
+            가족 번호(ID)
+            <!--가족아이디를 직접입력하게 우선은 만들었어요-->
+            <br>
+            <input name="groupid" class="form-control group-id" type="password" value="" >
+        </div><br>
+
+        <br>
+        <button class="btn btn-lg btn-light btn-block" type="submit">회원가입</button>
+    </form>
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+       $('.hasParent').change(function(){
+           var input = $('.group-id') 
+           $(this).prop('checked') ? input.css({'display': 'block'}) : input.css({'display': 'none'})
+       });
+    })
+    </script>
+
+{% endblock %}
