@@ -1,0 +1,118 @@
+{%extends 'base.html'%}
+
+{% block content %}
+<style>
+    #event-container {
+    width: 1500px;
+    margin: 20px auto;
+    padding: 20px;
+    /*margin-left:10%;*/
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    background : url(/static/img/memo2.png) no-repeat center top/cover;
+}
+ 
+  #event-content {
+    width: 440px;
+    padding: 20px;
+    position: relative;
+    right: 100px;
+    margin-top: 100px;
+    margin-left: 70px;
+    float: left;
+  }
+  #event-sidebar {
+    width: 400px;
+    position: relative;
+    left: 60px;
+    margin-bottom: 80px;
+    margin-right: 250px;
+    float: right;
+
+    
+  }
+  #event-footer {
+        clear: both;
+        padding: 20px;
+        border: 1px solid #bcbcbc;
+      }
+  @media ( max-width: 480px ) {
+    #event-container {
+      width: auto;
+     
+    }
+    #event-content {
+      float: none;
+      width: auto;
+ 
+    }
+    #event-sidebar {
+      float: none;
+      width: auto;
+
+    }
+  }
+
+  @media screen and (max-width: 865px){
+    #event-container{
+      background-image: none;
+      padding: 2%;
+      display: flex;
+      flex-direction: column;
+      padding-top: 0%;
+    }
+    #event-content{
+      padding-left: 13%;
+      padding-top: 0px;
+    }
+    #event-sidebar{
+      padding-left: 0%;
+      padding-right: 65%;
+      width: 100%;
+    }
+  }
+</style>
+
+<body>
+<div id="event-container">
+  <div id="event-header">
+  </div>
+  <div id="event-content">
+    <img src="/static/img/dog3.png" height="300">
+  </div>
+  <div id="event-sidebar">
+              <!--버튼 변경(양소)-->
+              <div class="clearfix"style="padding-left:70px; margin-top:20px; margin-bottom: 0;">
+                <p  style="color: rgb(125, 105, 92);   font-size: 20px;">캘린더에 일정을 추가하세요!</p>
+              </div>
+            <!--<div class="clearfix">  <a class="btn btn-info left" href="{% url 'cal:calendar' %}"> Calendar </a> </div>-->
+      {% if form.errors %}
+          {% for field in form %}
+              {% for error in field.errors %}
+                  <div class="alert alert-danger">
+                      {{ field.label }} <strong>{{ error|escape }}</strong>
+                  </div>
+              {% endfor %}
+          {% endfor %}
+          {% for error in form.non_field_errors %}
+              <div class="alert alert-danger">
+                  {{ field.label }} <strong>{{ error|escape }}</strong>
+              </div>
+          {% endfor %}
+      {% endif %}
+
+      <form method="POST">
+        {% csrf_token %}
+        <table class="form form-table">
+          {{ form }}
+        <br><tr><td colspan="2"><br>
+          </div>
+          <button type="submit" class="btn btn-light right"> 제출하기 </button></td></tr>
+        </table>
+      </form>
+      </div>
+</div>
+</body>
+</html>
+{%endblock%}

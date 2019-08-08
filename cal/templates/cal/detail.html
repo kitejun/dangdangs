@@ -1,0 +1,66 @@
+{%extends 'base.html'%}
+
+{% block content %}
+<style>
+.container1{
+     border: 1px solid #916529; 
+    border-radius: 20px; 
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top:30px;
+    padding:20px;
+}
+
+.container1 form{
+    width: 410%;
+    padding: 20px 100px 0px 100px;
+    position: relative;
+    left: 20px;
+}
+@media(max-width: 800px)
+{
+    .container1{
+        width: 80%;
+        position: relative;
+        right:34px;
+        bottom:30px;  
+    }
+    .container1 form{
+    padding: 0px;
+    width: 230px;
+    position: relative;
+    right: 10px;
+    padding-right: 10px;
+    }
+    .container1 div{
+        position: relative;
+        right: 20px;
+    }
+}
+</style>
+<div class="container1">
+        <div class="form-group col-3">
+        <form action="{% url 'cal:event_new' %}" method="POST">
+            {% csrf_token %}
+            <table class = "table">
+                <tr>
+                    <td>제목</td>
+                    <td><h2>{{ plan.title }}&nbsp;</h2></td>
+                </tr>
+                <tr>
+                    <td>날짜</td>
+                    <td>{{ plan.date }}&nbsp;&nbsp;&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>내용</td>
+                    <td>{{plan.context}}&nbsp;&nbsp;&nbsp;</td>
+                </tr>
+            </table>
+            <br>
+            <a class="btn btn-light right " href="{% url 'cal:event_edit' plan.pk %}"> 수정 </a>
+            <a class="btn btn-light right" href="{% url 'cal:event_delete' plan.pk %}"> 삭제 </a>
+        </form>
+    </div>
+    </div>
+{% endblock %}
