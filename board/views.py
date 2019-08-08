@@ -24,7 +24,7 @@ def home(request):
 def board(request):
     boards=Board.objects
     board_list=Board.objects.all()
-    paginator = Paginator(board_list,3)
+    paginator = Paginator(board_list,5)
     total_len=len(board_list)
 
     page = request.GET.get('page',1)

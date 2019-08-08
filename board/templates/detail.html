@@ -59,7 +59,7 @@
     <div class="container">
 
         <div class="card">
-
+             
             <div class="card-body" style="border:3px solid #D0C3B4; ">
               
                 <h2 class="card-title" style="float:left;">&nbsp;&nbsp;{{details.title}}</h2>
@@ -67,14 +67,18 @@
                 <small style="float:right;">{{details.pub_date}}</small>
                 <br>
                 <hr>
-                <!-- 조회수 증가 -->
-                {{details.update_counter}}
-
+                
                 <br><br>
                 <p style="float:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.context}}</p>
                 <br><br><br>
-                <img src="{{ details.image.url }}" alt="댕댕이" style= " width:70%; height:auto;">
-                <br><br>
+                <img src="{{ details.image.url }}" alt="" style= " width:70%; height:auto;">
+                <br>
+
+                
+                <!-- 조회수 증가 -->
+                {{details.update_counter_hit}}
+                
+
                 <hr>
                 <br>
                 <!--하트 버튼-->
