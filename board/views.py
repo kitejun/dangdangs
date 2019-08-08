@@ -23,6 +23,8 @@ def home(request):
 # Create your views here.
 def board(request):
     boards=Board.objects
+    # 댓글 수
+    counts=Board.objects.count()
     board_list=Board.objects.all()
     paginator = Paginator(board_list,5)
     total_len=len(board_list)
@@ -46,7 +48,7 @@ def board(request):
         end_index = index+3 if index <= max_index - 3 else max_index 
     page_range = list(paginator.page_range[start_index:end_index]) 
     
-    context = { 'boards':boards,'board_list': lines , 'posts':posts, 'page_range':page_range, 'total_len':total_len, 'max_index':max_index-2 } 
+    context = { 'boards':boards,'board_list': lines ,'counts':counts, 'posts':posts, 'page_range':page_range, 'total_len':total_len, 'max_index':max_index-2 } 
     return render (request,'board.html', context )
     
 
