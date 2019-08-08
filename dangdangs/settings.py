@@ -73,9 +73,21 @@ WSGI_APPLICATION = 'dangdangs.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dc7lci75q19d1g',
+        'USER': 'ogkhxxsysmpvtf',
+        'PASSWORD': 'c46f801f205273992ca627362b1557c8559b9288dc00658ddfd60bc0d6457b77',
+        'HOST': 'ec2-54-235-96-48.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+
+
+    '''
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    '''
 }
 
 
