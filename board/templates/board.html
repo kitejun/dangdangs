@@ -26,8 +26,7 @@
         <td><a href="{% url 'detail' board.id %}" title="{{board.summary}}">{{board.title}}({{ board.comments.count }})</a></td>
         <td>{{ board.author }}</td>
         <td>{{ board.pub_date }}</td>
-        <td></td>
-        <!-- 하트 아이콘 // <p>&hearts;</p> // 안보이다가 detail에서 하트 누르면  board에서 ♥  1 공백 // <p> &nbsp </p>-->
+        <td>{{ board.like_users.count }}</td>
         <td>{{ board.hits }} </td>
 
       </tr>
@@ -46,7 +45,7 @@
           -->
         <td>{{ board.author }}</td>
         <td>{{ board.pub_date }}</td>
-        <td></td>
+        <td>{{ board.like_users.count }} </td>
         <td>{{ board.hits }} </td>
       </tr>
       {% endfor %}
