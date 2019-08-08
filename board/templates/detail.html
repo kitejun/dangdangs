@@ -8,12 +8,12 @@
         position: relative;
         font-size: 15px;
         cursor: pointer;
-        float: center;
+        
     }
 
     .like-button::before {
         font-size: 3em;
-        color: rgb(211, 194, 173);
+        color:#F15F5F;
         content: '♥';
         position: absolute;
         left: 50%;
@@ -22,20 +22,7 @@
         transform: translate(-50%, -50%);
     }
 
-    .like-button::after {
-        font-size: 3em;
-        color: #F15F5F;
-        content: '♥';
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        -webkit-transform: translate(-50%, -50%) scale(0);
-        transform: translate(-50%, -50%) scale(0);
-        transition: -webkit-transform 0.2s;
-        transition: transform 0.2s;
-        transition: transform 0.2s, -webkit-transform 0.2s;
-    }
-
+    
     .like-button.liked::after {
         -webkit-transform: translate(-50%, -50%) scale(1.1);
         transform: translate(-50%, -50%) scale(1.1);
@@ -48,6 +35,7 @@
         outline: 0;
         box-shadow: 0 0 0 0.2rem #E6DFD5;
     }
+    
 </style>
 
 
@@ -81,11 +69,11 @@
             <hr>
             <br>
             {% if user in details.like_users.all %}
-            <a href="{% url 'like' details.id %}">좋아요 취소</a>
+            <br><a href="{% url 'like' details.id %}">&nbsp;&nbsp;<button class="like-button"></button></a><br><br>
             {% else %}
-            <a href="{% url 'like' details.id %}">좋아요</a>
+            <a href="{% url 'like' details.id %}" ><font size="15px">&hearts;</font></a> <br>
             {% endif %}
-            <br>
+           
             {{ details.like_users.count }} 명이 좋아합니다.
 
             <!--하트 버튼-->
@@ -142,4 +130,4 @@
     </script>
     {%endblock%}
 
-    <!—디테일—>
+   
