@@ -74,10 +74,10 @@ WSGI_APPLICATION = 'dangdangs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dc7lci75q19d1g',
+        'NAME': 'postgresql-clear-25920',
         'USER': 'ogkhxxsysmpvtf',
         'PASSWORD': 'c46f801f205273992ca627362b1557c8559b9288dc00658ddfd60bc0d6457b77',
-        'HOST': 'ec2-54-235-96-48.compute-1.amazonaws.com',
+        'HOST': 'https://dangdangs.herokuapp.com/',
         'PORT': '5432',
     }
 }
