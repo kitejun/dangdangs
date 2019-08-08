@@ -21,7 +21,7 @@ class Event(models.Model):
     todo = models.CharField(max_length=5,choices=TODO_CHOICES, default='사료')
     context = models.TextField() # 용어 통일 : description -> context
     date = models.DateField(default=timezone.now) # start_time -> start_date -> date, Datetime -> DateField 
-    end_time = models.DateTimeField(auto_now=True) # end_time -> update time, 갱신시 자동 update
+    # end_time = models.DateTimeField(auto_now=True) # end_time -> update time, 갱신시 자동 update
     # idname = models.ForeignKey(User, on_delete=models.CASCADE, )  # User table의 id 참조(ForeignKey), CASCADE => user id 업데이트 시 얘도 변경됨
     groupid = models.CharField(max_length=15, blank=True, default='') # Foreign -> Char
 

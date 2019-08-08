@@ -14,7 +14,7 @@
 </style>
     <div class="detail-container">
         <h2>제목 : {{ plan.title }}</h2>
-        <p>{{ plan.start_date }}</p>
+        <p>{{ plan.date }}</p>
         <p>카테고리 : {{plan.todo}}</p>
         <p>메모 : {{ plan.context }}</p>
             <a class="btn btn-light right " href="{% url 'cal:event_edit' plan.pk %}"> 수정 </a>

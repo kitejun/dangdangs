@@ -98,7 +98,7 @@
       position: relative;
       top: 3px;
     }
-
+    
     select{
       margin: 20px 50px 0px 50px;
       width: 25%;
@@ -147,6 +147,7 @@
     
              <!--캘린더 화면에서 -->
              {% if user.is_authenticated %} <!-- 로그인 되어있는 상태에서-->
+             <p id="username">{{user.username}}님 환영합니다&nbsp;</p>
              <a href="javascript:{document.getElementById('logout').submit()}" >로그아웃</a>
              <form id="logout" method="POST" action="{% url 'logout' %}">
                  {% csrf_token %} <input type="hidden" />
