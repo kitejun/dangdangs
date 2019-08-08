@@ -5,7 +5,7 @@ from . import views
 
 app_name = 'cal'
 urlpatterns = [
-    path('', views.CalendarView.as_view(), name='calendar'),
+    path('', views.CalendarView.as_view(), name='calendar'), # as_view() = 클래스를 객체로 만들어 줌
     path('event/new/', views.event, name='event_new'), # 일정 생성
     path('event/total/', views.total, name='event_total'), # 전체 일정
     path('event/edit/<int:event_id>', views.event, name='event_edit'), # 일정 수정
