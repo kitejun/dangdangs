@@ -98,6 +98,25 @@
       position: relative;
       top: 3px;
     }
+
+    select{
+      margin: 20px 50px 0px 50px;
+      padding: 2%;
+      width: 30%;
+      border-radius: 10px;
+      border-color: #D0C3B4;
+      border-width: 2px;
+      
+    }
+    /*select{
+      box-shadow: 0 0 0 0.2rem #E6DFD5;
+    }*/
+
+    select:focus,select.option:hover{
+      outline: none;
+      background-color: rgb(245, 238, 229);
+    }
+
 /*웹*/
 @media (min-width: 1025px)  {
   .count-content{
@@ -210,6 +229,7 @@
                         {{ daily.gansic_count }}
                   </div>
                   <button type="submit" class="btn btn-light right">저장하기</button>
+                  
                 </form>
               </div>
             </article> 

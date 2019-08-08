@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser # 커스텀 유저를 위한 라이브러리
 from django.conf import settings # 외래키를 위한 라이브러리
-
+from datetime import datetime
+from django.utils import timezone
 # Create your models here.
 
 class User(AbstractUser): #기존 user모델에서 확장되는 형태라 하나만 추가해주면 되어요.

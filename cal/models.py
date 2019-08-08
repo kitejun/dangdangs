@@ -29,11 +29,11 @@ class Event(models.Model):
     def get_html_url(self):
         url = reverse('cal:event_detail', args = (self.id,)) # 캘린더 상의 일정을 누르면 detail 페이지로 이동
         if self.todo == '목욕':
-            return f'<a style="background-color:#B2EBF4" href="{url}" > {self.title} </a>' # 하늘색
+            return f'<a style="background-color:#A7F0FF" href="{url}" > {self.title} </a>' # 하늘색
         elif self.todo == '병원':
-            return f'<a style="background-color:#FFA2A2" href="{url}" > {self.title} </a>' # 빨간색
+            return f'<a style="background-color:#FFFE9C" href="{url}" > {self.title} </a>' # 빨간색
         elif self.todo == '산책':
-            return f'<a style="background-color:#FAF57D" href="{url}" > {self.title} </a>' # 노란색
+            return f'<a style="background-color:#BAFFAC" href="{url}" > {self.title} </a>' # 노란색
         else:
             return f'<a href="{url}" > {self.title} </a>'
 

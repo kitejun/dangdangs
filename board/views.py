@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.contrib.auth.models import User
+from django.contrib import auth
 # 파일 저장 import문
 from django.core.files.storage import FileSystemStorage
 
@@ -13,36 +14,55 @@ from django.db.models import Q
 # 메세지 라이브러리
 from django.contrib import messages
 
+from django.conf import settings
+from django.shortcuts import render
+
 def home(request):
     return render(request, 'home.html')
 
 # Create your views here.
 def board(request):
     boards=Board.objects
-
+    # 댓글 수
+    counts=Board.objects.count()
     board_list=Board.objects.all()
-    paginator = Paginator(board_list,3)
-    page = request.GET.get('page')
+    paginator = Paginator(board_list,5)
+    total_len=len(board_list)
+
+    page = request.GET.get('page',1)
+    posts = paginator.get_page(page)
+    
     try:
-        posts = paginator.get_page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        posts = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        posts = paginator.page(paginator.num_pages)
+        lines = paginator.page(page) 
+    except PageNotAnInteger: 
+        lines = paginator.page(1) 
+    except EmptyPage: 
+        lines = paginator.page(paginator.num_pages) 
+        
+    index = lines.number -1 
+    max_index = len(paginator.page_range) 
+    start_index = index -2 if index >= 2 else 0 
+    if index < 2 : 
+        end_index = 5-start_index
+    else : 
+        end_index = index+3 if index <= max_index - 3 else max_index 
+    page_range = list(paginator.page_range[start_index:end_index]) 
+    
+    context = { 'boards':boards,'board_list': lines ,'counts':counts, 'posts':posts, 'page_range':page_range, 'total_len':total_len, 'max_index':max_index-2 } 
+    return render (request,'board.html', context )
+    
 
-
-
-    return render(request,'board.html',{'boards':boards,'posts':posts})
 
 
 def detail(request, board_id):
     details = get_object_or_404(Board, pk=board_id)
     return render(request, 'detail.html', {'details': details})
 
-
+# 글쓰기
 def new(request):
+    # 로그인 안 되어있을 때 로그인 페이지로
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     # 1. 입력된 내용을 처리하는 기능 -> POST
     if request.method == 'POST':
         form = BoardPost(request.POST, request.FILES)
@@ -64,10 +84,6 @@ def new(request):
 # 수정하기
 def update(request,board_id):
     post=Board.objects.get(id=board_id)
-
-    if post.author != request.user:
-        messages.warning(request, '작성자만 수정 할 수 있습니다.')
-        return redirect('board')
 
     # 글을 수정사항을 입력하고 제출을 눌렀을 때
     if request.method == "POST":
@@ -98,9 +114,6 @@ def update(request,board_id):
 # 삭제하기
 def delete(request, board_id):
     board = get_object_or_404(Board, pk=board_id)
-    if board.author != request.user:
-        messages.info(request, '작성자만 삭제 할 수 있습니다.')
-        return redirect('board')
     board.delete()
     messages.info(request, '삭제 완료')
     return redirect('board')
@@ -130,9 +143,29 @@ class SearchFormView(FormView):
 
 
 def comment_write(request, board_id):
+    # 로그인 안 되어있을 때 로그인 페이지로
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     if request.method == 'POST':
         board = get_object_or_404(Board, pk=board_id)
         content = request.POST.get('content')
         author_user=request.user
         Comment.objects.create(board=board, comment_body=content, author=author_user)
         return redirect('/board/detail/' + str(board.id))
+
+# 댓글 삭제하기
+def comment_delete(request,comment_id):
+    
+    comment = get_object_or_404(Comment, pk=comment_id)
+    comment.delete()
+    # return redirect('/board/detail/' + 'str(comment.id)')
+    # return redirect('/board/detail/', comment_id=comment.board.id)
+    return redirect('/board')
+
+def like(request, board_id):
+    board = get_object_or_404(Board, id=board_id)
+    if request.user in board.like_users.all():
+        board.like_users.remove(request.user)
+    else:
+        board.like_users.add(request.user)
+    return redirect('/board/detail/' + str(board.id))
