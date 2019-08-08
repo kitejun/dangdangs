@@ -162,18 +162,10 @@ def comment_delete(request,comment_id):
     # return redirect('/board/detail/', comment_id=comment.board.id)
     return redirect('/board')
 
-'''
-    def like(request, like_pk):
-        # 로그인 안 되어있을 때 로그인 페이지로
-        if not request.user.is_authenticated:
-            return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
-        
-        tool = get_object_or_404(Board, pk=like_pk)
-        # 요청한 사용자
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
-        content = request.POST.get('content')
-        author_user=request.user
-        Comment.objects.create(board=board, comment_body=content, author=author_user)
-        return redirect('/board/detail/' + str(board.id))
-    '''
+def like(request, board_id):
+    board = get_object_or_404(Board, id=board_id)
+    if request.user in board.like_users.all():
+        board.like_users.remove(request.user)
+    else:
+        board.like_users.add(request.user)
+    return redirect('/board/detail/' + str(board.id))

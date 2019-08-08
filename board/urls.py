@@ -10,6 +10,7 @@ urlpatterns = [
     path('detail/<int:board_id>/delete', views.delete, name="delete"),
     path('detail/<int:board_id>/update', views.update, name="update"),
     # path('<int:like_pk>/like', views.like, name='like'),
+    path('<int:board_id>/like/', views.like, name="like"),
 
     path('search/', views.SearchFormView.as_view(), name='search'),
     
