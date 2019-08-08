@@ -86,7 +86,6 @@ ul {
 a {
   color: #17a2b8;
 }
-
 /* 오늘 날짜에 해당하는 date */
 .today{
   background-image: url(/static/img/circle2.png);
