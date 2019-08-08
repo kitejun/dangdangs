@@ -73,8 +73,12 @@ WSGI_APPLICATION = 'dangdangs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dc7lci75q19d1g',
+        'USER': 'ogkhxxsysmpvtf',
+        'PASSWORD': 'c46f801f205273992ca627362b1557c8559b9288dc00658ddfd60bc0d6457b77',
+        'HOST': 'ec2-54-235-96-48.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -116,13 +120,15 @@ USE_TZ = False # 한국시간을 표시하기 위해 True -> False로 변경
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+
 
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
