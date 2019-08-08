@@ -8,6 +8,10 @@
     display: flex;
     justify-content: center;
   }
+  a{
+    margin:5px;
+  }
+
 </style>
 
 <div class="container">
@@ -66,33 +70,40 @@
   <!--pagenation-->
   <div class="pagination-container">
     {% if board_list.has_other_pages %}
+
     <ul class="pagination">
+
       {% if board_list.has_previous %}
-      <li><a href="?page={{ board_list.previous_page_number }}">&laquo;</a></li>
+        <li><a href="?page={{ board_list.previous_page_number }}">&laquo;</a></li>
       {% else %}
-      <li class="disabled"><span>&laquo;</span></li>
+        <li class="disabled"><span>&laquo;</span></li>
       {% endif %}
+      
       {% if board_list.number > 2 %}
-      <li><a href="?page={{ 1 }}"> 1 </a></li>
-      <li><span>...<span class="sr-only">...</span></span></li>
+        <li><a href="?page={{ 1 }}"> 1 </a></li>
+        <li><span>...<span class="sr-only">...</span></span></li>
       {% endif %}
+
       {% for i in page_range %}
-      {% if board_list.number == i %}
-      <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-      {% else %}
-      <li><a href="?page={{ i }}">{{ i }}</a></li>
-      {% endif %}
+        {% if board_list.number == i %}
+          <li class="active"><span style="margin:5px; color:#D0C3B4" >{{ i }} <span class="sr-only" style="margin:5px;">(current)</span></span></li>
+        {% else %}
+          <li><a href="?page={{ i }}"> {{ i }}</a></li>
+        {% endif %}
       {% endfor %}
+
       {% if board_list.number < max_index %}
-      <li><span>...<span class="sr-only">...</span></span></li>
-      <li><a href="?page={{ max_index|add:'2' }}">{{ max_index|add:"2" }}</a></li>
+        <li><span>...<span class="sr-only">...</span></span></li>
+        <li><a href="?page={{ max_index|add:'2' }}"> {{ max_index|add:"2" }}</a></li>
       {% endif %}
+      
       {% if board_list.has_next %}
-      <li><a href="?page={{ board_list.next_page_number }}">&raquo;</a></li>
+        <li><a href="?page={{ board_list.next_page_number }}">&raquo;</a></li>
       {% else %}
-      <li class="disabled"><span>&raquo;</span></li>
+        <li class="disabled"><span>&raquo;</span></li>
       {%endif %}
     </ul>
+
     {%endif%}
   </div>
 
@@ -106,7 +117,7 @@
         <td>
           <input type="text" name="search_word" required id="id_search_word">
           <input class="btn btn-outline-light" type="submit" value="검색하기">
-          <a class="btn btn-outline-light right" href="{% url 'new' %}" title="{{board.body}}" style="float: right;">글쓰기</a>
+          <a class="btn btn-outline-light right" href="{% url 'new' %}" title="{{board.body}}" style="float: right; margin:0;">글쓰기</a>
 
         </td>
       </tr>
