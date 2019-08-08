@@ -117,10 +117,10 @@ USE_TZ = False # 한국시간을 표시하기 위해 True -> False로 변경
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'board', 'static')
+    os.path.join(BASE_DIR, 'static')
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 STATIC_URL = '/static/'
 
 

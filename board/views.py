@@ -23,22 +23,35 @@ def home(request):
 # Create your views here.
 def board(request):
     boards=Board.objects
-
+    # 댓글 수
+    counts=Board.objects.count()
     board_list=Board.objects.all()
-    paginator = Paginator(board_list,3)
-    page = request.GET.get('page')
+    paginator = Paginator(board_list,5)
+    total_len=len(board_list)
+
+    page = request.GET.get('page',1)
+    posts = paginator.get_page(page)
+    
     try:
-        posts = paginator.get_page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        posts = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        posts = paginator.page(paginator.num_pages)
+        lines = paginator.page(page) 
+    except PageNotAnInteger: 
+        lines = paginator.page(1) 
+    except EmptyPage: 
+        lines = paginator.page(paginator.num_pages) 
+        
+    index = lines.number -1 
+    max_index = len(paginator.page_range) 
+    start_index = index -2 if index >= 2 else 0 
+    if index < 2 : 
+        end_index = 5-start_index
+    else : 
+        end_index = index+3 if index <= max_index - 3 else max_index 
+    page_range = list(paginator.page_range[start_index:end_index]) 
+    
+    context = { 'boards':boards,'board_list': lines ,'counts':counts, 'posts':posts, 'page_range':page_range, 'total_len':total_len, 'max_index':max_index-2 } 
+    return render (request,'board.html', context )
+    
 
-
-
-    return render(request,'board.html',{'boards':boards,'posts':posts})
 
 
 def detail(request, board_id):
@@ -130,11 +143,37 @@ class SearchFormView(FormView):
 
 
 def comment_write(request, board_id):
-    if User is not None:
-        return render(request, 'accounts/login.html')
+    # 로그인 안 되어있을 때 로그인 페이지로
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     if request.method == 'POST':
         board = get_object_or_404(Board, pk=board_id)
         content = request.POST.get('content')
         author_user=request.user
         Comment.objects.create(board=board, comment_body=content, author=author_user)
         return redirect('/board/detail/' + str(board.id))
+
+# 댓글 삭제하기
+def comment_delete(request,comment_id):
+    
+    comment = get_object_or_404(Comment, pk=comment_id)
+    comment.delete()
+    # return redirect('/board/detail/' + 'str(comment.id)')
+    # return redirect('/board/detail/', comment_id=comment.board.id)
+    return redirect('/board')
+
+'''
+    def like(request, like_pk):
+        # 로그인 안 되어있을 때 로그인 페이지로
+        if not request.user.is_authenticated:
+            return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+        
+        tool = get_object_or_404(Board, pk=like_pk)
+        # 요청한 사용자
+        conn_user = request.user
+        conn_profile = Profile.objects.get(user=conn_user)
+        content = request.POST.get('content')
+        author_user=request.user
+        Comment.objects.create(board=board, comment_body=content, author=author_user)
+        return redirect('/board/detail/' + str(board.id))
+    '''

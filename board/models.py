@@ -10,7 +10,11 @@ class Board(models.Model):
     pub_date=models.DateTimeField('date published')
     context=models.TextField()
     hits=models.PositiveIntegerField(default=0)
+    like=models.PositiveIntegerField(default=0)
     
+    class Meta:
+        ordering=['-id']
+
     def __str__(self):
         return self.title
 
@@ -22,8 +26,14 @@ class Board(models.Model):
         return reverse('detail', args=[self.id])
 
     @property
-    def update_counter(self):
+    def update_counter_hit(self):
         self.hits=self.hits+1
+        self.save()
+        return ''
+
+    @property
+    def update_counter(self):
+        self.like=self.like+1
         self.save()
 
 class Comment(models.Model):
@@ -34,3 +44,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.author, self.comment_body
+    
+    class Meta:
+        ordering=['-id']
