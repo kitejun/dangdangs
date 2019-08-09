@@ -17,6 +17,8 @@ from django.contrib import messages
 from django.conf import settings
 from django.shortcuts import render
 
+from django.db.models import Max 
+
 def home(request):
     return render(request, 'home.html')
 
@@ -31,10 +33,13 @@ def board(request):
     #정렬 방법
     sort = request.GET.get('sort', '') # url의 쿼리를 가져옴
     if sort =='likes': # 인기순
-        board_list = Board.objects.order_by('-like_users')
+        board_list = Board.objects.order_by('-like_users', '-pub_date')
+    elif sort == 'mypost':
+        user = request.user
+        board_list = Board.objects.filter(author = user).order_by('-pub_date') #복수를 가져올수 있음
     else:
-        board_list = Board.objects.all()
-    
+        board_list=Board.objects.all()
+
     paginator = Paginator(board_list,5)
     total_len=len(board_list)
 
@@ -83,6 +88,10 @@ def new(request):
             post.save()
             #messages.info(request, '새 글이 등록되었습니다.') 
             return redirect('board')     # 바로 home으로 redirect
+        
+        else: #아무것도 안쓰고 글쓰기 눌렀을 때
+            messages.info(request, '내용을 입력하세요!')
+            return redirect('new')
     
     # 2. 빈 페이지를 띄어주는 기능 -> GET
     else:
@@ -155,12 +164,14 @@ def comment_write(request, board_id):
     # 로그인 안 되어있을 때 로그인 페이지로
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+        
     if request.method == 'POST':
         board = get_object_or_404(Board, pk=board_id)
         content = request.POST.get('content')
         author_user=request.user
         Comment.objects.create(board=board, comment_body=content, author=author_user)
         return redirect('/board/detail/' + str(board.id))
+    
 
 # 댓글 삭제하기
 def comment_delete(request,comment_id):
@@ -178,3 +189,10 @@ def like(request, board_id):
     else:
         board.like_users.add(request.user)
     return redirect('/board/detail/' + str(board.id))
+
+def like_link(request):
+    boards=Board.objects
+    board=Board.objects.aggregate(Max('like_users'))
+    
+    return redirect('/board/detail/' + str(board.id))
+    #return render(request, 'detail.html', {'board': board})

@@ -89,7 +89,7 @@
         {% endif %}
       </div>
       
-      <a href="" class="news" style="color:#FFC300;">▶ 오늘의 뉴스! 잔디밭에서 진드기에 물렸다면?</a>
+      <a href="{% url 'like_link' %}" class="news" style="color:#FFC300;">▶ 오늘의 인기글! </a>
     </nav>
     
   </header>
@@ -118,6 +118,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="{% url 'info' %}" style="color: #916E59;">댕댕사전</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="https://github.com/tigerlcw/dangdangs_game" style="color: #916E59;">댕댕런</a>
               </li>
             </ul>
           </div>

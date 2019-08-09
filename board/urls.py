@@ -16,4 +16,5 @@ urlpatterns = [
     
     path('detail/<int:board_id>/comment_write', views.comment_write, name="comment_write"),
     path('detail/<int:comment_id>/comment_delete', views.comment_delete, name="comment_delete"),
+    
 ]
