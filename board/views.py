@@ -195,6 +195,6 @@ def like(request, board_id):
     return redirect('/board/detail/' + str(board.id))
 
 def like_link(request):
-    board_like = Board.objects.annotate(like_count=Count('like_users')).order_by('-like_count', '-pub_date')
-    
-    return render(request, 'detail.html', {'board_like': board_like})
+    boards=Board.objects
+    board=Board.objects.aggregate(Max('like_users'))
+    return render(request, 'detail.html', {'board': board})
