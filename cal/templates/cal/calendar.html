@@ -229,6 +229,16 @@
                         {{ daily.gansic_count }}
                   </div>
                   <button type="submit" class="btn btn-light right">저장하기</button>
+
+                  <br>
+                  {% if messages %}
+                  <ul class="messages">
+                      <br><br>
+                 {% for message in messages %}
+                  <li class="{{ message.tags }}">{{ message }}</li>
+                 {% endfor %}
+                  </ul>
+                  {% endif %}
                   
                 </form>
               </div>
