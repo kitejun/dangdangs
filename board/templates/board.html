@@ -17,11 +17,27 @@
     float: right;
   }
   select{
+    
     height: 30px;
     padding: 4px;
     position: relative;
     top: 3px;
+    
+    border-radius: 10px;
+      border-color: #D0C3B4;
+      border-width: 2px;
   }
+  select:focus,select.option:hover{
+      outline: none;
+    }
+    input{
+      border-radius: 8px;
+      border-color: #D0C3B4;
+      border-width: 2px;
+    }
+ input:focus{
+  outline: none;
+ }
   @media (max-width: 800px){
     .btn{
       position: relative;
