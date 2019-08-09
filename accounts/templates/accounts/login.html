@@ -23,8 +23,17 @@
   box-shadow: 0 0 0 0.2rem #E6DFD5;
 }       
 </style>
-  
+<script type="text/javascript">
+  var err = {{ error }};
+    function btn(){}
+      if(err == null){
+        alert("로그인 되었습니다.");   
+      }   
+    }
+</script>  
+
 <body>
+    
         <div class="login-box">
             <div class="text-center mb-4">
                 <div class="login-img">
@@ -57,7 +66,7 @@
         <label><br>
          
       </div>
-      <button class="btn btn-lg btn-light btn-block" type="submit">로그인</button>
+      <button class="btn btn-lg btn-light btn-block" type="submit" onclick="javascripts:btn()" >로그인</button>
   
     </form>
     

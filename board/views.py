@@ -134,16 +134,14 @@ class SearchFormView(FormView):
         # Q객체는 |(or)과 &(and) 두개의 operator와 사용가능
         post_list = Board.objects.filter(Q(title__icontains=search_word) | Q(context__icontains=search_word))
 
-        context = {}
+        context = {}                                                                                                                                                                                                                                                                                                                                                                                                                                       
         # context에 form객체, 즉 PostSearchForm객체 저장
         context['form'] = form
         context['search_term'] = search_word
         context['object_list'] = post_list
 
         return render(self.request, self.template_name, context)
-
-
-
+                                     
 
 def comment_write(request, board_id):
     # 로그인 안 되어있을 때 로그인 페이지로

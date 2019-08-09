@@ -6,6 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+from django.contrib import messages
 import calendar
 
 from .models import *
@@ -121,5 +122,6 @@ def daily_count(request):
         daily = form.save(commit=False)
         daily.groupid = request.user.groupid 
         daily.save()
-        
+        messages.warning(request,'저장되었습니다!')
+
     return HttpResponseRedirect(reverse('cal:calendar'))
