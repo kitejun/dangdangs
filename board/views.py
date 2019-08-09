@@ -190,7 +190,7 @@ def like(request, board_id):
         board.like_users.add(request.user)
     return redirect('/board/detail/' + str(board.id))
 
-def like_link(request,board_id):
-    details = get_object_or_404(Board, pk=board_id)
-    
-    return render(request, 'detail.html', {'details': details})
+def like_link(request):
+    boards=Board.objects
+    board=Board.objects.aggregate(Max('like_users'))
+    return render(request, 'detail.html', {'board': board})
