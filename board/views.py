@@ -32,32 +32,32 @@ def board(request):
     sort = request.GET.get('sort', '') # url의 쿼리를 가져옴
     if sort =='likes': # 인기순
         board_list = Board.objects.order_by('-like_users', '-pub_date')
-        return render(request, 'board.html', {'board_list' : board_list})
     else:
-        paginator = Paginator(board_list,5)
-        total_len=len(board_list)
+        board_list=Board.objects.all()
+    paginator = Paginator(board_list,5)
+    total_len=len(board_list)
 
-        page = request.GET.get('page',1)
-        posts = paginator.get_page(page)
+    page = request.GET.get('page',1)
+    posts = paginator.get_page(page)
+    
+    try:
+        lines = paginator.page(page) 
+    except PageNotAnInteger: 
+        lines = paginator.page(1) 
+    except EmptyPage: 
+        lines = paginator.page(paginator.num_pages) 
         
-        try:
-            lines = paginator.page(page) 
-        except PageNotAnInteger: 
-            lines = paginator.page(1) 
-        except EmptyPage: 
-            lines = paginator.page(paginator.num_pages) 
-            
-        index = lines.number -1 
-        max_index = len(paginator.page_range) 
-        start_index = index -2 if index >= 2 else 0 
-        if index < 2 : 
-            end_index = 5-start_index
-        else : 
-            end_index = index+3 if index <= max_index - 3 else max_index 
-        page_range = list(paginator.page_range[start_index:end_index]) 
-        
-        context = { 'boards':boards,'board_list': lines ,'counts':counts, 'posts':posts, 'page_range':page_range, 'total_len':total_len, 'max_index':max_index-2 } 
-        return render (request,'board.html', context )
+    index = lines.number -1 
+    max_index = len(paginator.page_range) 
+    start_index = index -2 if index >= 2 else 0 
+    if index < 2 : 
+        end_index = 5-start_index
+    else : 
+        end_index = index+3 if index <= max_index - 3 else max_index 
+    page_range = list(paginator.page_range[start_index:end_index]) 
+    
+    context = { 'boards':boards,'board_list': lines ,'counts':counts, 'posts':posts, 'page_range':page_range, 'total_len':total_len, 'max_index':max_index-2 } 
+    return render (request,'board.html', context )
 
 
 
