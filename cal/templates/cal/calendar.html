@@ -147,36 +147,38 @@
       background-color: rgb(245, 238, 229);
     }
 
-    .today{
+    .today {
       padding: 5px 2.7px 3.7px 5px;
 
     }
-/*웹*/
-@media (min-width: 1025px)  {
-  .count-content{
-      width: 75%;
-      border:3px solid #D0C3B4; 
-      border-radius: 40px;
-      width: 800px; 
-      margin-left: auto;
-      margin-right: auto;
-    }  
-}
-/*모바일*/
-@media (max-width: 1025px)  {
-  .count-content{
-      width: 75%;
-      border:3px solid #D0C3B4; 
-      border-radius: 40px;
-      width: 900px; 
-      justify-content:center;
-      display:flex;
-    }  
-  .clearfix {
-  margin: 0;
-  }
-}
-    
+
+    /*웹*/
+    @media (min-width: 1025px) {
+      .count-content {
+        width: 75%;
+        border: 3px solid #D0C3B4;
+        border-radius: 40px;
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    /*모바일*/
+    @media (max-width: 1025px) {
+      .count-content {
+        width: 75%;
+        border: 3px solid #D0C3B4;
+        border-radius: 40px;
+        width: 900px;
+        justify-content: center;
+        display: flex;
+      }
+
+      .clearfix {
+        margin: 0;
+      }
+    }
   </style>
   <title>Django Calendar App</title>
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -203,29 +205,16 @@
             description: '새로운 일정이 추가되었습니다 확인해주세요!',
             imageUrl: 'https://i.postimg.cc/3NLLSDrS/dang.png',
             link: {
-              mobileWebUrl: 'https://dangdangs.herokuapp.com',
+              mobileWebUrl: 'https://developers.kakao.com',
               webUrl: 'https://dangdangs.herokuapp.com'
             }
           },
-          social: {
-            likeCount: 286,
-            commentCount: 45,
-            sharedCount: 845
-          },
-          buttons: [
-            {
-              title: '일정 확인하기',
-              link: {
-                mobileWebUrl: 'https://developers.kakao.com',
-                webUrl: 'https://dangdangs.herokuapp.com'
-              }
-            },
-          ]
-        });
-      }
+        ]
+      });
+    }
     //]]>
   </script>
-  
+
 
   <article class="content" style="margin: auto; margin-top:20px;">
     <header class="header">
@@ -237,20 +226,21 @@
           <!-- 로그인 되어있는 상태에서-->
           <p id="username">{{user.username}}님 환영합니다&nbsp;</p>
           <a href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
+          <a href="{% url 'mypage' %}">마이페이지 </a>
           <form id="logout" method="POST" action="{% url 'logout' %}">
             {% csrf_token %} <input type="hidden" />
           </form>
-          <a href="{% url 'mypage' %}">마이페이지 </a>
+          <!-- <a href="{% url 'mypage' %}" >마이페이지 </a>  -->
           {% else %}
           <a href="{% url 'login' %}">로그인 </a>
           <a href="{% url 'signup' %}">회원가입 </a>
           {% endif %}
-          
         </div>
-        <a href="{% url 'share'%}" class="news" style="color:#FFC300;">▶ 오늘의 추천글! 강아지 보양식 종류 BEST5</a>
-        <a href="#" class="news" style="color:rgb(252, 99, 99);">▶ 오늘의 인기글 TOP3</a>
-      </nav>
 
+        <a href="{% url 'share'%}" class="news" style="color:#FFC300;">▶ 오늘의 추천글! 강아지 보양식 종류 BEST5</a>
+        <a href="{% url 'like_link' %}" class="news" style="color:rgb(252, 99, 99);"> ▶인기글 Top3 </a>
+
+      </nav>
     </header>
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
       <div class="container">
@@ -284,6 +274,7 @@
             </ul>
           </div>
         </div>
+      </div>
       </div>
     </nav>
     <div class="inner1">
