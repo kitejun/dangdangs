@@ -59,7 +59,7 @@
   <br><br>
   <div>
     <select id="sort-select" onchange="location = this.value;">
-      <option class="sort-date" value="/board/">최신순</option>
+      <option class="sort-date" value="?sort-date/">최신순</option>
       <option class="sort-likes" value="?sort=likes">좋아요순</option>
       {% if user.is_authenticated %}
       <option class="sort-mypost" value="?sort=mypost">내가쓴글</option>
