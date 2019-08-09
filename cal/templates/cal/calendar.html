@@ -5,14 +5,18 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+
+  <meta name="viewport"
+    content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
   <!-- Bootstrap CSS -->
   <!--
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
    -->
 
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
     integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
@@ -20,19 +24,24 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
-  
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
   <style>
     .btn {
       background-color: #EAE5DE;
       color: #767171;
     }
+
     .btn:hover {
       background-color: #D0C3B4;
     }
-    
-    .calendar-header{
+
+    .calendar-header {
       width: 80%;
       height: 200px;
       background-color: #EAE5DE;
@@ -40,79 +49,100 @@
       color: #767171;
       text-align: center;
     }
-    #calender-header-title{
-    background-color: white; 
-    border-radius: 10px;
-    display: inline;
+
+    #calender-header-title {
+      background-color: white;
+      border-radius: 10px;
+      display: inline;
     }
-    .count-header{
+
+    .count-header {
       padding: 20px;
       /*border: solid #916E59;
       border-radius: 20px;*/
       position: relative;
       height: 200px;
       display: flex;
-      justify-content:center;
+      justify-content: center;
       flex-direction: column;
     }
-    #icon{
+
+    #icon {
       margin-left: 6%;
       margin-right: 6%;
       width: 20%;
-      height:70px;
+      height: 70px;
     }
-    .icon-div{
+
+    .icon-div {
       display: flex;
       justify-content: center;
     }
-    
-    .count-div{
+
+    .count-div {
       display: flex;
-      margin-left:5%; 
-      margin-right:5%;
-      margin-left:5%; 
-      margin-right:5%;
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-left: 5%;
+      margin-right: 5%;
       justify-content: center;
       flex-direction: row;
-      
+
     }
-    
-    .dropdown{
-      margin-left:auto;
+
+    .dropdown {
+      margin-left: auto;
       margin-right: auto;
     }
-    #blank{
-      margin-left:6%;
+
+    #blank {
+      margin-left: 6%;
       margin-right: 6%;
     }
-    .dropdown-menu{
-      border:1xp solid #767171;
+
+    .dropdown-menu {
+      border: 1xp solid #767171;
       box-shadow: 0 0 0 0.2rem #E6DFD5;
     }
-    a:link {text-decoration:none; color:black;} 
-    a:visited {text-decoration:none; color:black;} 
-    a:hover {text-decoration:none; color:darkgrey;} 
-    #username{
+
+    a:link {
+      text-decoration: none;
+      color: black;
+    }
+
+    a:visited {
+      text-decoration: none;
+      color: black;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: darkgrey;
+    }
+
+    #username {
       color: #767171;
       font-size: 16px;
       position: relative;
       top: 3px;
     }
 
-    select{
+    select {
       margin: 20px 50px 0px 50px;
       padding: 2%;
       width: 32%;
       border-radius: 10px;
       border-color: #D0C3B4;
       border-width: 2px;
-      
+
     }
+
     /*select{
       box-shadow: 0 0 0 0.2rem #E6DFD5;
     }*/
 
-    select:focus,select.option:hover{
+    select:focus,
+    select.option:hover {
       outline: none;
       background-color: rgb(245, 238, 229);
     }
@@ -149,36 +179,81 @@
     
   </style>
   <title>Django Calendar App</title>
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 
-
 <body>
-   <article class="content" style="margin: auto; margin-top:20px;">
+
+
+  <!--카카오톡 공유 버튼-->
+  <a id="kakao-link-btn" href="javascript:sendLink()">
+    <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
+  </a>
+
+  <script type='text/javascript'>
+    //<![CDATA[
+      // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+      Kakao.init('4a496d28ce18da4e363f8f0d16f1856b');
+      // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+      function sendLink() {
+        Kakao.Link.sendDefault({
+          objectType: 'feed',
+          content: {
+            title: '댕댕이의 하루',
+            description: '새로운 일정이 추가되었습니다 확인해주세요!',
+            imageUrl: 'https://i.postimg.cc/bJJvtK57/footer.png',
+            link: {
+              mobileWebUrl: 'https://dangdangs.herokuapp.com',
+              webUrl: 'https://dangdangs.herokuapp.com'
+            }
+          },
+          social: {
+            likeCount: 286,
+            commentCount: 45,
+            sharedCount: 845
+          },
+          buttons: [
+            {
+              title: '일정 확인하기',
+              link: {
+                mobileWebUrl: 'https://developers.kakao.com',
+                webUrl: 'https://dangdangs.herokuapp.com'
+              }
+            },
+          ]
+        });
+      }
+    //]]>
+  </script>
+  
+
+  <article class="content" style="margin: auto; margin-top:20px;">
     <header class="header">
       <nav class="sub-navbar">
         <div class="link1">
-  
-           <!--캘린더 화면에서 -->
-           {% if user.is_authenticated %} <!-- 로그인 되어있는 상태에서-->
-           <p id="username">{{user.username}}님 환영합니다&nbsp;</p>
-           <a href="javascript:{document.getElementById('logout').submit()}" >로그아웃</a>
-           <form id="logout" method="POST" action="{% url 'logout' %}">
-               {% csrf_token %} <input type="hidden" />
-             </form>
-           <a href="{% url 'mypage' %}" >마이페이지 </a>  
-         {% else %} 
-           <a href="{% url 'login' %}" >로그인 </a>  
-           <a href="{% url 'signup' %}" >회원가입 </a>  
+
+          <!--캘린더 화면에서 -->
+          {% if user.is_authenticated %}
+          <!-- 로그인 되어있는 상태에서-->
+          <p id="username">{{user.username}}님 환영합니다&nbsp;</p>
+          <a href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
+          <form id="logout" method="POST" action="{% url 'logout' %}">
+            {% csrf_token %} <input type="hidden" />
+          </form>
+          <a href="{% url 'mypage' %}">마이페이지 </a>
+          {% else %}
+          <a href="{% url 'login' %}">로그인 </a>
+          <a href="{% url 'signup' %}">회원가입 </a>
           {% endif %}
         </div>
         
       </nav>
-      
+
     </header>
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-        <div class="container">
-          <a class="navbar-brand js-scroll-trigger" href="#page-top"><a href="{% url 'home' %}">
-              <img class="animated infinite bounce delay-2s" src="/static/img/title.png" width="170">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><a href="{% url 'home' %}">
+            <img class="animated infinite bounce delay-2s" src="/static/img/title.png" width="170">
           </a></a>
           <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -207,64 +282,65 @@
             </ul>
           </div>
         </div>
-      </nav>
-      <div class="inner1">
-         <div class="clearfix">
+      </div>
+    </nav>
+    <div class="inner1">
+      <div class="clearfix">
         <!--버튼 변경 (양소)-->
-        <a class="btn btn-light left"href="{% url 'cal:calendar' %}?{{ prev_month }}"> 이전 달 </a>
+        <a class="btn btn-light left" href="{% url 'cal:calendar' %}?{{ prev_month }}"> 이전 달 </a>
         <a class="btn btn-light left" href="{% url 'cal:calendar' %}?{{ next_month }}"> 다음 달 </a>
         <a class="btn btn-light right" href="{% url 'cal:event_new' %}"> 일정 추가 </a>
         <a class="btn btn-light right" href="{% url 'cal:event_total' %}"> 전체 일정</a>
-            <br><br><br>
-            <article class="count-content">
-              <div class="count-header">
-                <form method="POST" class="post-form" action="{% url 'cal:daily_count' %}" >
-                    <!--<form method="POST" class="post-form" action="#s" >-->
-                  {% csrf_token %}
-                
-                  <div class="icon-div">
-                    <div class="card" style="width: 18%; border: 1px solid white; margin-left: auto;margin-right: auto;">
-                      <img src="/static/img/saryo.png" class="card-img-top" alt="...">
-                        {{ daily.saryo_count }}
-                    </div>
-                    <div class="card" style="width: 18%; border: 1px solid white; margin-left: auto;margin-right: auto;">
-                        <img src="/static/img/water.png" class="card-img-top" alt="...">
-                        {{ daily.water_count }}
-                      </div>
-                      <div class="card" style="width: 18%; border: 1px solid white; margin-left: auto;margin-right: auto;">
-                        <img src="/static/img/gansic.png" class="card-img-top" alt="...">
-                        {{ daily.gansic_count }}
-                  </div>
-                  <button type="submit" class="btn btn-light right">저장하기</button>
+        <br><br><br>
+        <article class="count-content">
+          <div class="count-header">
+            <form method="POST" class="post-form" action="{% url 'cal:daily_count' %}">
+              <!--<form method="POST" class="post-form" action="#s" >-->
+              {% csrf_token %}
 
-                  <br>
-                  {% if messages %}
-                  <ul class="messages">
-                      <br><br>
-                 {% for message in messages %}
+              <div class="icon-div">
+                <div class="card" style="width: 18%; border: 1px solid white; margin-left: auto;margin-right: auto;">
+                  <img src="/static/img/saryo.png" class="card-img-top" alt="...">
+                  {{ daily.saryo_count }}
+                </div>
+                <div class="card" style="width: 18%; border: 1px solid white; margin-left: auto;margin-right: auto;">
+                  <img src="/static/img/water.png" class="card-img-top" alt="...">
+                  {{ daily.water_count }}
+                </div>
+                <div class="card" style="width: 18%; border: 1px solid white; margin-left: auto;margin-right: auto;">
+                  <img src="/static/img/gansic.png" class="card-img-top" alt="...">
+                  {{ daily.gansic_count }}
+                </div>
+                <button type="submit" class="btn btn-light right">저장하기</button>
+
+                <br>
+                {% if messages %}
+                <ul class="messages">
+                  <br><br>
+                  {% for message in messages %}
                   <li class="{{ message.tags }}">{{ message }}</li>
-                 {% endfor %}
-                  </ul>
-                  {% endif %}
-                  
-                </form>
-              </div>
-            </article> 
-            <br>
-            <div class="content">
-               {{ calendar }}
-              
-            </div>
-         </div>        
+                  {% endfor %}
+                </ul>
+                {% endif %}
+
+            </form>
+          </div>
+        </article>
+        <br>
+        <div class="content">
+          {{ calendar }}
+
+        </div>
       </div>
-   </article>
-<!-- 새로고침을 해도 그 스크롤 위치(300) 지정 -->
-<script>
-   window.onload = function() {
+    </div>
+  </article>
+  <!-- 새로고침을 해도 그 스크롤 위치(300) 지정 -->
+  <script>
+    window.onload = function () {
       window.scrollTo(0, 300)
-   }
-</script>
-<!-- Optional JavaScript -->
+    }
+  </script>
+  <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
@@ -277,4 +353,5 @@
     crossorigin="anonymous"></script>
 
 </body>
+
 </html>
