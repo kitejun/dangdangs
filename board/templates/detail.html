@@ -49,11 +49,17 @@
     }
     #puppy{
         position: relative;
-        left: 80%;
+        left: 85%;
     }
     textarea.form-control{
         width: 200%;
         height: 100%;
+    }
+    @media (max-width: 800px){
+        #puppy{
+        position: relative;
+        left: 70%;
+     }
     }
 </style>
 
@@ -142,7 +148,7 @@
             <textarea type="text" name="content" class="form-control" placeholder="댓글을 입력해주세요."></textarea>
         </div>
         <div class="col"><br><br><br>
-            <input class="btn btn-light" type="submit" value="작성" style="float:right; position: relative; right: 7px;">
+            <input class="btn btn-light" type="submit" value="작성" style="float:right; position: relative; right: 10px; bottom: 3px;">
         </div>
     </form>
     <br> <br>

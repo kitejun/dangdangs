@@ -22,6 +22,18 @@
     position: relative;
     top: 3px;
   }
+  @media (max-width: 800px){
+    .btn{
+      position: relative;
+      top: 10px;
+      width: 80px;
+      height: 40px;
+    }
+    /*#new{
+      position: relative;
+      top: 40px;
+    }*/
+  }
 </style>
 <script> // 선택한 셀렉트 유지하기 위한 scripts
     var getUrlParameter = function getUrlParameter(sParam) {
@@ -173,7 +185,7 @@
     
     &nbsp;&nbsp;
   <!-- 글쓰기 -->
-  <a class="btn btn-outline-light right" href="{% url 'new' %}" title="{{board.body}}" style="float: right; margin:0;">글쓰기</a>
+  <a id="new" class="btn btn-outline-light right" href="{% url 'new' %}" title="{{board.body}}" style="float: right; margin:0;">글쓰기</a>
 </div>
 
 
