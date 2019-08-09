@@ -32,7 +32,7 @@ def signup(request):
                     messages.warning(request,'입력하신 가족코드에 해당하는 가족이 없습니다.')
                     return render(request, 'accounts/signup.html')
 
-            return render(request, 'home.html', {'msg' : '회원가입 되었습니다.'}) # 회원가입 성공
+            return render(request, 'accounts/success.html') # 회원가입 성공
        
         messages.warning(request,'비밀번호가 일치하지 않습니다.')
 
@@ -50,7 +50,7 @@ def login(request):
             auth.login(request, user)
             return redirect('home')
         else:
-            return render(request, 'accounts/login.html', {'error': 'username or password is incorrect.'})
+            return render(request, 'accounts/login.html', {'error': '아이디나 비밀번호를 다시 확인해주세요'})
     else:
         return render(request, 'accounts/login.html')
 
