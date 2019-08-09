@@ -53,9 +53,17 @@
 
 .cline {
         border: 8px solid #D0C3B4;
+        position: relative;
+        bottom: 40px;
       }
 .btn{
     width: 20%;
+}
+.btn-div{
+    position: relative;
+        bottom: 40px;
+    display: flex;
+    justify-content: center;
 }
 </style>
 </head>
@@ -65,7 +73,10 @@
 <body>
     <br><br>
 <hr>
-
+<div class="btn-div">
+<button class="btn btn-outline-light-large" onclick="resizeMap()">지도 크기변경</button>&nbsp;&nbsp;
+<button class="btn btn-outline-light-large" onclick="relayout()">지도 갱신하기</button>
+</div><br>
 <div class="cline">
       <br>
 <div class="map_wrap">
@@ -339,9 +350,6 @@ function relayout() {
     map.relayout();
 }
 </script>
-<br><br><br><br><br>
-        <button class="btn btn-outline-light-large" onclick="resizeMap()">지도 크기변경</button>&nbsp;&nbsp;
-        <button class="btn btn-outline-light-large" onclick="relayout()">지도 갱신하기</button>
 
 </center>
 

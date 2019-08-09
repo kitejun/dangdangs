@@ -19,12 +19,39 @@
     flex-direction: row;
     float: right;
   }
-
-  select {
+  select{
+    
     height: 30px;
     padding: 4px;
     position: relative;
     top: 3px;
+    
+    border-radius: 10px;
+      border-color: #D0C3B4;
+      border-width: 2px;
+  }
+  select:focus,select.option:hover{
+      outline: none;
+    }
+    input{
+      border-radius: 8px;
+      border-color: #D0C3B4;
+      border-width: 2px;
+    }
+ input:focus{
+  outline: none;
+ }
+  @media (max-width: 800px){
+    .btn{
+      position: relative;
+      top: 10px;
+      width: 80px;
+      height: 40px;
+    }
+    /*#new{
+      position: relative;
+      top: 40px;
+    }*/
   }
 </style>
 
@@ -87,7 +114,7 @@
         <td><a href="{% url 'detail' board.id %}"
             title="{{board.summary}}">{{board.summary_title}}({{ board.comments.count }})</a></td>
         <td>{{ board.author }}</td>
-        <td>{{ board.pub_date }}</td>
+        <td>{{ board.pub_date|date:'bj일 f' }}</td>
         <td>{{ board.like_users.count }}</td>
         <td>{{ board.hits }} </td>
 
@@ -107,7 +134,7 @@
                 {{ post.created_at|date:'N d, Y' }}
           -->
         <td>{{ board.author }}</td>
-        <td>{{ board.pub_date }}</td>
+        <td>{{ board.pub_date|date:'bj일 f' }}</td>
         <td>{{ board.like_users.count }} </td>
         <td>{{ board.hits }} </td>
       </tr>
@@ -184,10 +211,9 @@
 
 
     &nbsp;&nbsp;
-    <!-- 글쓰기 -->
-    <a class="btn btn-outline-light right" href="{% url 'new' %}" title="{{board.body}}"
-      style="float: right; margin:0;">글쓰기</a>
-  </div>
+  <!-- 글쓰기 -->
+  <a id="new" class="btn btn-outline-light right" href="{% url 'new' %}" title="{{board.body}}" style="float: right; margin:0;">글쓰기</a>
+</div>
 
 
 </div>
