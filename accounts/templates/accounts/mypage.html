@@ -41,7 +41,7 @@
                <a class="btn btn-lg btn-light btn-block" href="{% url 'doginfo' %}">댕댕이정보 수정하기</a> <br>
                
               <div class="form-label-group">
-                  {% if messages %}
+                {% if messages %}
                   <ul class="messages">
                       <br><br>
                  {% for message in messages %}
