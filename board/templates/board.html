@@ -11,6 +11,11 @@
   a{
     margin:5px;
   }
+  .container2{
+    display: flex;
+    flex-direction: row;
+    float: right;
+  }
 
 </style>
 
@@ -116,7 +121,7 @@
 
 
 
-  <div class="container">
+  <div class="container2">
   <!-- 검색기능 -->
     <form action="{% url 'search' %}" method="POST" style="float: right">
       {% csrf_token %}
@@ -133,10 +138,10 @@
     </form>
 
     
-  </div>
+    &nbsp;&nbsp;
   <!-- 글쓰기 -->
   <a class="btn btn-outline-light right" href="{% url 'new' %}" title="{{board.body}}" style="float: right; margin:0;">글쓰기</a>
-
+</div>
 
 
 </div>
