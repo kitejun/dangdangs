@@ -10,6 +10,45 @@
   outline: 0;
   box-shadow: 0 0 0 0.2rem #E6DFD5;
 }       
+
+
+#id_title:focus{
+  width: 100%;
+  height: 50px;
+  border-color: #E6DFD5;
+  color: #495057;
+  background-color: #fff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #E6DFD5;
+  border-radius: 5px;
+}
+
+#id_title{
+  width: 100%;
+  height: 50px;
+  color: #495057;
+  background-color: #fff;
+  outline: 0;
+  border-radius: 5px;
+}
+#id_context:focus{
+  width: 100%;
+  height: 150px;
+  border-color: #E6DFD5;
+  color: #495057;
+  background-color: #fff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #E6DFD5;
+  border-radius: 5px;
+}
+#id_context{
+  width: 100%;
+  height: 150px;
+  color: #495057;
+  background-color: #fff;
+  outline: 0;
+  border-radius: 5px;
+}
 </style>
 
 <center>
@@ -18,15 +57,21 @@
         <form  method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <br>
+            
             <div class="form-group">
                 <label for="title" style="float:left" >제목</label>
+               
                 {{form.title}}
+            
                
                 <br>
             </div>  
               <div class="form-group">
                 <label for="text" style="float:left">내용</label>
-                {{form.context}}
+               
+                  {{form.context}}
+                </textarea>
+                
       
               </div>
               <br>
@@ -36,11 +81,10 @@
               
                 <input class="btn btn-light"  role="button" aria-pressed="true" type="submit" value="수정" >
           
-            
+              
           </form>
 
     </div>
     
 </center>
 {% endblock %}
-

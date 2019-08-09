@@ -73,6 +73,7 @@ def new(request):
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     # 1. 입력된 내용을 처리하는 기능 -> POST
+    
     if request.method == 'POST':
         form = BoardPost(request.POST, request.FILES)
         if form.is_valid():
