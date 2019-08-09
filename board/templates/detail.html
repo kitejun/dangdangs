@@ -53,6 +53,7 @@
 
 
 
+<<<<<<< HEAD
 <br><br><br><br>
 
 <div class="container">
@@ -64,6 +65,46 @@
             <h2 class="card-title" style="float:left;">&nbsp;&nbsp;{{details.title}}</h2>
             <p style="text-align: right;">작성자: {{details.author}} &nbsp; 조회수: {{details.hits}}</p>
             <small style="float:right;">{{details.pub_date}}</small>
+=======
+<center>
+    <br><br><br><br>
+
+    <div class="container">
+
+        <div class="card">
+
+            <div class="card-body" style="border:3px solid #D0C3B4; ">
+              
+                <h2 class="card-title" style="float:left;">&nbsp;&nbsp;{{details.title}}</h2>
+                <p style="text-align: right;">작성자: {{details.author}} &nbsp; 조회수: {{details.hits}}</p>
+                <small style="float:right;">{{details.pub_date}}</small>
+                <br>
+                <hr>
+                <!-- 조회수 증가 -->
+                {{details.update_counter}}
+
+                <br><br>
+                <p style="float:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.context}}</p>
+                <br><br><br>
+                <img src="{{ details.image.url }}" alt="댕댕이" style= " width:70%; height:auto;">
+                <br><br>
+                <hr>
+                <br>
+                <!--하트 버튼-->
+   
+                <button class="like-button"></button> <!-- 하트 눌러진 총 갯수 보이게 하면 어떨까염-->
+                <br>
+                <div class="clearfix">
+                    <a class="btn btn-light right" href="{%url 'board'%}">목록</a>
+                    {% if user == details.author %}
+                    <a class="btn btn-light right" href="{% url 'delete' details.id %}"> 삭제 </a>
+                    <a class="btn btn-light right" href="{% url 'update' details.id %}"> 수정 </a>
+                    {% endif %}
+                </div>   
+                
+            </div>
+       </div>
+>>>>>>> parent of cd9d84e... asd
             <br>
             <hr>
 

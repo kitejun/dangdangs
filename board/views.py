@@ -26,7 +26,7 @@ def board(request):
     # 댓글 수
     counts=Board.objects.count()
     board_list=Board.objects.all()
-    paginator = Paginator(board_list,5)
+    paginator = Paginator(board_list,3)
     total_len=len(board_list)
 
     page = request.GET.get('page',1)
