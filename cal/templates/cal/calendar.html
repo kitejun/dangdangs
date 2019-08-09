@@ -194,29 +194,16 @@
 
   <script type='text/javascript'>
     //<![CDATA[
-    // // 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('4a496d28ce18da4e363f8f0d16f1856b');
-    // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
-    function sendLink() {
-      Kakao.Link.sendDefault({
-        objectType: 'feed',
-        content: {
-          title: '댕댕이의 하루',
-          description: '새로운 일정이 추가되었습니다 확인해주세요!',
-          imageUrl: 'https://i.postimg.cc/bJJvtK57/footer.png',
-          link: {
-            mobileWebUrl: 'https://dangdangs.herokuapp.com',
-            webUrl: 'https://dangdangs.herokuapp.com'
-          }
-        },
-        social: {
-          likeCount: 286,
-          commentCount: 45,
-          sharedCount: 845
-        },
-        buttons: [
-          {
-            title: '일정 확인하기',
+      // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+      Kakao.init('4a496d28ce18da4e363f8f0d16f1856b');
+      // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+      function sendLink() {
+        Kakao.Link.sendDefault({
+          objectType: 'feed',
+          content: {
+            title: '#댕댕이의 하루',
+            description: '새로운 일정이 추가되었습니다 확인해주세요!',
+            imageUrl: 'https://i.postimg.cc/3NLLSDrS/dang.png',
             link: {
               mobileWebUrl: 'https://developers.kakao.com',
               webUrl: 'https://dangdangs.herokuapp.com'
