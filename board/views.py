@@ -30,11 +30,10 @@ def board(request):
 
     #정렬 방법
     sort = request.GET.get('sort', '') # url의 쿼리를 가져옴
-    if sort =='likes':
-        # 좋아요가 manytomany인 컬럼이라 annotate 사용
-        board_list = Board.objects.annotate(like_users=Count('likes')).order_by('-user_like', '-pub_date') 
+    if sort =='likes': # 인기순
+        board_list = Board.objects.order_by('-like_users')
     else:
-        board_list=Board.objects.all()
+        board_list = Board.objects.all()
     
     paginator = Paginator(board_list,5)
     total_len=len(board_list)
