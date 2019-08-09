@@ -18,6 +18,9 @@ class Board(models.Model):
     def __str__(self):
         return self.title
 
+    def summary_title(self):
+        return self.title[:20]
+
     def summary(self):
         return self.context[:100]
 

@@ -21,11 +21,21 @@ def home(request):
     return render(request, 'home.html')
 
 # Create your views here.
+# 게시글 정렬
 def board(request):
+   
     boards=Board.objects
     # 댓글 수
     counts=Board.objects.count()
-    board_list=Board.objects.all()
+
+    #정렬 방법
+    sort = request.GET.get('sort', '') # url의 쿼리를 가져옴
+    if sort =='likes':
+        # 좋아요가 manytomany인 컬럼이라 annotate 사용
+        board_list = Board.objects.annotate(like_users=Count('likes')).order_by('-user_like', '-pub_date') 
+    else:
+        board_list=Board.objects.all()
+    
     paginator = Paginator(board_list,5)
     total_len=len(board_list)
 
@@ -50,7 +60,6 @@ def board(request):
     
     context = { 'boards':boards,'board_list': lines ,'counts':counts, 'posts':posts, 'page_range':page_range, 'total_len':total_len, 'max_index':max_index-2 } 
     return render (request,'board.html', context )
-    
 
 
 
@@ -64,6 +73,7 @@ def new(request):
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     # 1. 입력된 내용을 처리하는 기능 -> POST
+    
     if request.method == 'POST':
         form = BoardPost(request.POST, request.FILES)
         if form.is_valid():
@@ -88,7 +98,7 @@ def update(request,board_id):
     # 글을 수정사항을 입력하고 제출을 눌렀을 때
     if request.method == "POST":
         form = BoardPost(request.POST, request.FILES)
-        if form.is_valid(): #error
+        if form.is_valid():
                 
             # 검증에 성공한 값들은 사전타입으로 제공 
             print(form.cleaned_data)
@@ -133,16 +143,14 @@ class SearchFormView(FormView):
         # Q객체는 |(or)과 &(and) 두개의 operator와 사용가능
         post_list = Board.objects.filter(Q(title__icontains=search_word) | Q(context__icontains=search_word))
 
-        context = {}
+        context = {}                                                                                                                                                                                                                                                                                                                                                                                                                                       
         # context에 form객체, 즉 PostSearchForm객체 저장
         context['form'] = form
         context['search_term'] = search_word
         context['object_list'] = post_list
 
         return render(self.request, self.template_name, context)
-
-
-
+                                     
 
 def comment_write(request, board_id):
     # 로그인 안 되어있을 때 로그인 페이지로

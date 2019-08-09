@@ -7,6 +7,7 @@ from django.contrib.auth.hashers import make_password
 User = get_user_model()
 from .models import Group
 import random
+
 # Create your views here.
 
 
@@ -26,12 +27,12 @@ def signup(request):
                 event = Group.objects.filter(groupid=groupid_copy).first() 
                 if event: #가입한 가족코드가 존재하면 
                     user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'],groupid=request.POST['groupid'])
-                    return redirect('home')
+                    # return redirect('home')
                 else:
                     messages.warning(request,'입력하신 가족코드에 해당하는 가족이 없습니다.')
                     return render(request, 'accounts/signup.html')
 
-            return redirect('home')
+            return render(request, 'accounts/success.html') # 회원가입 성공
        
         messages.warning(request,'비밀번호가 일치하지 않습니다.')
 
@@ -49,7 +50,7 @@ def login(request):
             auth.login(request, user)
             return redirect('home')
         else:
-            return render(request, 'accounts/login.html', {'error': 'username or password is incorrect.'})
+            return render(request, 'accounts/login.html', {'error': '아이디나 비밀번호를 다시 확인해주세요'})
     else:
         return render(request, 'accounts/login.html')
 
