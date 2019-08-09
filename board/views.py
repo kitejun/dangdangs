@@ -17,6 +17,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.shortcuts import render
 
+from django.db.models import Max 
 
 def home(request):
     return render(request, 'home.html')
@@ -188,3 +189,8 @@ def like(request, board_id):
     else:
         board.like_users.add(request.user)
     return redirect('/board/detail/' + str(board.id))
+
+def like_link(request,board_id):
+    details = get_object_or_404(Board, pk=board_id)
+    max_title=details.objects.aggregate(Max('like')).title
+    return render(request, 'detail.html', {'details': details,'max_title':max_title})
