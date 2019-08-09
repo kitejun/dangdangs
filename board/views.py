@@ -33,8 +33,12 @@ def board(request):
     sort = request.GET.get('sort', '') # url의 쿼리를 가져옴
     if sort =='likes': # 인기순
         board_list = Board.objects.order_by('-like_users', '-pub_date')
+    elif sort == 'mypost':
+        user = request.user
+        board_list = Board.objects.filter(author = user).order_by('-pub_date') #복수를 가져올수 있음
     else:
         board_list=Board.objects.all()
+
     paginator = Paginator(board_list,5)
     total_len=len(board_list)
 
