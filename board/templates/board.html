@@ -45,7 +45,7 @@
       {% for board in object_list %}
       <tr>
         <td>{{board.id }} </td>
-        <td><a href="{% url 'detail' post.id %}" title="{{board.summary}}">{{board.title}}({{ board.comments.count }})</a>
+        <td><a href="{% url 'detail' board.id %}" title="{{board.summary}}">{{board.title}}({{ board.comments.count }})</a>
         </td>
         <!--
                 <h2><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h2>
