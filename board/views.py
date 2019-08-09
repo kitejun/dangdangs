@@ -17,9 +17,13 @@ from django.contrib import messages
 from django.conf import settings
 from django.shortcuts import render
 
+# 게시판 카테고리 별 순서
+from django.db.models import Count
+
 from django.db.models import Max 
 
 def home(request):
+
     return render(request, 'home.html')
 
 def share(request):
@@ -36,7 +40,7 @@ def board(request):
     #정렬 방법
     sort = request.GET.get('sort', '') # url의 쿼리를 가져옴
     if sort =='likes': # 인기순
-        board_list = Board.objects.order_by('-like_users', '-pub_date')
+        board_list = Board.objects.annotate(like_count=Count('like_users')).order_by('-like_count', '-pub_date')
     elif sort == 'mypost':
         user = request.user
         board_list = Board.objects.filter(author = user).order_by('-pub_date') #복수를 가져올수 있음
@@ -192,3 +196,38 @@ def like(request, board_id):
     else:
         board.like_users.add(request.user)
     return redirect('/board/detail/' + str(board.id))
+
+def like_link(request):
+
+    #board = get_object_or_404(Board, pk=board_id)
+    #board=Board.objects.all().aggregate(Max('like_users'))
+
+    boards=Board.objects
+    # 댓글 수
+    counts=Board.objects.count()
+    board_list = Board.objects.annotate(like_count=Count('like_users')).order_by('-like_count', '-pub_date')
+    paginator = Paginator(board_list,3)
+    total_len=len(board_list)
+
+    page = request.GET.get('page',1)
+    posts = paginator.get_page(page)
+    
+    try:
+        lines = paginator.page(page) 
+    except PageNotAnInteger: 
+        lines = paginator.page(1) 
+    except EmptyPage: 
+        lines = paginator.page(paginator.num_pages) 
+        
+    index = lines.number -1 
+    max_index = len(paginator.page_range) 
+    start_index = index -2 if index >= 2 else 0 
+    if index < 2 : 
+        end_index = 5-start_index
+    else : 
+        end_index = index+3 if index <= max_index - 3 else max_index 
+    page_range = list(paginator.page_range[start_index:end_index]) 
+    
+    context = { 'boards':boards,'board_list': lines ,'counts':counts, 'posts':posts, 'page_range':page_range, 'total_len':total_len, 'max_index':max_index-2 } 
+    return render (request,'best.html', context )
+    # return redirect('/board/?sort=likes')
