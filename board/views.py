@@ -192,5 +192,5 @@ def like(request, board_id):
 
 def like_link(request,board_id):
     details = get_object_or_404(Board, pk=board_id)
-    max_title=details.objects.aggregate(Max('like')).title
-    return render(request, 'detail.html', {'details': details,'max_title':max_title})
+    
+    return render(request, 'detail.html', {'details': details})
