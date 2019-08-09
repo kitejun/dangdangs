@@ -11,15 +11,46 @@
   a{
     margin:5px;
   }
+  .container2{
+    display: flex;
+    flex-direction: row;
+    float: right;
+  }
 
 </style>
+<script> // 선택한 셀렉트 유지하기 위한 scripts
+    var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+    };
+    // 정렬 방식 셀렉트 유지
+    $(document).ready(function(){
+      var sort = getUrlParameter('sort');
+      if(sort == 'likes'){
+        $('.sort-likes').prop('selected', 'selected')
+      }
+      else{
+        $('.sort-date').prop('selected', 'selected')
+      }
+    });
+</script>
 
 <div class="container">
   <br><br>
   <div>
     <select id="sort-select" onchange="location = this.value;">
-      <option class="sort-date" value="/">최신순</option>
-      <option class="sort-likes" value="?sort=like">좋아요순</option>
+      <option class="sort-date" value="/board/">최신순</option>
+      <option class="sort-likes" value="?sort=likes">좋아요순</option>
     </select>
   </div>
   <table class="table table-bordered text-center">
@@ -34,6 +65,7 @@
       </tr>
     </thead>
     <tbody>
+    
       {% for board in posts %}
       <tr>
         <td>{{board.id }} </td>
@@ -116,7 +148,7 @@
 
 
 
-  <div class="container">
+  <div class="container2">
   <!-- 검색기능 -->
     <form action="{% url 'search' %}" method="POST" style="float: right">
       {% csrf_token %}
@@ -133,10 +165,10 @@
     </form>
 
     
-  </div>
+    &nbsp;&nbsp;
   <!-- 글쓰기 -->
   <a class="btn btn-outline-light right" href="{% url 'new' %}" title="{{board.body}}" style="float: right; margin:0;">글쓰기</a>
-
+</div>
 
 
 </div>
@@ -150,5 +182,6 @@
   {% endfor %}
 </div>
 {% endif %}
+
 
 {% endblock %}
