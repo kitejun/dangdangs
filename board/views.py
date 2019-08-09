@@ -21,11 +21,21 @@ def home(request):
     return render(request, 'home.html')
 
 # Create your views here.
+# 게시글 정렬
 def board(request):
+   
     boards=Board.objects
     # 댓글 수
     counts=Board.objects.count()
-    board_list=Board.objects.all()
+
+    #정렬 방법
+    sort = request.GET.get('sort', '') # url의 쿼리를 가져옴
+    if sort =='likes':
+        # 좋아요가 manytomany인 컬럼이라 annotate 사용
+        board_list = Board.objects.annotate(like_users=Count('likes')).order_by('-user_like', '-pub_date') 
+    else:
+        board_list=Board.objects.all()
+    
     paginator = Paginator(board_list,5)
     total_len=len(board_list)
 
@@ -50,7 +60,6 @@ def board(request):
     
     context = { 'boards':boards,'board_list': lines ,'counts':counts, 'posts':posts, 'page_range':page_range, 'total_len':total_len, 'max_index':max_index-2 } 
     return render (request,'board.html', context )
-    
 
 
 
@@ -64,6 +73,7 @@ def new(request):
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     # 1. 입력된 내용을 처리하는 기능 -> POST
+    
     if request.method == 'POST':
         form = BoardPost(request.POST, request.FILES)
         if form.is_valid():

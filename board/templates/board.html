@@ -16,6 +16,12 @@
 
 <div class="container">
   <br><br>
+  <div>
+    <select id="sort-select" onchange="location = this.value;">
+      <option class="sort-date" value="/">최신순</option>
+      <option class="sort-likes" value="?sort=like">좋아요순</option>
+    </select>
+  </div>
   <table class="table table-bordered text-center">
     <thead class="thead-light">
       <tr>
@@ -45,7 +51,7 @@
       {% for board in object_list %}
       <tr>
         <td>{{board.id }} </td>
-        <td><a href="{% url 'detail' post.id %}" title="{{board.summary}}">{{board.title}}({{ board.comments.count }})</a>
+        <td><a href="{% url 'detail' board.id %}" title="{{board.summary}}">{{board.title}}({{ board.comments.count }})</a>
         </td>
         <!--
                 <h2><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h2>
@@ -112,25 +118,24 @@
 
   <div class="container">
   <!-- 검색기능 -->
-  <form action="{% url 'search' %}" method="POST" style="float: right">
-    {% csrf_token %}
-    <table>
-      <tr>
-        <td>
-          <input type="text" name="search_word" required id="id_search_word">
-          <input class="btn btn-outline-light" type="submit" value="검색하기">
+    <form action="{% url 'search' %}" method="POST" style="float: right">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <td>
+            <input type="text" name="search_word" required id="id_search_word">
+            <input class="btn btn-outline-light" type="submit" value="검색하기">
           
+          
+          </td>
+        </tr>
+      </table>
+    </form>
 
-        </td>
-      </tr>
-    </table>
-  </form>
-
+    
+  </div>
   <!-- 글쓰기 -->
   <a class="btn btn-outline-light right" href="{% url 'new' %}" title="{{board.body}}" style="float: right; margin:0;">글쓰기</a>
-  
-</div>
-  
 
 
 
