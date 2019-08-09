@@ -23,6 +23,7 @@ from django.db.models import Count
 from django.db.models import Max 
 
 def home(request):
+
     return render(request, 'home.html')
 
 # Create your views here.
@@ -193,7 +194,7 @@ def like(request, board_id):
         board.like_users.add(request.user)
     return redirect('/board/detail/' + str(board.id))
 
-def like_link(request,board_id):
-    details = get_object_or_404(Board, pk=board_id)
+def like_link(request):
+    board_like = Board.objects.annotate(like_count=Count('like_users')).order_by('-like_count', '-pub_date')
     
-    return render(request, 'detail.html', {'details': details})
+    return render(request, 'detail.html', {'board_like': board_like})
