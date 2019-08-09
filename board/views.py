@@ -88,7 +88,7 @@ def update(request,board_id):
     # 글을 수정사항을 입력하고 제출을 눌렀을 때
     if request.method == "POST":
         form = BoardPost(request.POST, request.FILES)
-        if form.is_valid(): #error
+        if form.is_valid():
                 
             # 검증에 성공한 값들은 사전타입으로 제공 
             print(form.cleaned_data)
