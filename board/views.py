@@ -17,6 +17,8 @@ from django.contrib import messages
 from django.conf import settings
 from django.shortcuts import render
 
+# 게시판 카테고리 별 순서
+from django.db.models import Count
 
 def home(request):
     return render(request, 'home.html')
@@ -32,7 +34,7 @@ def board(request):
     #정렬 방법
     sort = request.GET.get('sort', '') # url의 쿼리를 가져옴
     if sort =='likes': # 인기순
-        board_list = Board.objects.order_by('-like_users', '-pub_date')
+        board_list = Board.objects.annotate(like_count=Count('like_users')).order_by('-like_count', '-pub_date')
     elif sort == 'mypost':
         user = request.user
         board_list = Board.objects.filter(author = user).order_by('-pub_date') #복수를 가져올수 있음
