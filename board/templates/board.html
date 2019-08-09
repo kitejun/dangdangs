@@ -11,6 +11,17 @@
   a{
     margin:5px;
   }
+  .container2{
+    display: flex;
+    flex-direction: row;
+    float: right;
+  }
+  select{
+    height: 30px;
+    padding: 4px;
+    position: relative;
+    top: 3px;
+  }
 </style>
 <script> // 선택한 셀렉트 유지하기 위한 scripts
     var getUrlParameter = function getUrlParameter(sParam) {
@@ -45,8 +56,9 @@
     <select id="sort-select" onchange="location = this.value;">
       <option class="sort-date" value="/board/">최신순</option>
       <option class="sort-likes" value="?sort=likes">좋아요순</option>
+      <option class="sort-likes" value="?sort=likes">내글보기</option>
     </select>
-  </div>
+  </div><br>
   <table class="table table-bordered text-center">
     <thead class="thead-light">
       <tr>
@@ -142,7 +154,7 @@
 
 
 
-  <div class="container">
+  <div class="container2">
   <!-- 검색기능 -->
     <form action="{% url 'search' %}" method="POST" style="float: right">
       {% csrf_token %}
@@ -159,10 +171,10 @@
     </form>
 
     
-  </div>
+    &nbsp;&nbsp;
   <!-- 글쓰기 -->
   <a class="btn btn-outline-light right" href="{% url 'new' %}" title="{{board.body}}" style="float: right; margin:0;">글쓰기</a>
-
+</div>
 
 
 </div>
