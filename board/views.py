@@ -31,10 +31,11 @@ def board(request):
     #정렬 방법
     sort = request.GET.get('sort', '') # url의 쿼리를 가져옴
     if sort =='likes': # 인기순
-        board_list = Board.objects.order_by('-like_users')
+        board_list = Board.objects.annotate(like_count=Count('likes')).order_by('-like_users', '-pub_date')
     else:
         board_list = Board.objects.all()
     
+
     paginator = Paginator(board_list,5)
     total_len=len(board_list)
 
