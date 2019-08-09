@@ -21,6 +21,9 @@ from django.shortcuts import render
 def home(request):
     return render(request, 'home.html')
 
+def share(request):
+    return render(request,'share.html')    
+
 # Create your views here.
 # 게시글 정렬
 def board(request):

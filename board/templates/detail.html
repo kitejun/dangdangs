@@ -41,7 +41,7 @@
     .container{
         padding-top: 0px;
         position: relative;
-        bottom: 10%;
+        bottom: 8%;
     }
     .heart{
         position: relative;
@@ -75,14 +75,14 @@
         <div class="card-body" style="border:3px solid #D0C3B4; ">
             <!-- 조회수 증가 -->
             {{details.update_counter_hit}}
-            <h2 class="card-title" style="text-align: center;">&nbsp;&nbsp;{{details.title}}</h2>
-            <p style="text-align: right; font-size: 20px;">작성자: {{details.author}} &nbsp; 조회수: {{details.hits}}</p>
-            <p style="text-align: right; font-size: 18px;">{{details.pub_date}}</p>
+            <h2 class="card-title" style="text-align: center;">&nbsp;&nbsp;{{details.title}}</h2><br>
+            <p style="text-align: right; font-size: 17px;">작성자: {{details.author}} &nbsp; 조회수: {{details.hits}}</p>
+            <p style="text-align: right; font-size: 16px;">{{details.pub_date}}</p>
            
             <hr>
 
             <br><br>
-            <p style="text-align: left; font-size: 27px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.context}}</p>
+            <p style="text-align: left; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.context}}</p>
             <br><br><br>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 70%; margin: 0 auto">
                     <ol class="carousel-indicators">
