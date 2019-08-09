@@ -102,7 +102,7 @@
     select{
       margin: 20px 50px 0px 50px;
       padding: 2%;
-      width: 30%;
+      width: 32%;
       border-radius: 10px;
       border-color: #D0C3B4;
       border-width: 2px;
@@ -172,7 +172,7 @@
       
     </header>
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-        <div class="container" ">
+        <div class="container">
           <a class="navbar-brand js-scroll-trigger" href="#page-top"><a href="{% url 'home' %}">
               <img class="animated infinite bounce delay-2s" src="/static/img/title2.png" width="170">
           </a></a>
@@ -189,7 +189,7 @@
                 {% endif %}
               </li>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#" style="color: #916E59;">근처 동물병원 </a>
+                <a class="nav-link js-scroll-trigger" href="{% url 'map' %}" style="color: #916E59;">근처 동물병원 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="{% url 'board' %}" style="color: #916E59;">소통방</a>

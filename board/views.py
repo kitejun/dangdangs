@@ -72,7 +72,7 @@ def new(request):
             # 날짜는 자동으로 현재 입력해주는 것
             post.pub_date = timezone.now()
             post.save()
-            messages.info(request, '새 글이 등록되었습니다.') 
+            #messages.info(request, '새 글이 등록되었습니다.') 
             return redirect('board')     # 바로 home으로 redirect
     
     # 2. 빈 페이지를 띄어주는 기능 -> GET
@@ -88,7 +88,7 @@ def update(request,board_id):
     # 글을 수정사항을 입력하고 제출을 눌렀을 때
     if request.method == "POST":
         form = BoardPost(request.POST, request.FILES)
-        if form.is_valid(): #error
+        if form.is_valid():
                 
             # 검증에 성공한 값들은 사전타입으로 제공 
             print(form.cleaned_data)
@@ -98,6 +98,8 @@ def update(request,board_id):
             post.pub_date = timezone.now()
 
             post.save()
+            
+            #messages.info(request, '수정되었습니다.') 
             return redirect('board')
 
     # 수정사항을 입력하기 위해 페이지에 처음 접속했을 때

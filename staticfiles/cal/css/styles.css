@@ -1,0 +1,308 @@
+/* Common styles */
+/*
+body {
+  font-family: "ptsans", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+*/
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.btn {
+  outline: none;
+  color: black;
+  background-color: #EAE5DE;
+  box-shadow: 0 0 0 0;
+  margin-right: 3px;
+}
+
+.clearfix {
+  margin: 15px;
+}
+
+.form {
+  margin: auto;
+}
+
+.form input, .form select, .form textarea {
+  border-radius: 5px;
+  border: 1px solid #17a2b8;
+  outline: none;
+  background: none;
+  padding: 5px;
+  width: 100%;
+}
+
+/* App styles */
+
+.title {
+  text-align: center;
+  margin: 10px;
+}
+
+.calendar {
+  width: 90%;
+  margin: auto;
+  font-size: 13px;
+}
+
+.calendar tr, .calendar td {
+  border: 1px solid black;
+}
+
+.calendar th {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.calendar td {
+  width: 10%;
+  height: 120px;
+  padding: 20px 0px 0px 5px;
+}
+
+/* month 헤더 폰트 + 색깔 */
+.month { 
+  font-size: 20px;
+  background-color: #EAE5DE;
+}
+
+.date {
+  padding: 3px;
+  font-size: 16px;
+  color: #4E2004;
+}
+
+ul {
+  height: 90%;
+  padding: 5px 5px 0px 20px;
+}
+a {
+  color: #17a2b8;
+}
+/* 오늘 날짜에 해당하는 date */
+.today{
+  background-image: url(/static/img/circle2.png);
+  color: #4E2004;
+  font-size: 16px;
+  padding-right: 8px;
+}
+
+
+/* 태영 코드 */
+*{
+  box-sizing: border-box;
+  font-family: 'Jua', sans-serif;
+}
+
+html,body{
+  height: 100%;
+}
+
+body{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:link,a:visited,a:active{
+  color:inherit;
+}
+
+h1{
+  padding: 8px;
+  font-size: 80px;
+  color:#4E2004;
+}
+
+#header{
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.main-navbar a{
+  padding:8px;
+  margin-right:20px;
+}
+
+.main-navbar a:hover{
+  color: chocolate;
+}
+
+#link2{
+    width: 480px;
+    height: 80px;
+    position: relative;
+    top:20px;
+    left: 20px;
+}
+/*
+.share{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    bottom: 80px;
+    right: 30px;
+}*/
+
+#tap{ 
+  width: 10px;
+  height: 10px;
+}
+
+#main{
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.main-navbar{
+  font-size: 30px;color: #D7B8A5;
+  margin: 20px;
+  display:flex;
+  justify-content: flex-start;
+}
+
+.sub-navbar{
+  display: flex;
+  flex-direction: column;
+  text-indent: 10px;
+}
+
+.link1{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20px;
+}
+
+.news{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header{
+  padding-top:30px; padding-right:30px;
+}
+
+/*.content{padding:50px;}  */
+.inner1{padding: 20px;
+border: solid #916E59;
+border-radius: 5%;
+position: relative;
+height: 100%;}
+
+
+
+#main{
+  flex:1;
+}
+
+.footer{
+  flex-shrink:0;
+
+}
+.carousel slide{
+  background-color: #D0C3B4;
+  padding: 80px;
+}
+.empty{
+  padding: 5%;
+}
+footer{
+  padding:30px;
+  text-align: center;
+  background-color: #EAE5DE;
+}
+
+#copyright{
+  font-size: 15px;
+  color: #767171;
+}
+
+#calender-header{
+  padding: 5%;
+  background-color: #E6DFD5;
+  text-align: center;
+  width: 98%;
+  color: #767171;
+
+}
+
+#calender-header-title{
+  background-color: white; 
+  border-radius: 20px;
+  display: inline;
+}
+
+.event-box{
+  padding: 5%; 
+  width: 100%;
+  height: 50rem;
+}
+
+.event-main{
+  padding: 10rem;
+  background-image: url(/static/img/memo2.png);
+  width: 100%;
+  height: 50rem;
+}
+
+.inner3{
+  padding: 1%;
+  height: 33rem;
+  position: absolute;
+  width: 40%;
+  left: 6%;
+  top: 43%;
+}
+
+.inner4{
+  position: absolute;
+  width: 40%;
+  left: 55rem;
+  top: 43%;
+}
+
+#message{
+  font-size: 25px;
+  position: relative;
+  left: 15rem;
+  top: 4rem;
+  color: rgb(125, 105, 92);
+}
+
+.login-box{
+  padding-bottom: 10%;
+  padding-left: 30%;
+  padding-right: 30%;
+}
+
+#foot-left{
+  position: relative;
+  top: 1.5rem;
+  left: 1rem;
+}
+
+#foot-right{
+  position: relative;
+  top: 1.5rem;
+  right: 1rem;
+}
+/*
+.btn{
+  background-color:#EAE5DE;
+  color: #767171;
+}
+*/
+.btn:hover{
+  background-color: #D0C3B4;
+  
+}
