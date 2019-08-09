@@ -16,7 +16,12 @@
     flex-direction: row;
     float: right;
   }
-
+  select{
+    height: 30px;
+    padding: 4px;
+    position: relative;
+    top: 3px;
+  }
 </style>
 <script> // 선택한 셀렉트 유지하기 위한 scripts
     var getUrlParameter = function getUrlParameter(sParam) {
@@ -51,8 +56,9 @@
     <select id="sort-select" onchange="location = this.value;">
       <option class="sort-date" value="/board/">최신순</option>
       <option class="sort-likes" value="?sort=likes">좋아요순</option>
+      <option class="sort-likes" value="?sort=likes">내글보기</option>
     </select>
-  </div>
+  </div><br>
   <table class="table table-bordered text-center">
     <thead class="thead-light">
       <tr>

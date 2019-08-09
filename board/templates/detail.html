@@ -40,10 +40,20 @@
     }
     .container{
         padding-top: 0px;
+        position: relative;
+        bottom: 10%;
     }
     .heart{
         position: relative;
         left: 50px;
+    }
+    #puppy{
+        position: relative;
+        left: 80%;
+    }
+    textarea.form-control{
+        width: 200%;
+        height: 100%;
     }
 </style>
 
@@ -51,7 +61,7 @@
 
 
 <br><br><br><br>
-
+<div>
 <div class="container">
     <img id="puppy" src="/static/img/board.png" width="100px;">
     <div class="card">
@@ -125,14 +135,14 @@
 
         </div>
     </div>
-    <br>
+    <br><br>
     <form action="{% url 'comment_write' details.id%}" method="POST" class="form-row">
         {% csrf_token %}
         <div class="col">
-            <input type="text" name="content" class="form-control" placeholder="댓글을 입력해주세요.">
+            <textarea type="text" name="content" class="form-control" placeholder="댓글을 입력해주세요."></textarea>
         </div>
-        <div class="col">
-            <input class="btn btn-light" type="submit" value="확인" style="float:right;">
+        <div class="col"><br><br><br>
+            <input class="btn btn-light" type="submit" value="작성" style="float:right; position: relative; right: 7px;">
         </div>
     </form>
     <br> <br>
@@ -140,16 +150,16 @@
         {% for comment in details.comments.all %}
         <br>
         <p style="color:gray;">
-            <small style="float:left;"> <i>{{ comment.author }}</i></small>
+            <small style="float:left; font-size:20px;"> <i>{{ comment.author }}</i></small>
             <small style="float: right;">
                 {{ comment.comment_date }}
             </small></p>
         <br>
         <h5 style="text-align: left;"> {{ comment.comment_body }}</h5>
 
-        {% if user == comment.author %}
-        <a href="{% url 'comment_delete' comment.id %}"> 삭제 </a>
-        {% endif %}
+        {% if user == comment.author %}<br>
+        <a href="{% url 'comment_delete' comment.id %}" style="font-size: 15px; color:dimgray;"> 삭제 </a>
+        {% endif %}<br>
         <hr>
 
 
@@ -159,7 +169,7 @@
     </div>
 </div>
 
-
+</div>
     <script> document.querySelector('.like-button').addEventListener('click', (e) => { e.currentTarget.classList.toggle('liked'); });
     </script>
     {%endblock%}
