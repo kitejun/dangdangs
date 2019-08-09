@@ -109,44 +109,40 @@
 
     </nav>
   </header>
-
-  <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top"><a href="{% url 'home' %}">
-          <img id="icon" class="animated infinite bounce delay-2s" src="/static/img/title.png" width="170">
-        </a></a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav" style="font-size:25px; padding-top:20px;">
-          <li class="nav-item">
-            {% if user.is_authenticated %}
-            <a class="nav-link js-scroll-trigger" href="{% url 'cal:calendar' %}" style="color: #916E59;">내 캘린더</a>
-            {% else %}
-            <a class="nav-link js-scroll-trigger" href="{% url 'login' %}" style="color: #916E59;">내 캘린더</a>
-            {% endif %}
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{% url 'map' %}" style="color: #916E59;">근처 동물병원 </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{% url 'board' %}" style="color: #916E59;">소통방</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{% url 'info' %}" style="color: #916E59;">댕댕사전</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="https://github.com/tigerlcw/dangdangs_game"
-              style="color: #916E59;">댕댕런</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container">
+          <a class="navbar-brand js-scroll-trigger" href="#page-top"><a href="{% url 'home' %}">
+              <img id="icon" class="animated infinite bounce delay-2s" src="/static/img/title.png" width="170">
+          </a></a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav" style="font-size:25px; padding-top:20px;">
+              <li class="nav-item">
+                {% if user.is_authenticated %}
+                <a class="nav-link js-scroll-trigger" href="{% url 'cal:calendar' %}" style="color: #916E59;">내 캘린더</a>
+                {% else %}
+                <a class="nav-link js-scroll-trigger" href="{% url 'login' %}" style="color: #916E59;">내 캘린더</a>
+                {% endif %}
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{% url 'map' %}" style="color: #916E59;">근처 동물병원 </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{% url 'board' %}" style="color: #916E59;">소통방</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{% url 'info' %}" style="color: #916E59;">댕댕사전</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="https://f7e6b2a7.ngrok.io/" style="color: #916E59;">댕댕런</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  
 
   {% block content %}
 
