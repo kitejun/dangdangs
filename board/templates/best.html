@@ -2,7 +2,7 @@
 {% block content %}
 <style>
     .table {
-        border: 1px solid #D0C3B4;
+        border: 1px solid #FFC300;
     }
 
     .pagination-container {
@@ -82,6 +82,14 @@
         align-items: flex-end;
         justify-content: center;
     }
+    .top{
+        display: flex;
+        flex-direction: row;
+    }
+    .top h2{
+        position: relative;
+        top: 50px;
+    }
 </style>
 
 <div class="container">
@@ -118,16 +126,18 @@
 
         </select>
     </div><br>
+    <div class="top">
     <img src="https://data.ac-illust.com/data/thumbnails/8f/8fd99a90a8dac8ab3b7780dc6ca7f37b_t.jpeg" width="150px;">
+    <h2 style="color: #FFC300;">오늘의 TOP3</h2></div>
     <table class="table table-bordered text-center">
         <thead class="thead-light">
             <tr>
-                <th style="background-color: #D0C3B4;" width="10%">번호</th>
-                <th style="background-color: #D0C3B4;" width="20%">제목</th>
-                <th style="background-color: #D0C3B4;" width="20%">작성자</th>
-                <th style="background-color: #D0C3B4;" width="30%">등록일</th>
-                <th style="background-color: #D0C3B4;" width="10%">좋아요</th>
-                <th style="background-color: #D0C3B4;" width="10%">조회수</th>
+                <th style="background-color: #FFC300;" width="10%">번호</th>
+                <th style="background-color: #FFC300;" width="20%">제목</th>
+                <th style="background-color: #FFC300;" width="20%">작성자</th>
+                <th style="background-color: #FFC300;" width="30%">등록일</th>
+                <th style="background-color: #FFC300;" width="10%">좋아요</th>
+                <th style="background-color: #FFC300;" width="10%">조회수</th>
             </tr>
         </thead>
         <tbody>
