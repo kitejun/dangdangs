@@ -98,3 +98,6 @@ def doginfo(request):
         return redirect('home')
 
     return render(request,'accounts/doginfo.html',{'group':group})
+
+def people(request):
+    return render(request, 'accounts/people.html')
