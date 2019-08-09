@@ -16,6 +16,8 @@ from django.contrib import messages
 
 from django.conf import settings
 from django.shortcuts import render
+#javascript를 파이썬에서 사용
+import js2py
 
 def home(request):
     return render(request, 'home.html')
@@ -75,6 +77,10 @@ def new(request):
             post.save()
             #messages.info(request, '새 글이 등록되었습니다.') 
             return redirect('board')     # 바로 home으로 redirect
+        
+        else: #아무것도 안쓰고 글쓰기 눌렀을 때
+            
+            return redirect('board')
     
     # 2. 빈 페이지를 띄어주는 기능 -> GET
     else:
@@ -152,6 +158,8 @@ def comment_write(request, board_id):
         content = request.POST.get('content')
         author_user=request.user
         Comment.objects.create(board=board, comment_body=content, author=author_user)
+        return redirect('/board/detail/' + str(board.id))
+    else : #댓글 입력 안하고 summit
         return redirect('/board/detail/' + str(board.id))
 
 # 댓글 삭제하기
