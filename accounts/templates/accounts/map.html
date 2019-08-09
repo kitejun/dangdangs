@@ -52,8 +52,19 @@
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 
 .cline {
-        border: 4px solid #D0C3B4;
+        border: solid #D0C3B4;
+        border-width: 20px 8px 20px 8px;
       }
+.btn{
+    width: 20%;
+    height: 50px;
+    margin-top: 0px;
+}
+.button-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 </style>
 </head>
 
@@ -336,10 +347,11 @@ function relayout() {
     map.relayout();
 }
 </script>
-<br><br><br><br><br><br>
-<br><br><br><br><br><br>
-        <button class="btn btn-light btn-block" onclick="resizeMap()">지도 크기변경</button>&nbsp;&nbsp;
+<br><br><br><br>
+<div class="button-div">
+        <button class="btn btn-light btn-block" onclick="resizeMap()">지도 크기변경</button>&nbsp;&nbsp;&nbsp;
         <button class="btn btn-light btn-block" onclick="relayout()">지도 갱신하기</button>
+</div>
 </center>
 
 </body>
