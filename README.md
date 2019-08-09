@@ -3,14 +3,14 @@
 
 __김연준(팀장), 박현욱, 양소영, 이찬우, 이상현, 박태영, 류영은, 강희정__
 
+<img src="/images/logo.jpeg" width="50%">
 ### 0. 개요
 ------------------------------
 1. 강아지를 위한 웹사이트의 필요성
 
-<img src="/images/1.png" width="50%">
-<img src="/images/2.png" width="50%">
-<img src="/images/4.png" width="50%">
-<img src="/images/logo.jpeg" width="50%">
+<img src="/images/1.png" width="40%">
+<img src="/images/2.png" width="40%">
+<img src="/images/4.png" width="40%">
 
 
 ### 1. 제작 목적
