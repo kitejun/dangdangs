@@ -147,36 +147,38 @@
       background-color: rgb(245, 238, 229);
     }
 
-    .today{
+    .today {
       padding: 5px 2.7px 3.7px 5px;
 
     }
-/*웹*/
-@media (min-width: 1025px)  {
-  .count-content{
-      width: 75%;
-      border:3px solid #D0C3B4; 
-      border-radius: 40px;
-      width: 800px; 
-      margin-left: auto;
-      margin-right: auto;
-    }  
-}
-/*모바일*/
-@media (max-width: 1025px)  {
-  .count-content{
-      width: 75%;
-      border:3px solid #D0C3B4; 
-      border-radius: 40px;
-      width: 900px; 
-      justify-content:center;
-      display:flex;
-    }  
-  .clearfix {
-  margin: 0;
-  }
-}
-    
+
+    /*웹*/
+    @media (min-width: 1025px) {
+      .count-content {
+        width: 75%;
+        border: 3px solid #D0C3B4;
+        border-radius: 40px;
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    /*모바일*/
+    @media (max-width: 1025px) {
+      .count-content {
+        width: 75%;
+        border: 3px solid #D0C3B4;
+        border-radius: 40px;
+        width: 900px;
+        justify-content: center;
+        display: flex;
+      }
+
+      .clearfix {
+        margin: 0;
+      }
+    }
   </style>
   <title>Django Calendar App</title>
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -192,40 +194,40 @@
 
   <script type='text/javascript'>
     //<![CDATA[
-      // // 사용할 앱의 JavaScript 키를 설정해 주세요.
-      Kakao.init('4a496d28ce18da4e363f8f0d16f1856b');
-      // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
-      function sendLink() {
-        Kakao.Link.sendDefault({
-          objectType: 'feed',
-          content: {
-            title: '댕댕이의 하루',
-            description: '새로운 일정이 추가되었습니다 확인해주세요!',
-            imageUrl: 'https://i.postimg.cc/bJJvtK57/footer.png',
+    // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('4a496d28ce18da4e363f8f0d16f1856b');
+    // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+    function sendLink() {
+      Kakao.Link.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: '댕댕이의 하루',
+          description: '새로운 일정이 추가되었습니다 확인해주세요!',
+          imageUrl: 'https://i.postimg.cc/bJJvtK57/footer.png',
+          link: {
+            mobileWebUrl: 'https://dangdangs.herokuapp.com',
+            webUrl: 'https://dangdangs.herokuapp.com'
+          }
+        },
+        social: {
+          likeCount: 286,
+          commentCount: 45,
+          sharedCount: 845
+        },
+        buttons: [
+          {
+            title: '일정 확인하기',
             link: {
-              mobileWebUrl: 'https://dangdangs.herokuapp.com',
+              mobileWebUrl: 'https://developers.kakao.com',
               webUrl: 'https://dangdangs.herokuapp.com'
             }
           },
-          social: {
-            likeCount: 286,
-            commentCount: 45,
-            sharedCount: 845
-          },
-          buttons: [
-            {
-              title: '일정 확인하기',
-              link: {
-                mobileWebUrl: 'https://developers.kakao.com',
-                webUrl: 'https://dangdangs.herokuapp.com'
-              }
-            },
-          ]
-        });
-      }
+        ]
+      });
+    }
     //]]>
   </script>
-  
+
 
   <article class="content" style="margin: auto; margin-top:20px;">
     <header class="header">
@@ -237,53 +239,57 @@
           <!-- 로그인 되어있는 상태에서-->
           <p id="username">{{user.username}}님 환영합니다&nbsp;</p>
           <a href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
+          <a href="{% url 'mypage' %}">마이페이지 </a>
           <form id="logout" method="POST" action="{% url 'logout' %}">
             {% csrf_token %} <input type="hidden" />
           </form>
-          <a href="{% url 'mypage' %}">마이페이지 </a>
+          <!-- <a href="{% url 'mypage' %}" >마이페이지 </a>  -->
           {% else %}
           <a href="{% url 'login' %}">로그인 </a>
           <a href="{% url 'signup' %}">회원가입 </a>
           {% endif %}
-          
         </div>
-        <a href="{% url 'share'%}" class="news" style="color:#FFC300;">▶ 오늘의 추천글! 강아지 보양식 종류 BEST5</a>
-        <a href="#" class="news" style="color:rgb(252, 99, 99);">▶ 오늘의 인기글 TOP3</a>
-      </nav>
 
+        <a href="{% url 'share'%}" class="news" style="color:#FFC300;">▶ 오늘의 추천글! 강아지 보양식 종류 BEST5</a>
+        <a href="{% url 'like_link' %}" class="news" style="color:rgb(252, 99, 99);"> ▶인기글 Top3 </a>
+
+      </nav>
     </header>
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top"><a href="{% url 'home' %}">
             <img class="animated infinite bounce delay-2s" src="/static/img/title.png" width="170">
           </a></a>
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav" style="font-size:25px; padding-top:20px;">
-              <li class="nav-item">
-                {% if user.is_authenticated %}
-                <a class="nav-link js-scroll-trigger" href="{% url 'cal:calendar' %}" style="color: #916E59;">내 캘린더</a>
-                {% else %}
-                <a class="nav-link js-scroll-trigger" href="{% url 'login' %}" style="color: #916E59;">내 캘린더</a>
-                {% endif %}
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'map' %}" style="color: #916E59;">근처 동물병원 </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'board' %}" style="color: #916E59;">소통방</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'info' %}" style="color: #916E59;">댕댕사전</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="https://github.com/tigerlcw/dangdangs_game" style="color: #916E59;">댕댕런</a>
-              </li>
-            </ul>
-          </div>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+          data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav" style="font-size:25px; padding-top:20px;">
+            <li class="nav-item">
+              {% if user.is_authenticated %}
+              <a class="nav-link js-scroll-trigger" href="{% url 'cal:calendar' %}" style="color: #916E59;">내 캘린더</a>
+              {% else %}
+              <a class="nav-link js-scroll-trigger" href="{% url 'login' %}" style="color: #916E59;">내 캘린더</a>
+              {% endif %}
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'map' %}" style="color: #916E59;">근처 동물병원 </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'board' %}" style="color: #916E59;">소통방</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'info' %}" style="color: #916E59;">댕댕사전</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="https://github.com/tigerlcw/dangdangs_game"
+                style="color: #916E59;">댕댕런</a>
+            </li>
+          </ul>
         </div>
+      </div>
       </div>
     </nav>
     <div class="inner1">
