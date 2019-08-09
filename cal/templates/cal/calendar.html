@@ -151,33 +151,39 @@
       padding: 5px 2.7px 3.7px 5px;
 
     }
-
-    /*웹*/
-    @media (min-width: 1025px) {
-      .count-content {
-        width: 75%;
-        border: 3px solid #D0C3B4;
-        border-radius: 40px;
-        width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-
-    /*모바일*/
-    @media (max-width: 1025px) {
-      .count-content {
-        width: 75%;
-        border: 3px solid #D0C3B4;
-        border-radius: 40px;
-        width: 900px;
-        justify-content: center;
-        display: flex;
-      }
-
-      .clearfix {
-        margin: 0;
-      }
+/*웹*/
+@media (min-width: 1025px)  {
+  .count-content{
+      width: 75%;
+      border:3px solid #D0C3B4; 
+      border-radius: 40px;
+      width: 800px; 
+      margin-left: auto;
+      margin-right: auto;
+    }  
+}
+/*모바일*/
+@media (max-width: 1025px)  {
+  .count-content{
+      width: 75%;
+      border:3px solid #D0C3B4; 
+      border-radius: 40px;
+      width: 900px; 
+      justify-content:center;
+      display:flex;
+    }  
+  .clearfix {
+  margin: 0;
+  }
+}
+    .kakao{
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      width: 100%;
+      margin: 0px;
+      position: relative;
+      bottom: 50px;
     }
   </style>
   <title>Django Calendar App</title>
@@ -187,17 +193,13 @@
 <body>
 
 
-  <!--카카오톡 공유 버튼-->
-  <a id="kakao-link-btn" href="javascript:sendLink()">
-    <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
-  </a>
 
-  <script type='text/javascript'>
-    //<![CDATA[
-      // // 사용할 앱의 JavaScript 키를 설정해 주세요.
-      Kakao.init('4a496d28ce18da4e363f8f0d16f1856b');
-      // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
-      function sendLink() {
+    <script type='text/javascript'>
+      //<![CDATA[
+        // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('4a496d28ce18da4e363f8f0d16f1856b');
+        // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+        function sendLink() {
         Kakao.Link.sendDefault({
           objectType: 'feed',
           content: {
@@ -209,11 +211,11 @@
               webUrl: 'https://dangdangs.herokuapp.com'
             }
           },
-        ]
       });
     }
-    //]]>
-  </script>
+      //]]>
+   </script>
+
 
 
   <article class="content" style="margin: auto; margin-top:20px;">
@@ -269,7 +271,7 @@
                 <a class="nav-link js-scroll-trigger" href="{% url 'info' %}" style="color: #916E59;">댕댕사전</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="https://f7e6b2a7.ngrok.io/" style="color: #916E59;">댕댕런</a>
+                <a class="nav-link js-scroll-trigger" href="https://7f38ef57.ngrok.io/" style="color: #916E59;">댕댕런</a>
               </li>
             </ul>
           </div>
@@ -280,11 +282,19 @@
     <div class="inner1">
       <div class="clearfix">
         <!--버튼 변경 (양소)-->
+        
         <a class="btn btn-light left" href="{% url 'cal:calendar' %}?{{ prev_month }}"> 이전 달 </a>
         <a class="btn btn-light left" href="{% url 'cal:calendar' %}?{{ next_month }}"> 다음 달 </a>
+        
+ 
         <a class="btn btn-light right" href="{% url 'cal:event_new' %}"> 일정 추가 </a>
+ 
         <a class="btn btn-light right" href="{% url 'cal:event_total' %}"> 전체 일정</a>
         <br><br><br>
+                        <!--카카오톡 공유 버튼-->
+  <div class="kakao"><a id="kakao-link-btn" href="javascript:sendLink()">
+      <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" width="50px"/>
+    </a><p style="color: #FFC300; font-size: 20px;">&nbsp;카카오톡 공유하기</p></div>
         <article class="count-content">
           <div class="count-header">
             <form method="POST" class="post-form" action="{% url 'cal:daily_count' %}">
