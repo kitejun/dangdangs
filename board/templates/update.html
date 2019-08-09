@@ -15,17 +15,17 @@
 <center>
     <div class="container">
 
-        <form action="{% url 'update' %}" method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <br>
             <div class="form-group">
                 <label for="title" style="float:left" >제목</label>
-                <input type="text" class="form-control" name="title" >
+                <input type="text" class="form-control" name="title" value="{{form.title}}">
                 <br>
             </div>  
               <div class="form-group">
                 <label for="text" style="float:left">내용</label>
-                <textarea  rows="5" name="context" class="form-control"></textarea>
+                <textarea  rows="5" name="context" class="form-control">{{form.context}}</textarea>
               </div>
               <br>
               <div class="form-group">              

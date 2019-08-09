@@ -1,18 +1,26 @@
 {%extends 'base.html'%}
 
 {% block content %}
-
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>댕댕쓰 - 멍멍사전</title>
    <style>
-
    div {
        float: left;
    }
-  
+@media screen and (min-width: 640px){ 
+  center{
+    width: 100%;
+    padding-right: 70px;
+    padding-left: 275px;
+    margin-right: auto;
+    margin-left: auto;
+    }  
+
+}  
 .wrapper {
-  width: 350px;
+  width: 430px;
   height: 500px;
   background: #d7ccc8;
   margin: 25px;
@@ -193,6 +201,7 @@
 #sources{
     color: rgb(164, 153, 140);
     text-align: center;
+    float: none;
 }
 #sources a{
   color: rgb(164, 153, 140);
@@ -201,329 +210,401 @@
 
 
 .contents{
+    width:430px;
+    height:400px;
     line-height: 20%;
     overscroll-behavior: contain;
+    overflow-y:scroll; 
 }
 
-.contents h5{
+.contents h5 .contents h4{
     line-height: 150%;
-    text-indent: 15px;
+    /*text-indent: 15px;*/
 }
 
-@media screen and (min-width: 865px)  {
-  center{
-    width: 100%;
-    padding-right: 70px;
-    padding-left: 275px;
-    margin-right: auto;
-    margin-left: auto;
-    }  
+center{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 150px;
+  padding-right: 70px;
 
 }
-
+@media(max-width: 750px){
+    center{
+      padding-left:0px;
+    }
+    .contents{
+      width: 100%;
+    line-height: 20%;
+    overscroll-behavior: contain;
+    overflow-y:scroll; 
+  }
+  .wrapper{
+    width: 108%;
+    /*height: 8%;*/
+  }
+  }
    </style> 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
 <body>
-
-<hr>
-<center>
-<div class="wrapper">
-        <div class="container">
-            
-          <div class="top">
-              <br><br><br><img src="/static/img/charity.png" width="70%" height="55%"/>
-        </div>
-          <div class="bottom">
-            <div class="left">
-              <div class="details">
-                <h3>#출산 #새끼</h3>
-              </div>
-            </div>
+  <center>
+  <br><br>
+  <div class="wrapper">
+          <div class="container">
+            <div class="top">
+                <br><br><br><img src="/static/img/charity.png" width="65%" height="55%"/>
           </div>
-        </div>
-        <div class="inside">
-          <div class="icon"><i class="material-icons">search</i></div>
-          <div class="contents">
-            <table>
-              <h4>dddsd</h4>
-            </table>
-          </div>
-        </div>
-
-</div>
-
-      <div class="wrapper">
-            <div class="container">
-              <div class="top">
-                <br><br><br><img src="/static/img/breeding.png" width="80%" height="70%"/>
-            </div>
-              <div class="bottom">
-                <div class="left">
-                  <div class="details">
-                    <h3>#임신 #교배</h3>
-                  </div>
+            <div class="bottom">
+              <div class="left">
+                <div class="details">
+                  <h3>#출산 #새끼</h3>
                 </div>
               </div>
             </div>
-            <div class="inside">
-              <div class="icon"><i class="material-icons">search</i></div>
-              <div class="contents">
-                  
-                <table>
-                  <h5>출산 증상은 아무래도 암컷 강아지의 신체 변화를 들 수 있는데요, 바로 젖꼭지가 커지는 것입니다. 새끼를 낳았을 때 젖을 물려야 하기 때문에 이렇게 변화하는 것입니다. 
-                      이외의 행동은 무기력하면서 식욕만 넘쳐나는 것입니다. 
-                      마지막으로 동물의 본능에 따라 새끼를 지켜야 하기 때문에 자신의 영역을 만들고 지키려는 행동을 보입니다. 그리고  교배 2주 후부터는 사람과 같이 입덧이라는 강아지출산증상이 생기는데요. 입덧이 오게 되면 입맛이 떨어지고, 밥을 잘 먹지 못하게 되어 영양을 챙겨주셔야 하는데요. 영양제를 먹이는 것 보다는 무염치즈나 명치파우더로 칼슘을 보충해주고 바나나, 오이, 브로콜리 등 다양한 채소와 과일이 섞인 특식으로 입맛을 돋아 주시는 것이 좋습니다.</h5>
-                </table>
-                
-              </div>
+          </div>
+          <div class="inside">
+            <div class="icon"><i class="material-icons">search</i></div>
+            <div class="contents">
+              <table>
+                  <h2>증상</h2> <hr>
+                  <h5 style="text-align: left;">
+                                          
+                  </h5>
+                  <h2>꿀Tip</h2><hr>
+                  <h5 style="text-align: left;">
+                      
+                    </h5>
+                 
+              </table>
             </div>
           </div>
 
-              <div class="wrapper">
-                    <div class="container">
-                      <div class="top">
-                            <br><br><br><img src="/static/img/weight-scale (1).png" width="70%" height="60%"/>
-                    </div>
-                      <div class="bottom">
-                        <div class="left">
-                          <div class="details">
-                            <h3>#비만 #다이어트</h3>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="inside">
-                      <div class="icon"><i class="material-icons">search</i></div>
-                      <div class="contents">
-                        <table>
-                          <h5> 손등으로 허리 뒤쪽을 만졌을 때 척추 뼈가 만져지지 않는다면 비만이라고 할 수 있답니다. 따로 통증을 표현하지 않으니 보호자가 주의 깊게 살펴보는 수밖에 없답니다.
+  </div>
 
-                              대표적으로는 당뇨와 관절질환, 심혈관계 질환, 고혈압 등의 질병들을 앓을 수 있습니다. 호흡기계 이상을 경험할 수도 있으며, 대부분의 비만 합병증이 나타난다고 보시면 된다고 해요.</h5>
-                        </table>
-                      </div>
+        <div class="wrapper">
+              <div class="container">
+                <div class="top">
+                  <br><br><br><img src="/static/img/breeding.png" width="75%" height="70%"/>
+              </div>
+                <div class="bottom">
+                  <div class="left">
+                    <div class="details">
+                      <h3>#임신 #교배</h3>
                     </div>
                   </div>
-                  <div class="wrapper">
-                        <div class="container">
-                          <div class="top">
-                            <br><br><br><img src="/static/img/vaccine.png" width="70%" height="60%"/>
-                        </div>
-                          <div class="bottom">
-                            <div class="left">
-                              <div class="details">
-                                <h4>#강아지 #분양 #예방접종</h4>
-                              </div>
+                </div>
+              </div>
+              <div class="inside">
+                <div class="icon"><i class="material-icons">search</i></div>
+                <div class="contents">    
+                  <table >
+                    <h2>증상</h2> <hr>
+                    <h5 style="text-align: left;">
+                      1. 암컷의 젖꼭지가 커진다. <br>                           
+                      2. 무기력하면서 식욕만 넘쳐난다. <br>
+                      3. 자신의 영역을 만들고 지키려는 행동을 보인다.                    
+                    </h5>
+                    <h2>꿀Tip</h2><hr>
+                    <h5 style="text-align: left;">
+                        입덧이 오게 되면 따로 영양을 챙겨줘야 한다. 칼슘을을 챙겨주고 채소와 과일이 섞인 특식으로 입맛을 돋아 주시는 것이 좋다.<br>
+                        출산 후 4주 정도 관리를 해주시는 것이 좋다. 이때는 건강과 함께 심리적 안정, 그리고 새끼들의 건강까지 챙겨주어야 한다.                     
+                      </h5>
+                   
+
+                  </table>
+                  
+                </div>
+              </div>
+            </div>
+
+                <div class="wrapper">
+                      <div class="container">
+                        <div class="top">
+                              <br><br><br><img src="/static/img/weight-scale (1).png" width="65%" height="60%"/>
+                      </div>
+                        <div class="bottom">
+                          <div class="left">
+                            <div class="details">
+                              <h3>#비만 #다이어트</h3>
                             </div>
-                          </div>
-                        </div>
-                        <div class="inside">
-                          <div class="icon"><i class="material-icons">search</i></div>
-                          <div class="contents">
-                            <table>
-                              <h4>dddsd</h4>
-                            </table>
                           </div>
                         </div>
                       </div>
-                      <div class="wrapper">
-                            <div class="container">
-                              <div class="top">
-                                  <br><br><br><img src="/static/img/grooming (1).png" width="70%" height="60%"/>
-                            </div>
-                              <div class="bottom">
-                                <div class="left">
-                                  <div class="details">
-                                    <h3>#미용 #애견미용 #털</h3>
-                                  </div>
+                      <div class="inside">
+                        <div class="icon"><i class="material-icons">search</i></div>
+                        <div class="contents">
+                          <table>
+                              <h2>증상</h2><hr>
+                              <h5 style="text-align: left;">
+                              1. 손등으로 허리 뒤쪽을 만졌을 때 척추 뼈가 만져지지 않는다면 비만이라고 할 수 있다.     
+                              </h5>
+                              <h2>꿀Tip</h2><hr>
+                              <h5 style="text-align: left;">
+                                  따로 통증을 표현하지 않으니 보호자가 주의 깊게 살펴봐야 한다.
+                                  대표적으로는 당뇨와 관절질환, 심혈관계 질환, 고혈압 등의 질병들을 앓을 수 있다. 호흡기계 이상을 경험할 수도 있고, 대부분의 비만 합병증이 나타난다고 보면 된다고 한다.    
+                                  수의사랑 상담을 받고 어떤 식으로 운동을 받으면 좋을지를 고민하고 진행하는 것이 좋다. 대부분 운동부족으로 나타날 수 있으므로 산책을 더 많이 시켜주는 것이 도움된다.
+                                  특히 관절이 많이 약해진 상태에서는 수영이 제일 좋은 방법이다.
+                                  
+                                </h5>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="wrapper">
+                          <div class="container">
+                            <div class="top">
+                              <br><br><br><img src="/static/img/vaccine.png" width="65%" height="60%"/>
+                          </div>
+                            <div class="bottom">
+                              <div class="left">
+                                <div class="details">
+                                  <h4>#강아지 #분양 #예방접종</h4>
                                 </div>
-                              </div>
-                            </div>
-                            <div class="inside">
-                              <div class="icon"><i class="material-icons">search</i></div>
-                              <div class="contents">
-                                <table>
-                                  <h4>dddsd</h4>
-                                </table>
                               </div>
                             </div>
                           </div>
-                          <div class="wrapper">
-                                <div class="container">
-                                  <div class="top">
-                                      <br><br><br><img src="/static/img/poop.png" width="70%" height="60%"/>
-                                </div>
-                                  <div class="bottom">
-                                    <div class="left">
-                                      <div class="details">
-                                        <h3>#똥 #배변 #소변</h3>
-                                      </div>
+                          <div class="inside">
+                            <div class="icon"><i class="material-icons">search</i></div>
+                            <div class="contents">
+                              <table>
+                                  <h2>증상</h2> <hr>
+                                  <h5 style="text-align: left;">
+                                                          
+                                  </h5>
+                                  <h2>꿀Tip</h2><hr>
+                                  <h5 style="text-align: left;">
+                                      
+                                    </h5>
+                                 
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="wrapper">
+                              <div class="container">
+                                <div class="top">
+                                    <br><br><br><img src="/static/img/grooming (1).png" width="65%" height="60%"/>
+                              </div>
+                                <div class="bottom">
+                                  <div class="left">
+                                    <div class="details">
+                                      <h3>#미용 #애견미용 #털</h3>
                                     </div>
-                                  </div>
-                                </div>
-                                <div class="inside">
-                                  <div class="icon"><i class="material-icons">search</i></div>
-                                  <div class="contents">
-                                    <table>
-                                      <h4>dddsd</h4>
-                                    </table>
                                   </div>
                                 </div>
                               </div>
-                          <div class="wrapper">
-                                <div class="container">
-                                  <div class="top">
-                                    <br><br><br><img src="/static/img/old-english-sheepdog.png" width="70%" height="60%"/>
-                                </div>
-                                  <div class="bottom">
-                                    <div class="left">
-                                      <div class="details">
-                                        <h4>#노견 #나이 #노안 #늙음</h4>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="inside">
-                                  <div class="icon"><i class="material-icons">search</i></div>
-                                  <div class="contents">
-                                    <table>
-                                      <h4>dddsd</h4>
-                                    </table>
-                                  </div>
+                              <div class="inside">
+                                <div class="icon"><i class="material-icons">search</i></div>
+                                <div class="contents">
+                                  <table>
+                                      <h2>증상</h2> <hr>
+                                      <h5 style="text-align: left;">
+                                                              
+                                      </h5>
+                                      <h2>꿀Tip</h2><hr>
+                                      <h5 style="text-align: left;">
+                                          
+                                        </h5>
+                                     
+                                  </table>
                                 </div>
                               </div>
-                              <div class="wrapper">
-                                    <div class="container">
-                                      <div class="top">
-                                          <br><br><br><img src="/static/img/pet-shampoo.png" width="70%" height="60%"/>
-                                    </div>
-                                      <div class="bottom">
-                                        <div class="left">
-                                          <div class="details">
-                                            <h3>#샤워 #목욕 #씻기</h3>
-                                          </div>
+                            </div>
+                            <div class="wrapper">
+                                  <div class="container">
+                                    <div class="top">
+                                        <br><br><br><img src="/static/img/poop.png" width="65%" height="60%"/>
+                                  </div>
+                                    <div class="bottom">
+                                      <div class="left">
+                                        <div class="details">
+                                          <h3>#똥 #배변 #소변</h3>
                                         </div>
-                                      </div>
-                                    </div>
-                                    <div class="inside">
-                                      <div class="icon"><i class="material-icons">search</i></div>
-                                      <div class="contents">
-                                        <table>
-                                          <h5>강아지는 모공이 넓어 유해성분 또한 흡수가 잘 됩니다. 때문에 샤워를 할때 여러 가지를 조심해 주셔야 한다는 것입니다.
-
-                                              소형견의 경우 일주일에서 열흘에 한번 정도, 대형견의 경우 한 달에 한번이 적당합니다. 피부병을 가지고 있는 강아지라면 맞는 약용 샴푸로 목욕 횟수를 늘려주시는 것이 좋습니다.
-                                              
-                                              물의 온도도 정말 중요하게 작용을 하는데요. 너무 높거나 낮은 온도의 물은 강아지에게 자극적이어서 부정적인 인식을 만들어 주기 쉽습니다.
-                                              
-                                              그리고 샴푸를 묻히고 장시간 유지를 하면 피부에 자극이 가 피부병이 생길 수 있어 바로 바로 씻겨주시는 것이 좋습니다.</h5>
-                                        </table>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="wrapper">
-                                        <div class="container">
-                                          <div class="top">
-                                              <br><br><br><img src="/static/img/veterinary.png" width="70%" height="60%"/>
+                                  <div class="inside">
+                                    <div class="icon"><i class="material-icons">search</i></div>
+                                    <div class="contents">
+                                      <table>
+                                          <h2>증상</h2> <hr>
+                                          <h5 style="text-align: left;">
+                                                                  
+                                          </h5>
+                                          <h2>꿀Tip</h2><hr>
+                                          <h5 style="text-align: left;">
+                                              
+                                            </h5>
+                                         
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                            <div class="wrapper">
+                                  <div class="container">
+                                    <div class="top">
+                                      <br><br><br><img src="/static/img/old-english-sheepdog.png" width="65%" height="60%"/>
+                                  </div>
+                                    <div class="bottom">
+                                      <div class="left">
+                                        <div class="details">
+                                          <h4>#노견 #나이 #노안 #늙음</h4>
                                         </div>
-                                          <div class="bottom">
-                                            <div class="left">
-                                              <div class="details">
-                                                <h4>#병 #아픔 #아프다 #병원</h4>
-                                              </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="inside">
+                                    <div class="icon"><i class="material-icons">search</i></div>
+                                    <div class="contents">
+                                      <table>
+                                          <h2>증상</h2> <hr>
+                                          <h5 style="text-align: left;">
+                                                                  
+                                          </h5>
+                                          <h2>꿀Tip</h2><hr>
+                                          <h5 style="text-align: left;">
+                                              
+                                            </h5>
+                                         
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="wrapper">
+                                      <div class="container">
+                                        <div class="top">
+                                            <br><br><br><img src="/static/img/pet-shampoo.png" width="65%" height="60%"/>
+                                      </div>
+                                        <div class="bottom">
+                                          <div class="left">
+                                            <div class="details">
+                                              <h3>#샤워 #목욕 #씻기</h3>
                                             </div>
-                                          </div>
-                                        </div>
-                                        <div class="inside">
-                                          <div class="icon"><i class="material-icons">search</i></div>
-                                          <div class="contents">
-                                            <table>
-                                              <h4>dddsd</h4>
-                                            </table>
                                           </div>
                                         </div>
                                       </div>
-                                      <div class="wrapper">
-                                            <div class="container">
-                                              <div class="top">
-                                                  <br><br><br><img src="/static/img/pillow.png" width="70%" height="60%"/>
-                                            </div>
-                                              <div class="bottom">
-                                                <div class="left">
-                                                  <div class="details">
-                                                    <h3>#수면 #잠</h3>
-                                                  </div>
+                                      <div class="inside">
+                                        <div class="icon"><i class="material-icons">search</i></div>
+                                        <div class="contents">
+                                          <table>
+                                              <h2>꿀Tip</h2><hr>
+                                              <h5 style="text-align: left;">
+                                                  강아지는 모공이 넓어 유해성분 또한 흡수가 잘되기에샤워를 할때 조심해 주셔야 한다.
+
+                                                  소형견의 경우 일주일에서 열흘에 한번 정도, 대형견의 경우 한 달에 한번이 적당하다. 피부병을 가지고 있는 강아지라면 맞는 약용 샴푸로 목욕 횟수를 늘려주시는 것이 좋습니다.
+                                                  
+                                                  물의 온도 또한 너무 높거나 낮은 온도의 물은 강아지에게 자극적이어서 부정적인 인식을 만들어 주기 쉽다.
+                                                  
+                                                  그리고 샴푸를 묻히고 장시간 유지를 하면 피부에 자극이 가 피부병이 생길 수 있어 바로 바로 씻겨주시는 것이 좋다.    
+                                                  목욕을 다 하고 난 후에는 털을 말릴 때, 드라이기로 다 말리려고 생각을 하기 보다는 타월을 이용해 털을 부드럽게 짜며, 최대한 물기를 제거해주시는 것이 우선이라고 한다. 그 후 드라이기를 사용해서 너무 뜨거운 온도의 바람으로 털을 말리기 보다는 적당한 온도와 바람세기로 털을 말려주셔야 한다.
+                                                </h5>
+                                          </table>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="wrapper">
+                                          <div class="container">
+                                            <div class="top">
+                                                <br><br><br><img src="/static/img/veterinary.png" width="65%" height="60%"/>
+                                          </div>
+                                            <div class="bottom">
+                                              <div class="left">
+                                                <div class="details">
+                                                  <h4>#병 #아픔 #아프다 #병원</h4>
                                                 </div>
-                                              </div>
-                                            </div>
-                                            <div class="inside">
-                                              <div class="icon"><i class="material-icons">search</i></div>
-                                              <div class="contents">
-                                                <table>
-                                                  <h4>dddsd</h4>
-                                                </table>
                                               </div>
                                             </div>
                                           </div>
-
-                                          <div class="wrapper">
-                                                <div class="container">
-                                                  <div class="top">
-                                                    <br><br><br><br><img src="/static/img/pet-food.png" width="60%" height="60%"/>
-                                                </div>
-                                                  <div class="bottom">
-                                                    <div class="left">
-                                                      <div class="details">
-                                                        <h3>#간식 #식사</h3>
-                                                      </div>
+                                          <div class="inside">
+                                            <div class="icon"><i class="material-icons">search</i></div>
+                                            <div class="contents">
+                                              <table>
+                                                  <h2>증상</h2> <hr>
+                                                  <h5 style="text-align: left;">
+                                                                          
+                                                  </h5>
+                                                  <h2>꿀Tip</h2><hr>
+                                                  <h5 style="text-align: left;">
+                                                      
+                                                    </h5>
+                                                 
+                                              </table>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="wrapper">
+                                              <div class="container">
+                                                <div class="top">
+                                                    <br><br><br><img src="/static/img/pillow.png" width="65%" height="60%"/>
+                                              </div>
+                                                <div class="bottom">
+                                                  <div class="left">
+                                                    <div class="details">
+                                                      <h3>#수면 #잠</h3>
                                                     </div>
-                                                  </div>
-                                                </div>
-                                                <div class="inside">
-                                                  <div class="icon"><i class="material-icons">search</i></div>
-                                                  <div class="contents">
-                                                    <table>
-                                                      <h5>강아지들의 사료가 대부분 건식이기 때문에 습도와 온도 변화에 따라 쉽게 상하거나 곰팡이가 생길 수도 있습니다. 때문에 이런 부분에 있어서 더욱 더 조심을 해주셔야 하는데요.
-
-                                                          우선 가장 중요하게 생각을 해주셔야 하는 것은 바로 온도조절입니다. 온도는 15~30도 습도는 50~70%에 맞춰주시는 것이 좋은데요. 보관기간은 한달 내외로 직사광선을 피해주시는 것이 좋습니다. 또한 건사료의 경우 포장이 되어있는 상태 그대로보관을 해주시는 것이 강아지 사료보관법의 좋은 예시입니다. </h5>
-                                                    </table>
                                                   </div>
                                                 </div>
                                               </div>
+                                              <div class="inside">
+                                                <div class="icon"><i class="material-icons">search</i></div>
+                                                <div class="contents">
+                                                  <table>
+                                                      <h2>증상</h2> <hr>
+                                                      <h5 style="text-align: left;">
+                                                                              
+                                                      </h5>
+                                                      <h2>꿀Tip</h2><hr>
+                                                      <h5 style="text-align: left;">
+                                                          
+                                                        </h5>
+                                                     
+                                                  </table>
+                                                </div>
+                                              </div>
+                                            </div>
 
-                                              <div class="wrapper">
-                                                    <div class="container">
-                                                      <div class="top">
-                                                          <br><br><br><img src="/static/img/walking-the-dog.png" width="70%" height="60%"/>
-                                                    </div>
-                                                      <div class="bottom">
-                                                        <div class="left">
-                                                          <div class="details">
-                                                            <h3>#산책 #운동 #동반산책</h3>
-                                                          </div>
+                                            <div class="wrapper">
+                                                  <div class="container">
+                                                    <div class="top">
+                                                      <br><br><br><br><img src="/static/img/pet-food.png" width="55%" height="60%"/>
+                                                  </div>
+                                                    <div class="bottom">
+                                                      <div class="left">
+                                                        <div class="details">
+                                                          <h3>#사료 #식사</h3>
                                                         </div>
                                                       </div>
                                                     </div>
-                                                    <div class="inside">
-                                                      <div class="icon"><i class="material-icons">search</i></div>
-                                                      <div class="contents">
-                                                        <table>
-                                                          <h4>dddsd</h4>
-                                                        </table>
-                                                      </div>
+                                                  </div>
+                                                  <div class="inside">
+                                                    <div class="icon"><i class="material-icons">search</i></div>
+                                                    <div class="contents">
+                                                      <table> 
+                                                          <h2>꿀Tip</h2><hr>
+                                                          <h5 style="text-align: left;">
+                                                              강아지들의 사료가 대부분 건식이기 때문에 습도와 온도 변화에 따라 쉽게 상하거나 곰팡이가 생길 수도 있기에 더욱 더 조심을 해줘야 한다.
+                                                              <br><br>
+                                                              우선 가장 중요하게 생각을 해주셔야 하는 것은 바로 온도조절이다. 온도는 15~30˚ 습도는 50~70%에 맞춰주시는 것이 좋다. 보관기간은 한달 내외로 직사광선을 피해주시는 것이 좋다. 또한 건사료의 경우 포장이 되어있는 상태 그대로보관을 해주시는 것이 강아지 사료보관법의 좋은 예시다.
+                                                              사료에는 모두 유통기한이 있고 공기와 접촉을 하는 순간부터 부패가 시작되기 때문에 최대 6개월 안에 모든 사료를 급여해주시는 것이 좋다. 
+                                                            </h5>
+                                                      </table>
                                                     </div>
                                                   </div>
+                                                </div>
 
-                                                  <div class="wrapper">
+                                                <div class="wrapper">
                                                       <div class="container">
                                                         <div class="top">
-                                                            <br><br><br><img src="/static/img/female.png" width="70%" height="60%"/>
+                                                            <br><br><br><img src="/static/img/walking-the-dog.png" width="65%" height="60%"/>
                                                       </div>
                                                         <div class="bottom">
                                                           <div class="left">
                                                             <div class="details">
-                                                              <h3>#암컷 #생리</h3>
+                                                              <h3>#산책 #운동 #동반산책</h3>
                                                             </div>
                                                           </div>
                                                         </div>
@@ -532,7 +613,15 @@
                                                         <div class="icon"><i class="material-icons">search</i></div>
                                                         <div class="contents">
                                                           <table>
-                                                            <h5>강아지들은 대개 일년에 두 번에서 세 번 생리를 합니다. 일년에 두 번으로 5개월에서 6개월 간격으로 옵니다. 처음 생리할 때는 보통 6개월에서 12개월 사이에 하며, 소형견일수록 첫 시기가 좀 더 빠르게 오는 편입니다. 통상적으로, 2주에서 3주간 이 시기가 지속되고, 시작이 된 후에는 진하게 피가 비치며, 일주일 정도 시간이 지나면 맑은 선홍색을 띄게 됩니다. 이렇게 처음 시작되면 강아지는 폐경이 없기 때문에 나이가 들어도 지속되고 일생 동안 이 과정을 반복됩니다. 만약 아이들이 생리를 하지 않거나 아니면 3주가 지나도 계속 피를 내비친다면 자궁질환이 생겼을 수도 있기 때문에 검진을 받아보는 것이 좋겠습니다.</h5>
+                                                              <h2>증상</h2> <hr>
+                                                              <h5 style="text-align: left;">
+                                                                                      
+                                                              </h5>
+                                                              <h2>꿀Tip</h2><hr>
+                                                              <h5 style="text-align: left;">
+                                                                  
+                                                                </h5>
+                                                             
                                                           </table>
                                                         </div>
                                                       </div>
@@ -541,12 +630,12 @@
                                                     <div class="wrapper">
                                                         <div class="container">
                                                           <div class="top">
-                                                              <br><br><br><img src="/static/img/genderless.png" width="70%" height="60%"/>
+                                                              <br><br><br><img src="/static/img/female.png" width="65%" height="60%"/>
                                                         </div>
                                                           <div class="bottom">
                                                             <div class="left">
                                                               <div class="details">
-                                                                <h3>#중성화 #수술</h3>
+                                                                <h3>#암컷 #생리</h3>
                                                               </div>
                                                             </div>
                                                           </div>
@@ -555,10 +644,17 @@
                                                           <div class="icon"><i class="material-icons">search</i></div>
                                                           <div class="contents">
                                                             <table>
-                                                              <h5>첫 번째로는 질병 예방에 좋습니다. 새끼를 낳을 계획이 없는 암컷 반려견의 경우는 난소와 자궁을 없애는 수술을 할 경우 성호르몬 관련 질병인 난소 종양, 자국 축농증, 유선종양 등 수술이 필요한 질환 예방에 크나큰 도움이 되거든요. 
-                                                                  두 번째로는 영역 표시나 사람, 혹은 과한 마킹 행위나 공격성이 크게 줄어든다는 이점이 있습니다.  
-                                                                  세 번째로는 잘 지내던 반려견이 어느 날 열려있는 문을 통해 가출했다? 그렇다면 90% 이상은 중성화가 진행되지 않은 상태입니다. 암컷 개가 발정기 일 때 발산하는 냄새는 수 킬로미터까지 퍼져 제때 짝짓기를 하지 못한 수컷이 과민 반응을 보입니다. 최악의 경우는 가출을 하는 비극도 벌어지기 때문인데요. 이로 인해 강아지들도 보호자들에게도 스트레스가 있을 수 있어 
-                                                                  수술로 자유로움을 안겨줄 수 있습니다.</h5>
+                                                                <h2>증상</h2> <hr>
+                                                                <h5 style="text-align: left;">
+                                                                    1. 일년에 두 번으로 5개월에서 6개월 간격으로 온다. <br>
+                                                                    2. 처음 생리할 때는 보통 6개월에서 12개월 사이에 하며, 소형견일수록 첫 시기가 좀 더 빠르게 오는 편이다. <br>
+                                                                    3. 보통 2주에서 3주간 이 시기가 지속되고, 시작이 된 이후 시간이 지날수록 선홍색을 띄게 된다.                      
+                                                                </h5>
+                                                                <h2>꿀Tip</h2><hr>
+                                                                <h5 style="text-align: left;">
+                                                                    강아지는 폐경이 없기 때문에 나이가 들어도 지속되고 일생 동안 이 과정을 반복한다. 만약 아이들이 생리를 하지 않거나 아니면 3주가 지나도 계속 피를 내비친다면 자궁질환이 생겼을 수도 있기 때문에 검진을 받아보는 것을 추천한다.
+                                                                    생후 일년이 지나도 생리를 하지 않는다면 이것도 한번 검진받아보는 것을 권장한다. 피를 비치기 시작하면 보호자는 생식기 주변을 청결이 해주어야 하기에, 부위를 깨끗하게 닦아주고 아이들의 입 주변도 깨끗하게 닦아주는 것이 좋다. 매번 물로 씻겨 주실 필요까지는 없고, 청결하게 부드러운 거즈나 물티슈로 닦아주면 된다.
+                                                                  </h5>
                                                             </table>
                                                           </div>
                                                         </div>
@@ -567,12 +663,12 @@
                                                       <div class="wrapper">
                                                           <div class="container">
                                                             <div class="top">
-                                                                <br><br><br><img src="/static/img/no-pets.png" width="70%" height="60%"/>
+                                                                <br><br><br><img src="/static/img/genderless.png" width="65%" height="60%"/>
                                                           </div>
                                                             <div class="bottom">
                                                               <div class="left">
                                                                 <div class="details">
-                                                                  <h3>#금지음식 #주의 #경고</h3>
+                                                                  <h3>#중성화 #수술</h3>
                                                                 </div>
                                                               </div>
                                                             </div>
@@ -581,25 +677,60 @@
                                                             <div class="icon"><i class="material-icons">search</i></div>
                                                             <div class="contents">
                                                               <table>
-                                                                <h5>초콜릿에는 카페인과 같은 메탈수 성분을 함유하고있어 강아지에게 독이 될 수 있다는 사실! 또한,
-                                                                    
-                                                                    개에게는 유당을 분해하는 효소가 부족하기 때문에 우유나 우유로 만든 유제품을 강아지에게 주면 설사와 같은 소화기관 문제를 일으킬 수 있어 유당이 제거된 제품이 아니라면 주지 않는 것이 좋습니다.
-                                                                    
-                                                                     뼈다귀는 강아지에게 위험하다는 사실, 익힌 뼈는 잘 부서져 소화기관에 상처를 줄 수 있고 숨을 질식시킬 수도 있습니다. 또한 날고기를 그대로 먹을 경우에는 대장균과 살모넬라균 등에 감염될 위험도 크죠. 강아지에게 고기를 주고 싶다면 살점만 발라서 주는 것이 좋습니다.</h5>
+                                                                  <h2>꿀Tip</h2><hr>
+                                                                  <h5 style="text-align: left;">
+                                                                      중성화는 첫번째로 질병 예방에 좋다. 새끼를 낳을 계획이 없는 암컷 반려견의 경우는 난소와 자궁을 없애는 수술을 할 경우 성호르몬 관련 질병들 중 수술이 필요한 질환 예방에 크나큰 도움이 된다. 
+                                                                      두 번째로는 영역 표시나 사람, 혹은 과한 마킹 행위나 공격성이 크게 줄어든다는 이점이 있다.  
+                                                                      세 번째로는 중성화를 하지 않은 암컷 개가 발정기 일 때 발산하는 냄새는 수 킬로미터까지 퍼져 제때 짝짓기를 하지 못한 수컷이 과민 반응을 보인다는 것이다. 
+                                                                      반려견의 앞으로의 삶을 위한 의견이니 보호자들과 의견을 맞추는 게 중요하다. 또한 수술 전 수의사와 반려견의 나이와 상태를 고려해 충분한 상담이 필요한 것을 인지 한 후 판단하는 게 좋다.
+                                                                  </h5>
                                                               </table>
                                                             </div>
                                                           </div>
                                                         </div>
 
-                                                        
-        </center>
-        
-        <br><br>
-        <div id="sources">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-<!--  Scripts-->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+                                                        <div class="wrapper">
+                                                            <div class="container">
+                                                              <div class="top">
+                                                                  <br><br><br><img src="/static/img/no-pets.png" width="65%" height="60%"/>
+                                                            </div>
+                                                              <div class="bottom">
+                                                                <div class="left">
+                                                                  <div class="details">
+                                                                    <h3>#금지음식 #주의 #경고</h3>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                            <div class="inside">
+                                                              <div class="icon"><i class="material-icons">search</i></div>
+                                                              <div class="contents">
+                                                                <table>
+                                                                    
+                                                                    <h2>꿀Tip</h2><hr>
+                                                                    <h5 style="text-align: left;">
+                                                                        초콜릿에는 카페인과 같은 메탈수 성분을 함유하고있어 강아지에게 독이 될 수 있다. 
+                                                                      
+                                                                        개에게는 유당을 분해하는 효소가 부족하여 우유나 우유로 만든 유제품을 강아지에게 주면 설사와 같은 소화기관 문제를 일으킬 수 있어 유당이 제거된 제품이 아니라면 주지 않는 것이 좋다.
+                                                                        
+                                                                        뼈다귀는 강아지에게 위험하다는 사실, 익힌 뼈는 잘 부서져 소화기관에 상처를 줄 수 있고 숨을 질식시킬 수도 있다. 또한 날고기를 그대로 먹을 경우에는 대장균과 살모넬라균 등에 감염될 위험도 크다. 강아지에게 고기를 주고 싶다면 살점만 발라서 주는 것이 좋다.
 
+                                                                    </h5>
+                                                                </table>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+
+                                                          
+        
+  </center>
+          <br><br>
+          <div id="sources"></p>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+  <!--  Scripts-->
+  
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 </body>
 
 
@@ -608,6 +739,4 @@
 
 
 {% endblock %}
-
-
 

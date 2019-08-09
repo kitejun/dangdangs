@@ -29,9 +29,10 @@ class Board(models.Model):
         return reverse('detail', args=[self.id])
 
     @property
-    def update_counter(self):
+    def update_counter_hit(self):
         self.hits=self.hits+1
         self.save()
+        return ''
 
     @property
     def update_counter(self):

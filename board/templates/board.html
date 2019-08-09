@@ -117,13 +117,15 @@
         <td>
           <input type="text" name="search_word" required id="id_search_word">
           <input class="btn btn-outline-light" type="submit" value="검색하기">
-          <!-- 글쓰기 -->
-          <a class="btn btn-outline-light right" href="{% url 'new' %}" title="{{board.body}}" style="float: right; margin:0;">글쓰기</a>
+          
 
         </td>
       </tr>
     </table>
   </form>
+
+  <!-- 글쓰기 -->
+  <a class="btn btn-outline-light right" href="{% url 'new' %}" title="{{board.body}}" style="float: right; margin:0;">글쓰기</a>
   
 </div>
   
