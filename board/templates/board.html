@@ -80,7 +80,7 @@
         <td>{{board.id }} </td>
         <td><a href="{% url 'detail' board.id %}" title="{{board.summary}}">{{board.summary_title}}({{ board.comments.count }})</a></td>
         <td>{{ board.author }}</td>
-        <td>{{ board.pub_date }}</td>
+        <td>{{ board.pub_date|date:'bj일 f' }}</td>
         <td>{{ board.like_users.count }}</td>
         <td>{{ board.hits }} </td>
 
@@ -99,7 +99,7 @@
                 {{ post.created_at|date:'N d, Y' }}
           -->
         <td>{{ board.author }}</td>
-        <td>{{ board.pub_date }}</td>
+        <td>{{ board.pub_date|date:'bj일 f' }}</td>
         <td>{{ board.like_users.count }} </td>
         <td>{{ board.hits }} </td>
       </tr>

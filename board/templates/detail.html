@@ -73,7 +73,8 @@
     <div class="card">
        
         <div class="card-body" style="border:3px solid #D0C3B4; ">
-
+            <!-- 조회수 증가 -->
+            {{details.update_counter_hit}}
             <h2 class="card-title" style="text-align: center;">&nbsp;&nbsp;{{details.title}}</h2>
             <p style="text-align: right; font-size: 20px;">작성자: {{details.author}} &nbsp; 조회수: {{details.hits}}</p>
             <p style="text-align: right; font-size: 18px;">{{details.pub_date}}</p>
@@ -112,8 +113,7 @@
             <br>
 
 
-            <!-- 조회수 증가 -->
-            {{details.update_counter_hit}}
+            
 
 
             <hr>
@@ -153,13 +153,6 @@
     </form>
     <br> <br>
     <div>
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
         {% for comment in details.comments.all %}
         <br>
         <p style="color:gray;">
