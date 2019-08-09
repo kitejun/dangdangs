@@ -66,7 +66,7 @@
       justify-content: center;
     }
   </style>
-  <title>Django Calendar App</title>
+  <title>댕댕쓰</title>
 </head>
 
 <body>
@@ -89,7 +89,8 @@
         {% endif %}
       </div>
       
-      <a href="{% url 'like_link' %}" class="news" style="color:#FFC300;">▶ 오늘의 인기글! </a>
+      <a href="{% url 'like_link' %}" class="news" style="color:#FFC300;"> ▶인기글 Top3 </a>
+      <a href="{% url 'share'%}" class="news" style="color:#FFC300;">▶ 오늘의 추천글! 강아지 보양식 종류 BEST5</a>
     </nav>
     
   </header>

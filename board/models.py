@@ -10,7 +10,7 @@ class Board(models.Model):
     pub_date=models.DateTimeField('date published')
     context=models.TextField()
     hits=models.PositiveIntegerField(default=0)
-    like_users=models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_posts')
+    like_users=models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_users')
     
     class Meta:
         ordering=['-id']
