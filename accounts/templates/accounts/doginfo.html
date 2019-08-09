@@ -28,6 +28,7 @@
 </style>
   
 <body>
+  
         <div class="login-box">
             <div class="text-center mb-4">
                 <div class="login-img">
@@ -47,13 +48,20 @@
                 <input name="dogname" class="form-control" type="text" value="{{ group.dogname }}" required>
                 <br>
                 강아지 생일
-                <input name="dogbirth" class="form-control" type="text" value="{{group.dogbirth}}" required>
+                <input name="dogbirth" class="form-control" type="date" value="{{group.dogbirth}}" required>
                 <br>
+               
                 강아지 종
                 <input name="dogspecies" class="form-control" type="text" value="{{group.dogspecies}}" required>
                 <br>
+                
                 강아지 성별
-                <input name="dogbio" class="form-control" type="text" value="{{group.dogbio}}" required>
+                <select name="dogbio" class="form-control" type="text" value="{{group.dogbio}}" required>
+                  <option value="male">수컷</option>
+                  <option value="female">암컷</option>
+                  <option value="neutrality">중성</option>
+                </select>
+               <!-- <input name="dogbio" class="form-control" type="text" value="{{group.dogbio}}" required>-->
                 <br>
 
               
