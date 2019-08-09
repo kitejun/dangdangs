@@ -194,12 +194,13 @@
 
 
 
-    <script type='text/javascript'>
-      //<![CDATA[
-        // // 사용할 앱의 JavaScript 키를 설정해 주세요.
-        Kakao.init('4a496d28ce18da4e363f8f0d16f1856b');
-        // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
-        function sendLink() {
+
+  <script type='text/javascript'>
+    //<![CDATA[
+      // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+      Kakao.init('4a496d28ce18da4e363f8f0d16f1856b');
+      // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+      function sendLink() {
         Kakao.Link.sendDefault({
           objectType: 'feed',
           content: {
@@ -211,11 +212,11 @@
               webUrl: 'https://dangdangs.herokuapp.com'
             }
           },
+        ]
       });
     }
-      //]]>
-   </script>
-
+    //]]>
+  </script>
 
 
   <article class="content" style="margin: auto; margin-top:20px;">
@@ -271,7 +272,7 @@
                 <a class="nav-link js-scroll-trigger" href="{% url 'info' %}" style="color: #916E59;">댕댕사전</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="https://7f38ef57.ngrok.io/" style="color: #916E59;">댕댕런</a>
+                <a class="nav-link js-scroll-trigger" href="https://f7e6b2a7.ngrok.io/" style="color: #916E59;">댕댕런</a>
               </li>
             </ul>
           </div>
