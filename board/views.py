@@ -199,4 +199,32 @@ def like_link(request):
     #board = get_object_or_404(Board, pk=board_id)
     #board=Board.objects.all().aggregate(Max('like_users'))
 
-    return redirect('/board/?sort=likes')
+    boards=Board.objects
+    # 댓글 수
+    counts=Board.objects.count()
+    board_list = Board.objects.annotate(like_count=Count('like_users')).order_by('-like_count', '-pub_date')
+    paginator = Paginator(board_list,3)
+    total_len=len(board_list)
+
+    page = request.GET.get('page',1)
+    posts = paginator.get_page(page)
+    
+    try:
+        lines = paginator.page(page) 
+    except PageNotAnInteger: 
+        lines = paginator.page(1) 
+    except EmptyPage: 
+        lines = paginator.page(paginator.num_pages) 
+        
+    index = lines.number -1 
+    max_index = len(paginator.page_range) 
+    start_index = index -2 if index >= 2 else 0 
+    if index < 2 : 
+        end_index = 5-start_index
+    else : 
+        end_index = index+3 if index <= max_index - 3 else max_index 
+    page_range = list(paginator.page_range[start_index:end_index]) 
+    
+    context = { 'boards':boards,'board_list': lines ,'counts':counts, 'posts':posts, 'page_range':page_range, 'total_len':total_len, 'max_index':max_index-2 } 
+    return render (request,'best.html', context )
+    # return redirect('/board/?sort=likes')
