@@ -129,6 +129,7 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+# 인증에 사용할 커스텀 User 모델 지정
 AUTH_USER_MODEL = 'accounts.User'
 
 
