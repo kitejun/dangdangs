@@ -19,35 +19,42 @@
     flex-direction: row;
     float: right;
   }
-  select{
-    
+
+  select {
+
     height: 30px;
     padding: 4px;
     position: relative;
     top: 3px;
-    
+
     border-radius: 10px;
-      border-color: #D0C3B4;
-      border-width: 2px;
+    border-color: #D0C3B4;
+    border-width: 2px;
   }
-  select:focus,select.option:hover{
-      outline: none;
-    }
-    input{
-      border-radius: 8px;
-      border-color: #D0C3B4;
-      border-width: 2px;
-    }
- input:focus{
-  outline: none;
- }
-  @media (max-width: 800px){
-    .btn{
+
+  select:focus,
+  select.option:hover {
+    outline: none;
+  }
+
+  input {
+    border-radius: 8px;
+    border-color: #D0C3B4;
+    border-width: 2px;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  @media (max-width: 800px) {
+    .btn {
       position: relative;
       top: 10px;
       width: 80px;
       height: 40px;
     }
+
     /*#new{
       position: relative;
       top: 40px;
@@ -81,7 +88,7 @@
           }
         };
         // 정렬 방식 셀렉트 유지
-        $(document).ready(function (){
+        $(document).ready(function () {
           var sort = getUrlParameter('sort');
           if (sort == 'likes') {
             $('.sort-likes').prop('selected', 'selected')
@@ -148,7 +155,7 @@
     </tbody>
   </table>
 
-  
+
   <!--pagenation-->
   <div class="pagination-container">
     {% if board_list.has_other_pages %}
@@ -211,9 +218,10 @@
 
 
     &nbsp;&nbsp;
-  <!-- 글쓰기 -->
-  <a id="new" class="btn btn-outline-light right" href="{% url 'new' %}" title="{{board.body}}" style="float: right; margin:0;">글쓰기</a>
-</div>
+    <!-- 글쓰기 -->
+    <a id="new" class="btn btn-outline-light right" href="{% url 'new' %}" title="{{board.body}}"
+      style="float: right; margin:0;">글쓰기</a>
+  </div>
 
 
 </div>

@@ -23,7 +23,6 @@ from django.db.models import Count
 from django.db.models import Max 
 
 def home(request):
-
     return render(request, 'home.html')
 
 def share(request):
@@ -83,8 +82,8 @@ def new(request):
     # 로그인 안 되어있을 때 로그인 페이지로
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+
     # 1. 입력된 내용을 처리하는 기능 -> POST
-    
     if request.method == 'POST':
         form = BoardPost(request.POST, request.FILES)
         if form.is_valid():
@@ -182,7 +181,6 @@ def comment_write(request, board_id):
 
 # 댓글 삭제하기
 def comment_delete(request,comment_id):
-    
     comment = get_object_or_404(Comment, pk=comment_id)
     comment.delete()
     # return redirect('/board/detail/' + 'str(comment.id)')
